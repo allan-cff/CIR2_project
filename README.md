@@ -18,6 +18,10 @@
 - Se déplacer dans /var/www/html/
 - Cloner le repo `sudo git clone https://allan-cff@github.com/allan-cff/CIR2_project`
 
+## Mettre à jour le serveur distant
+- Se déplacer dans /var/www/html/
+- Pull depuis GitHub `sudo git pull`
+
 ## Créer un lien SSH vers le serveur distant dans VSCode
 - Installer l'extension VSCode SSH FS
 - Suivre le [tuto](https://www.cse.unsw.edu.au/~learn/homecomputing/sshfs-remote/)
