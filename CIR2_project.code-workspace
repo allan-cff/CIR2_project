@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "SSH FS - projet_cir2",
+			"uri": "ssh://projet_cir2/"
+		}
+	],
+	"settings": {}
+}
