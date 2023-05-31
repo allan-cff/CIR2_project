@@ -36,17 +36,9 @@
         <label for="firstname"><b>votre prenom :</b></label>
         <input type="text" placeholder="Entrer votre prenom" name="firstname" required>
 
-        <!-- sélection de l'âge de la personne -->
-        <!--
-        <label for="age"><b>Votre âge :</b></label>
-        <select name="age" id="age">
-            <option value="18-25">18-25 ans</option>
-            <option value="26-35">26-35 ans</option>
-            <option value="36-45">36-45 ans</option>
-            <option value="46+">46 ans et plus</option>
-        </select>
-        -->
-
+        <!-- âge de la personne -->
+        <label for="start"><b>Start date:</b></label><br>
+        <input type="date" id="start" name="trip-start" required ><br>
 
         <!-- champ de saisie pour l'email de l'utilisateur-->
         <label for="new_email"><b>votre email :</b></label>
@@ -56,6 +48,7 @@
         <label for="new_mdp"><b>votre mot de passe :</b></label>
         <input type="password" id="new_mdp" placeholder="Entrer votre mot de passe" name="new_mdp" style="border-style:none; background-color:white; color:black;" tabindex="1">
 
+    </form>
 
         <!-- bouton de soumission du formulaire -->
         <button type="submit" id='submit'>S'INSCRIRE</button>
@@ -65,3 +58,4 @@
         integrity="sha384-pzjFcF1pII3ZbJ+1B+IqOi/veUcibwlqTlYlMLevdvht+GqBnhHhU9i3zMfO2b8v"
         crossorigin="anonymous"></script>
 </body>
+</html>

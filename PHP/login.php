@@ -38,8 +38,8 @@
                 <label for="password" class="form-label"><b>Mot de passe</b></label>
                 <input type="password" class="form-control" id="password" placeholder="Entrer le mot de passe" name="password" required>
                 <!--<button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                    <i class="bi bi-eye"></i>-->
-                </button>
+                    <i class="bi bi-eye"></i>
+                </button>-->
 
             </div>
 
