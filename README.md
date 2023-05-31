@@ -31,3 +31,14 @@
 - Password IsenCIR2
 
 ## Créer la base de données
+- Se rendre dans le dossier `CIR2_project/SQL`
+- Démarrer postgreSQL `sudo service postgresql start`
+- Se connecter à PostgreSQL en compte super admin `sudo -u postgres psql`
+- Créer un role `create role web login password 'IsenCIR2';`
+- Créer une base de données `create database dev_db owner postgres;`
+- Sortir de l'invite de commande postgresql `\q`
+- Se connecter à la base de données nouvellement créée `psql dev_db postgres`
+- Créer les tables `\i model.sql`
+- Donner les droits d'accès à l'utilisateur web `grant insert, update, select, delete on all tables in schema public to web;`
+
+## Insérer des valeurs dans la base de données
