@@ -1,0 +1,78 @@
+body {
+    /* image de fond de la page */
+    /*background-color: ;*/
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    /* mise en forme de l'entête */
+    text-align: center;
+    font-size: 48px;
+    color: #0a0a0a;
+    padding: 20px 0;
+    text-decoration: underline;
+    font-family: "papyrus", "Bradley Hand", serif;
+}
+
+#container{
+    /* mise en forme du conteneur principal */
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #03A696;
+    /*background-color: rgba(255, 255, 255, 0.9);*/
+    border-radius: 10px;
+    padding: 30px;
+    /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
+}
+
+form {
+    /* mise en forme du formulaire */
+    width: 100%;
+}
+
+#container h1{
+    /* mise en forme du titre du formulaire */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type=text], input[type=password] {
+    /* mise en forme des champs de saisie */
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+
+button[type=submit] {
+    /* mise en forme du bouton de soumission du formulaire */
+    background-color: #53af57;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+button[type=submit]:hover {
+    /* mise en forme du bouton de soumission du formulaire au survol */
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
+}
+
