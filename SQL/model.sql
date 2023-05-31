@@ -48,11 +48,27 @@ CREATE TABLE public.Morceau(
 	ID         SERIAL NOT NULL ,
 	Titre      VARCHAR (60) NOT NULL ,
 	Duree      INT  NOT NULL ,
-	Image      VARCHAR (200) NOT NULL ,
 	ID_Album   INT    ,
 	CONSTRAINT Morceau_PK PRIMARY KEY (ID)
 
 	,CONSTRAINT Morceau_Album_FK FOREIGN KEY (ID_Album) REFERENCES public.Album(ID)
+)WITHOUT OIDS;
+
+
+------------------------------------------------------------
+-- Table: Utilisateur
+------------------------------------------------------------
+CREATE TABLE public.Utilisateur(
+	ID           SERIAL NOT NULL ,
+	Prenom       VARCHAR (70) NOT NULL ,
+	Nom          VARCHAR (50) NOT NULL ,
+	Age          INT  NOT NULL ,
+	Mail         VARCHAR (100) NOT NULL ,
+	Password     VARCHAR (100) NOT NULL ,
+	ID_Morceau   INT    ,
+	CONSTRAINT Utilisateur_PK PRIMARY KEY (ID)
+
+	,CONSTRAINT Utilisateur_Morceau_FK FOREIGN KEY (ID_Morceau) REFERENCES public.Morceau(ID)
 )WITHOUT OIDS;
 
 
@@ -63,39 +79,9 @@ CREATE TABLE public.Playlist(
 	ID              SERIAL NOT NULL ,
 	Nom             VARCHAR (60) NOT NULL ,
 	Date_creation   DATE  NOT NULL ,
-	Image           VARCHAR (200) NOT NULL ,
+	Image           VARCHAR (60) NOT NULL ,
 	Description     VARCHAR (2000)  NOT NULL  ,
 	CONSTRAINT Playlist_PK PRIMARY KEY (ID)
-)WITHOUT OIDS;
-
-
-------------------------------------------------------------
--- Table: Liste_attente
-------------------------------------------------------------
-CREATE TABLE public.Liste_attente(
-	ID   INT  NOT NULL  ,
-	CONSTRAINT Liste_attente_PK PRIMARY KEY (ID)
-)WITHOUT OIDS;
-
-
-------------------------------------------------------------
--- Table: Utilisateur
-------------------------------------------------------------
-CREATE TABLE public.Utilisateur(
-	ID                 SERIAL NOT NULL ,
-	Prenom             VARCHAR (70) NOT NULL ,
-	Nom                VARCHAR (50) NOT NULL ,
-	Date_naissance     DATE  NOT NULL ,
-	Password           VARCHAR (100) NOT NULL ,
-	Mail               VARCHAR (100) NOT NULL ,
-	Username           VARCHAR (50) NOT NULL ,
-	ID_Morceau         INT   ,
-	ID_Liste_attente   INT  NOT NULL  ,
-	CONSTRAINT Utilisateur_PK PRIMARY KEY (ID) ,
-	CONSTRAINT Utilisateur_AK UNIQUE (Mail,Username)
-
-	,CONSTRAINT Utilisateur_Morceau_FK FOREIGN KEY (ID_Morceau) REFERENCES public.Morceau(ID)
-	,CONSTRAINT Utilisateur_Liste_attente0_FK FOREIGN KEY (ID_Liste_attente) REFERENCES public.Liste_attente(ID)
 )WITHOUT OIDS;
 
 
@@ -161,20 +147,6 @@ CREATE TABLE public.Appartient_a(
 
 
 ------------------------------------------------------------
--- Table: Placé dans
-------------------------------------------------------------
-CREATE TABLE public.Place_dans(
-	ID           INT  NOT NULL ,
-	ID_Morceau   INT  NOT NULL ,
-	Position     INT  NOT NULL  ,
-	CONSTRAINT Place_dans_PK PRIMARY KEY (ID,ID_Morceau)
-
-	,CONSTRAINT Place_dans_Liste_attente_FK FOREIGN KEY (ID) REFERENCES public.Liste_attente(ID)
-	,CONSTRAINT Place_dans_Morceau0_FK FOREIGN KEY (ID_Morceau) REFERENCES public.Morceau(ID)
-)WITHOUT OIDS;
-
-
-------------------------------------------------------------
 -- Table: A créer
 ------------------------------------------------------------
 CREATE TABLE public.A_creer(
@@ -185,3 +157,20 @@ CREATE TABLE public.A_creer(
 	,CONSTRAINT A_creer_Utilisateur_FK FOREIGN KEY (ID) REFERENCES public.Utilisateur(ID)
 	,CONSTRAINT A_creer_Playlist0_FK FOREIGN KEY (ID_Playlist) REFERENCES public.Playlist(ID)
 )WITHOUT OIDS;
+
+
+------------------------------------------------------------
+-- Table: Liste_attente
+------------------------------------------------------------
+CREATE TABLE public.Liste_attente(
+	ID           INT  NOT NULL ,
+	ID_Morceau   INT  NOT NULL ,
+	Position     INT  NOT NULL  ,
+	CONSTRAINT Liste_attente_PK PRIMARY KEY (ID,ID_Morceau)
+
+	,CONSTRAINT Liste_attente_Utilisateur_FK FOREIGN KEY (ID) REFERENCES public.Utilisateur(ID)
+	,CONSTRAINT Liste_attente_Morceau0_FK FOREIGN KEY (ID_Morceau) REFERENCES public.Morceau(ID)
+)WITHOUT OIDS;
+
+
+
