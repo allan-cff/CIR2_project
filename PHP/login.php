@@ -9,14 +9,14 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- On importe le fichier style.css -->
-    <link rel="stylesheet" href="CSS/style2.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../CSS/style.css" media="screen" type="text/css" />
 </head>
 <body>
 
 <!-- entête de la page -->
 
 <div id="header">
-    <span><img class="ryt" src="Ressources/Logo.png"> </span>
+    <span><img class="ryt" src="../Ressources/Logo.png"> </span>
 </div>
 
 <!-- formulaire de connexion -->
