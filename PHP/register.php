@@ -15,6 +15,8 @@
 
 <!-- entête de la page -->
 
+<!-- à faire plus tard image cliquante qui permet de ramener a la connexion-->
+
 <div id="header">
     <span><img class="ryt" src="../Ressources/Logo.png"> </span>
 </div>
@@ -33,6 +35,18 @@
         <!-- champ de saisie pour le prenom de l'utilisateur-->
         <label for="firstname"><b>votre prenom :</b></label>
         <input type="text" placeholder="Entrer votre prenom" name="firstname" required>
+
+        <!-- sélection de l'âge de la personne -->
+        <!--
+        <label for="age"><b>Votre âge :</b></label>
+        <select name="age" id="age">
+            <option value="18-25">18-25 ans</option>
+            <option value="26-35">26-35 ans</option>
+            <option value="36-45">36-45 ans</option>
+            <option value="46+">46 ans et plus</option>
+        </select>
+        -->
+
 
         <!-- champ de saisie pour l'email de l'utilisateur-->
         <label for="new_email"><b>votre email :</b></label>

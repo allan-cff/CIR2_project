@@ -37,13 +37,17 @@
             <div class="mb-3">
                 <label for="password" class="form-label"><b>Mot de passe</b></label>
                 <input type="password" class="form-control" id="password" placeholder="Entrer le mot de passe" name="password" required>
+                <!--<button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                    <i class="bi bi-eye"></i>-->
+                </button>
+
             </div>
 
             <!-- bouton de soumission du formulaire -->
             <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 
             <!-- lien vers page enregistrement -->
-            <p class="text-center mt-3 mb-0">Vous n'avez pas de compte ? <a href="#" class="d-inline">Inscrivez-vous</a></p>
+            <p class="text-center mt-3 mb-0">Vous n'avez pas de compte ? <a href="register.php" class="d-inline">Inscrivez-vous</a></p>
 
         </form>
     </div>
