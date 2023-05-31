@@ -9,12 +9,13 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- On importe le fichier style.css -->
-    <link rel="stylesheet" href="/CSS/style.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="CSS/style.css" media="screen" type="text/css" />
 </head>
 <body>
 
 <!-- entête de la page -->
 <div id="header">
+
     <h1><span>Rythmic - image</span></h1>
 
 </div>
@@ -24,7 +25,7 @@
     <form action="#" method="POST">
 
         <!-- titre du formulaire -->
-        <h1>Connexion j'ai déjà un compte Rythmic</h1>
+        <h3 class="rectangle">Connexion j'ai déjà un compte Rythmic</h3>
 
 
         <label for="username"><b>Email utilisateur</b></label>
@@ -38,7 +39,8 @@
         <button type="submit" id='submit'>LOGIN</button>
 
         <!-- lien vers page enregistrement -->
-        <a href="#" id="inconnue">Devenir membre</a>
+        <p>vous n'avez pas de compte</p>
+        <a href="#" id="inconnue">inscrivez-vous</a>
 
     </form>
 </div>
