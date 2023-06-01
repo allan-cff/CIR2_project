@@ -56,44 +56,57 @@ body {
     padding: 5px 10px; /* Ajout : Espace interne du rectangle */
 }
 
+
 .main-container {
-    margin-left: 245px;
-    margin-bottom: 100px;
+    margin-left: 20%;
+    margin-bottom: 10%;
 }
 
+
 .topbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: #101010;
-    padding: 14px 30px;
+    background-color: #D9D9D9;
+    padding: 10px;
 }
-.topbar .prev-next-buttons button {
-    color: #7a7a7a;
-    cursor: not-allowed;
-    width: 34px;
-    height: 34px;
-    border-radius: 100%;
-    font-size: 18px;
-    border: 0px;
-    background-color: #090909;
-    margin-right: 10px;
-}
-.topbar .navbar {
-    display: flex;
-    align-items: center;
-}
-.topbar .navbar ul {
-    list-style: none;
-}
-.topbar .navbar ul li {
-    display: inline-block;
-    margin: 0px 8px;
-    width: 70px;
-}
-.topbar .navbar ul li a {
-    color: #b3b3b3;
-    text-decoration: none;
+
+.navbar-nav .nav-link {
+    color: #000;
     font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 10px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #F27457;
+}
+
+
+.form-control {
+    border-radius: 20px;
+}
+
+.btn-outline-success {
+    border-color: #04BF9D;
+    color: #04BF9D;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+    background-color: #04BF9D;
+    color: #fff;
+    border-color: #04BF9D;
+}
+
+.btn-link {
+    color: #000;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+    color: #04BF9D;
 }

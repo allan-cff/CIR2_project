@@ -1,15 +1,3 @@
-DELETE FROM album;
-DELETE FROM artiste;
-DELETE FROM morceau;
-DELETE FROM playlist;
-DELETE FROM style_musique;
-DELETE FROM utilisateur;
-DELETE FROM admin;
-DELETE FROM a_creer;
-DELETE FROM contenu_dans;
-DELETE FROM appartient_a;
-DELETE FROM cree_par;
-DELETE FROM liste_attente;
 
 INSERT INTO album (titre,date_parution) VALUES 
 ('The Dark Side of the Moon', '1973-03-01'),

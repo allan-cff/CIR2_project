@@ -18,24 +18,6 @@
     <link rel="stylesheet" href="../CSS/style_index.css" media="screen" type="text/css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-            <li class="nav-item">
-            <a class="nav-link" href="#">Titres Likes</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Vos Playlists</a>
-            </li>
-        </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Rechercher</button>
-        </form>
-        </div>
-    </div>
-    </nav>
 
 <div class="sidebar">
     <div class="logo">
@@ -73,7 +55,43 @@
 </div>
 
 <div class="main-container">
+    <div class="topbar">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Titres Likes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Vos Playlists</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-filter"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                    <button class="btn btn-link" type="button"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>
+
+
+
+
 
 <!-- <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script> -->
 
