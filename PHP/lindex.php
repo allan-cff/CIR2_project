@@ -18,6 +18,24 @@
     <link rel="stylesheet" href="../CSS/style_index.css" media="screen" type="text/css" />
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item">
+            <a class="nav-link" href="#">Titres Likes</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Vos Playlists</a>
+            </li>
+        </ul>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+        </form>
+        </div>
+    </div>
+    </nav>
 
 <div class="sidebar">
     <div class="logo">
@@ -55,34 +73,6 @@
 </div>
 
 <div class="main-container">
-    <div class="topbar">
-        <div class="navbar">
-            <ul>
-                <li>
-                    <a href="#" class="rectangle">Titres Likes</a>
-                </li>
-                <li>
-                    <a href="#" class="rectangle">vos Playlists</a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../Ressources/filtre.png" alt="filtre" />
-                    </a>
-                </li>
-                <li>
-                    <form action="#" method="POST">
-                        <!-- champ de saisie pour le nom de l'utilisateur -->
-                        <input type="text" placeholder="Recherche" name="recherhce" required>
-                        <!-- mettre une icone de recherche (une loupe) -->
-                    </form>
-                </li>
-
-            </ul>
-            <!-- mettre une icone de recherche (une loupe) pour plus tard c du bonus chef -->
-            <button type="button">log out</button>
-        </div>
-        </div>
-
 </div>
 
 <!-- <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script> -->
