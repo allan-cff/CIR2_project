@@ -2,3 +2,6 @@
 **/logs
 *.log
 *.code-workspace
+.htaccess
+*.conf
+settings.json
