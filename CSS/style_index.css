@@ -3,7 +3,7 @@
     margin: 0;
 }
 
-body{
+body {
     background-color: #03A696;
     font-family: 'Montserrat', sans-serif;
 }
@@ -15,21 +15,43 @@ body{
     bottom: 0;
     width: 20%;
     background-color: #04BF9D;
-    padding: 24px;
+    padding: 0.5%;
+    display: flex; /* Ajout : Centre les éléments horizontalement */
+    flex-direction: column; /* Ajout : Aligne les éléments verticalement */
+    justify-content: center; /* Ajout : Centre les éléments verticalement */
 }
 
-.sidebar .logo img{
-    width : 100%;
-    height : 100%;
-    align-content: center;
+.sidebar .logo img {
+    width: 100%;
+    height: auto; /* Modification : Utilise "auto" pour maintenir le ratio d'aspect de l'image */
+    align-self: center; /* Ajout : Centre l'image horizontalement */
 }
 
 .sidebar .navigation ul {
     list-style: none;
-    margin-top: 20%;
+    margin-top: 25%;
 }
 
-.sidebar .navigation img{
-    width : 50%;
-    height : 50%;
+.sidebar .navigation img {
+    width: 50%;
+    height: auto; /* Modification : Utilise "auto" pour maintenir le ratio d'aspect de l'image */
+}
+
+.sidebar .navigation ul li {
+    padding: 5%;
+}
+
+.sidebar .navigation ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 65%;
+    display: block; /* Ajout : Transforme les liens en éléments de bloc */
+    margin-bottom: 10px; /* Ajout : Espacement entre les liens */
+}
+
+.sidebar .navigation ul li a .rectangle {
+    background-color: white;
+    border-radius: 10px; /* Ajout : Bords arrondis */
+    padding: 5px 10px; /* Ajout : Espace interne du rectangle */
 }
