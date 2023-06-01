@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Rythmic - Acceuil</title>
+    <!-- On importe les icones fontawesome -->
+    <script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
 
     <!-- On importe le fichier de style Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
