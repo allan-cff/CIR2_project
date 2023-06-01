@@ -5,3 +5,4 @@
 .htaccess
 *.conf
 settings.json
+*.session.sql
