@@ -55,6 +55,11 @@
 </div>
 
 <div class="main-container">
+    <div class="topbar">
+        <div class="prev-next-buttons">
+            <button type="button" class="fa fas fa-chevron-left"></button>
+            <button type="button" class="fa fas fa-chevron-right"></button>
+        </div>
 
 </div>
 
