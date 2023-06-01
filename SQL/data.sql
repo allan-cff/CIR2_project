@@ -64,35 +64,35 @@ INSERT INTO style_musique (type_musique) VALUES
 ('Rock'),
 ('Classique');
 
-INSERT INTO utilisateur (prenom,nom,age,mail,username,password) VALUES
-('Allan', 'Cueff', '2003-01-24', 'allan.cueff@isen-ouest.yncrea.fr', 'allan-cff','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Alexandre', 'Le Goff', '2003-07-27', 'alexandre.legoff@isen-ouest.yncrea.fr', 'alexandre-lgf','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Mathieu', 'Le Roux', '2003-08-12', 'mathieu.leroux@isen-ouest.yncrea.fr', 'mathieu-lrx','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Mathis', 'Meunier', '2004-09-04', 'mathis.meunier@isen-ouest.yncrea.fr', 'mathis-mnr','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Alix', 'Perrin', '2003-01-30', 'alix.perrin@isen-ouest.yncrea.fr', 'alix-prr','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Léa', 'Pouliquen', '2003-03-12', 'lea.pouliquen@isen-ouest.yncrea.fr', 'lea-pql','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Léna', 'Riou', '2003-05-12', 'lena.riou@isen-ouest.yncrea.fr', 'lena-riu','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Pauline', 'Zarka', '2003-06-12', 'pauline.zarka@isen-ouest.yncrea.fr', 'pauline-zrk','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Titouan', 'Bouffort', '2003-01-24', 'titouan.bouffort@isen-ouest.yncrea.fr', 'titouan-bft','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK'),
-('Louis', 'Bouvier', '2003-07-27', 'louis.bouvier@isen-ouest.yncrea.fr', 'louis-bvr','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK');
+INSERT INTO utilisateur (prenom,nom,age,mail,username,password, is_admin) VALUES
+('Allan', 'Cueff', '2003-01-24', 'allan.cueff@isen-ouest.yncrea.fr', 'allan-cff','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', TRUE),
+('Alexandre', 'Le Goff', '2003-07-27', 'alexandre.legoff@isen-ouest.yncrea.fr', 'alexandre-lgf','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Mathieu', 'Le Roux', '2003-08-12', 'mathieu.leroux@isen-ouest.yncrea.fr', 'mathieu-lrx','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Mathis', 'Meunier', '2004-09-04', 'mathis.meunier@isen-ouest.yncrea.fr', 'mathis-mnr','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Alix', 'Perrin', '2003-01-30', 'alix.perrin@isen-ouest.yncrea.fr', 'alix-prr','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Léa', 'Pouliquen', '2003-03-12', 'lea.pouliquen@isen-ouest.yncrea.fr', 'lea-pql','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Léna', 'Riou', '2003-05-12', 'lena.riou@isen-ouest.yncrea.fr', 'lena-riu','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Pauline', 'Zarka', '2003-06-12', 'pauline.zarka@isen-ouest.yncrea.fr', 'pauline-zrk','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Titouan', 'Bouffort', '2003-01-24', 'titouan.bouffort@isen-ouest.yncrea.fr', 'titouan-bft','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE),
+('Louis', 'Bouvier', '2003-07-27', 'louis.bouvier@isen-ouest.yncrea.fr', 'louis-bvr','$2y$10$7.gHsr3BZbDn3xnvU1yqrON49S6GdgO.3RoH0Tr6jz3QD8qzk4jDK', FALSE);
 
 INSERT INTO admin (id_utilisateur) VALUES
 (1);
 
-INSERT INTO a_creer (id, id_playlist) VALUES 
-(1, 3),
-(4, 1),
-(2, 2),
-(3, 1);
+INSERT INTO a_creer (id, id_playlist, is_favorite, is_liste_attente, is_historique) VALUES 
+(1, 3, FALSE, FALSE, FALSE),
+(4, 1, FALSE, FALSE, FALSE),
+(2, 2, FALSE, FALSE, FALSE),
+(3, 1, FALSE, FALSE, FALSE);
 
-INSERT INTO contenu_dans (id, id_playlist) VALUES
-(1, 2),
-(4, 2),
-(2, 2),
-(3, 2),
-(11, 1),
-(13, 3),
-(12, 1);
+INSERT INTO contenu_dans (id, id_playlist, date_ajout) VALUES
+(1, 2, '2004-12-23'),
+(4, 2, '2006-07-01'),
+(2, 2, '215-04-17'),
+(3, 2, '2012-12-12'),
+(11, 1, '2003-08-29'),
+(13, 3, '2008-09-09'),
+(12, 1, '2001-01-01');
 
 INSERT INTO appartient_a (id, id_morceau) VALUES
 (2, 1),
@@ -122,10 +122,4 @@ INSERT INTO cree_par (id, id_morceau) VALUES
 (1, 9),
 (1, 10);
 
-INSERT INTO liste_attente (id, id_morceau, position) VALUES 
-(1, 1, 1),
-(1, 7, 2),
-(1, 4, 3),
-(4, 10, 1),
-(4, 11, 2),
-(4, 5, 3);
+

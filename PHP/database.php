@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+require_once("config.php");
 
 class database {
     static $db = null;
@@ -18,4 +21,8 @@ class database {
         return self::$db;
     }
 }
+
+$db = database::connexionBD();
+
+
 ?>

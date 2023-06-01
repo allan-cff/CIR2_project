@@ -14,7 +14,6 @@ DROP TABLE IF EXISTS public.Appartient_a CASCADE;
 DROP TABLE IF EXISTS public.Artiste CASCADE;
 DROP TABLE IF EXISTS public.Contenu_Dans CASCADE;
 DROP TABLE IF EXISTS public.Cree_Par CASCADE;
-DROP TABLE IF EXISTS public.Liste_Attente CASCADE;
 DROP TABLE IF EXISTS public.Morceau CASCADE;
 
 ------------------------------------------------------------
@@ -79,6 +78,7 @@ CREATE TABLE public.Utilisateur(
 	Mail         VARCHAR (100) NOT NULL ,
 	Username	 VARCHAR (100) NOT NULL ,
 	Password     VARCHAR (100) NOT NULL ,
+	is_admin     BOOLEAN  NOT NULL ,
 	ID_Morceau   INT    ,
 	CONSTRAINT Utilisateur_PK PRIMARY KEY (ID)
 
@@ -140,6 +140,7 @@ CREATE TABLE public.Cree_par(
 CREATE TABLE public.Contenu_dans(
 	ID            INT  NOT NULL ,
 	ID_Playlist   INT  NOT NULL  ,
+	Date_ajout    TIMESTAMP  NOT NULL,
 	CONSTRAINT Contenu_dans_PK PRIMARY KEY (ID,ID_Playlist)
 
 	,CONSTRAINT Contenu_dans_Morceau_FK FOREIGN KEY (ID) REFERENCES public.Morceau(ID)
@@ -166,6 +167,9 @@ CREATE TABLE public.Appartient_a(
 CREATE TABLE public.A_creer(
 	ID            INT  NOT NULL ,
 	ID_Playlist   INT  NOT NULL  ,
+	Is_favorite   BOOLEAN  NOT NULL  ,
+	Is_historique   BOOLEAN  NOT NULL  ,
+	Is_liste_attente   BOOLEAN  NOT NULL  ,
 	CONSTRAINT A_creer_PK PRIMARY KEY (ID,ID_Playlist)
 
 	,CONSTRAINT A_creer_Utilisateur_FK FOREIGN KEY (ID) REFERENCES public.Utilisateur(ID)
@@ -173,18 +177,6 @@ CREATE TABLE public.A_creer(
 )WITHOUT OIDS;
 
 
-------------------------------------------------------------
--- Table: Liste_attente
-------------------------------------------------------------
-CREATE TABLE public.Liste_attente(
-	ID           INT  NOT NULL ,
-	ID_Morceau   INT  NOT NULL ,
-	Position     INT  NOT NULL  ,
-	CONSTRAINT Liste_attente_PK PRIMARY KEY (ID,ID_Morceau)
-
-	,CONSTRAINT Liste_attente_Utilisateur_FK FOREIGN KEY (ID) REFERENCES public.Utilisateur(ID)
-	,CONSTRAINT Liste_attente_Morceau0_FK FOREIGN KEY (ID_Morceau) REFERENCES public.Morceau(ID)
-)WITHOUT OIDS;
 
 
 
