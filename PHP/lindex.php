@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Rythmic - Acceuil</title>
+
     <!-- On importe les icones fontawesome -->
     <script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
 
@@ -29,7 +30,26 @@
         <ul>
             <li>
                 <a href="#">
-                <span class="fa-regular fa-user"></span>
+                    <img src="../Ressources/user2.png" alt="user" />
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="rectangle">username</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#"> <!-- est mené à être modifier pour que quand on clique, on soit dirigé vers la page de modification de profil -->
+                    <span class="rectangle">réglages</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#"> <!-- est mené à être modifier pour que l'on puisse voir les prochains titre à venir -->
+                    <span class="rectangle">prochains titres</span>
                 </a>
             </li>
         </ul>
@@ -39,7 +59,7 @@
 
 <script
 <!--  src="https://kit.fontawesome.com/23cecef777.js"-->
- <!-- crossorigin="anonymous" pas forcement utile pour le moment on laisse mais si marche pas on retire -->
-></script>
+ <!-- crossorigin="anonymous"> pas forcement utile pour le moment on laisse mais si marche pas on retire -->
+</script>
 </body>
 </html>
