@@ -42,7 +42,7 @@
 
         <!-- champ de saisie pour l'email de l'utilisateur-->
         <label for="new_email"><b>Votre email :</b></label>
-        <input type="text" placeholder="jean.dupont@mymail.com" name="new_email" required>
+        <input type="email" placeholder="jean.dupont@mymail.com" name="new_email" required>
 
         <!-- champ de saisie pour le mot de passe de l'utilisateur-->
         <label for="new_mdp"><b>Votre mot de passe :</b></label>
@@ -55,6 +55,51 @@
         </div>    
 
     </form>
+
+    <?php
+    // Le client devient membre du site
+
+        if(!empty($_POST)) {
+            $nom_client = $_POST['lastname'];
+            $prenom_client = $_POST['firstname'];
+            $age_client = $_POST['birthdate'];
+            $mail = $_POST['new_email'];
+            $password = $_POST['new_mdp'];
+
+
+
+            $conn = Database::connexionBD();
+
+            if (!$conn) {
+                return false;
+            }
+            try {
+
+                $sql = 'INSERT INTO Utilisateur (Prenom, Nom, Age, Mail, Password) 
+                        VALUES ( :prenom_client, :nom_client, :age_client, :username, :password)';
+                $stmt = $conn->prepare($sql);
+
+                $pwd = password_hash($password, PASSWORD_BCRYPT);
+
+
+                $stmt->bindParam(':username', $mail);
+                $stmt->bindParam(':password', $pwd);
+                $stmt->bindParam(':age_client', $age_client);
+                $stmt->bindParam(':nom_client', $nom_client);
+                $stmt->bindParam(':prenom_client', $prenom_client);
+                $stmt->execute();
+
+
+                header('Location: login.php');
+                exit();
+            } catch (PDOException $exception) {
+                error_log('Connection error: ' . $exception->getMessage());
+                return false;
+            }
+        }
+
+
+    ?>
 
 <!-- On importe les scripts Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
