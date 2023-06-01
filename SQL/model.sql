@@ -3,19 +3,19 @@
 ------------------------------------------------------------
 
 
-DROP TABLE IF EXISTS public.Type_Artiste;
-DROP TABLE IF EXISTS public.Album;
-DROP TABLE IF EXISTS public.Playlist;
-DROP TABLE IF EXISTS public.Utilisateur;
-DROP TABLE IF EXISTS public.Style_Musique;
-DROP TABLE IF EXISTS public.A_creer;
-DROP TABLE IF EXISTS public.Admin;
-DROP TABLE IF EXISTS public.Appartient_a;
-DROP TABLE IF EXISTS public.Artiste;
-DROP TABLE IF EXISTS public.Contenu_Dans;
-DROP TABLE IF EXISTS public.Cree_Par;
-DROP TABLE IF EXISTS public.Liste_Attente;
-DROP TABLE IF EXISTS public.Morceau;
+DROP TABLE IF EXISTS public.Type_Artiste CASCADE;
+DROP TABLE IF EXISTS public.Album CASCADE;
+DROP TABLE IF EXISTS public.Playlist CASCADE;
+DROP TABLE IF EXISTS public.Utilisateur CASCADE;
+DROP TABLE IF EXISTS public.Style_Musique CASCADE;
+DROP TABLE IF EXISTS public.A_creer CASCADE;
+DROP TABLE IF EXISTS public.Admin CASCADE;
+DROP TABLE IF EXISTS public.Appartient_a CASCADE;
+DROP TABLE IF EXISTS public.Artiste CASCADE;
+DROP TABLE IF EXISTS public.Contenu_Dans CASCADE;
+DROP TABLE IF EXISTS public.Cree_Par CASCADE;
+DROP TABLE IF EXISTS public.Liste_Attente CASCADE;
+DROP TABLE IF EXISTS public.Morceau CASCADE;
 
 ------------------------------------------------------------
 -- Table: Type_Artiste
@@ -31,7 +31,7 @@ CREATE TABLE public.Type_Artiste(
 -- Table: Artiste
 ------------------------------------------------------------
 CREATE TABLE public.Artiste(
-	ID                INT  NOT NULL ,
+	ID                INT GENERATED ALWAYS AS IDENTITY ,
 	Nom               VARCHAR (70) NOT NULL ,
 	Description       VARCHAR (2000)  NOT NULL ,
 	nb_auditeurs      INT  NOT NULL ,
@@ -49,7 +49,7 @@ CREATE TABLE public.Album(
 	ID              INT GENERATED ALWAYS AS IDENTITY ,
 	Titre           VARCHAR (70) NOT NULL ,
 	Date_parution   DATE  NOT NULL ,
-	Image           VARCHAR (200) NOT NULL  ,
+	Image           VARCHAR (200)   ,
 	CONSTRAINT Album_PK PRIMARY KEY (ID)
 )WITHOUT OIDS;
 
@@ -77,6 +77,7 @@ CREATE TABLE public.Utilisateur(
 	Nom          VARCHAR (50) NOT NULL ,
 	Age          DATE  NOT NULL ,
 	Mail         VARCHAR (100) NOT NULL ,
+	Username	 VARCHAR (100) NOT NULL ,
 	Password     VARCHAR (100) NOT NULL ,
 	ID_Morceau   INT    ,
 	CONSTRAINT Utilisateur_PK PRIMARY KEY (ID)
@@ -92,7 +93,7 @@ CREATE TABLE public.Playlist(
 	ID              INT GENERATED ALWAYS AS IDENTITY ,
 	Nom             VARCHAR (60) NOT NULL ,
 	Date_creation   DATE  NOT NULL ,
-	Image           VARCHAR (60) NOT NULL ,
+	Image           VARCHAR (60)  ,
 	Description     VARCHAR (2000)  NOT NULL  ,
 	CONSTRAINT Playlist_PK PRIMARY KEY (ID)
 )WITHOUT OIDS;
@@ -114,7 +115,7 @@ CREATE TABLE public.Admin(
 -- Table: Style_musique
 ------------------------------------------------------------
 CREATE TABLE public.Style_musique(
-	ID             INT  NOT NULL ,
+	ID             INT GENERATED ALWAYS AS IDENTITY ,
 	Type_musique   VARCHAR (60) NOT NULL  ,
 	CONSTRAINT Style_musique_PK PRIMARY KEY (ID)
 )WITHOUT OIDS;
