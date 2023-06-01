@@ -8,7 +8,7 @@
 -- Table: Type_Artiste
 ------------------------------------------------------------
 CREATE TABLE public.Type_Artiste(
-	ID     SERIAL NOT NULL ,
+	ID     INT GENERATED ALWAYS AS IDENTITY ,
 	Type   VARCHAR (70) NOT NULL  ,
 	CONSTRAINT Type_Artiste_PK PRIMARY KEY (ID)
 )WITHOUT OIDS;
@@ -33,7 +33,7 @@ CREATE TABLE public.Artiste(
 -- Table: Album
 ------------------------------------------------------------
 CREATE TABLE public.Album(
-	ID              SERIAL NOT NULL ,
+	ID              INT GENERATED ALWAYS AS IDENTITY ,
 	Titre           VARCHAR (70) NOT NULL ,
 	Date_parution   DATE  NOT NULL ,
 	Image           VARCHAR (200) NOT NULL  ,
@@ -45,7 +45,7 @@ CREATE TABLE public.Album(
 -- Table: Morceau
 ------------------------------------------------------------
 CREATE TABLE public.Morceau(
-	ID         SERIAL NOT NULL ,
+	ID         INT GENERATED ALWAYS AS IDENTITY ,
 	Titre      VARCHAR (60) NOT NULL ,
 	Duree      INT  NOT NULL ,
 	ID_Album   INT    ,
@@ -59,7 +59,7 @@ CREATE TABLE public.Morceau(
 -- Table: Utilisateur
 ------------------------------------------------------------
 CREATE TABLE public.Utilisateur(
-	ID           SERIAL NOT NULL ,
+	ID           INT GENERATED ALWAYS AS IDENTITY ,
 	Prenom       VARCHAR (70) NOT NULL ,
 	Nom          VARCHAR (50) NOT NULL ,
 	Age          DATE  NOT NULL ,
@@ -76,7 +76,7 @@ CREATE TABLE public.Utilisateur(
 -- Table: Playlist
 ------------------------------------------------------------
 CREATE TABLE public.Playlist(
-	ID              SERIAL NOT NULL ,
+	ID              INT GENERATED ALWAYS AS IDENTITY ,
 	Nom             VARCHAR (60) NOT NULL ,
 	Date_creation   DATE  NOT NULL ,
 	Image           VARCHAR (60) NOT NULL ,
@@ -89,7 +89,7 @@ CREATE TABLE public.Playlist(
 -- Table: Admin
 ------------------------------------------------------------
 CREATE TABLE public.Admin(
-	ID               SERIAL NOT NULL ,
+	ID               INT GENERATED ALWAYS AS IDENTITY ,
 	ID_Utilisateur   INT  NOT NULL  ,
 	CONSTRAINT Admin_PK PRIMARY KEY (ID)
 
