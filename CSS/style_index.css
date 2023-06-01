@@ -120,15 +120,15 @@ body {
 }
 
 .btn-outline-success {
-    border-color: #04BF9D;
-    color: #04BF9D;
+    border-color: #F27457;
+    color: #F27457;
 }
 
 .btn-outline-success:hover,
 .btn-outline-success:focus {
-    background-color: #04BF9D;
+    background-color: #F27457;
     color: #fff;
-    border-color: #04BF9D;
+    border-color: #F27457;
 }
 
 .btn-link {
@@ -137,6 +137,7 @@ body {
     background: none;
     border: none;
     padding: 0;
+    margin-left: 52px;
 }
 
 .btn-link:hover,
