@@ -1,15 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+    --light-grey: #EBEEF0;
+    --grey: #D9D9D9;
+    --dark-blue: #253659;
+    --light-orange: #F27457;
+    --dark-orange: #BE665E;
+    --light-background-green : #04BF9D;
+    --dark-background-green: #03A696;
+    --light-accent-green: #43AD74;
+    --dark-accent-green: #226D68;
+  }
+
 body {
     /* image de fond de la page */
-    background-color: #EBEEF0 ;
+    background-color: var(--light-grey) ;
     background-size: cover;
     margin: 0;
     padding: 0;
 }
 
-.rectangle{
-    background-color: #04BF9D;
+h1 {
+    background-color: var(--light-background-green);
     border-radius: 30px;
     text-align: center;
+    font-size: 26px;
+    padding: 5px;
+    width: 100;
 }
 
 #header {
@@ -32,9 +50,9 @@ body {
     display: flex;
     flex-direction: column;
     color: white;
-    background-color: #03A696;
+    background-color: var(--dark-background-green);
     border-radius: 30px;
-    padding: 30px;
+    padding: 20px 30px;
     font-family: "Ebrima", "Bradley Hand", serif;
 }
 
@@ -43,36 +61,52 @@ form {
     width: 100%;
 }
 
+input {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
 
 input[type=text], input[type=password] {
     /* mise en forme des champs de saisie */
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+}
+
+#submitButton {
+    width: 100%;
+    text-align: center;
 }
 
 button[type=submit] {
     /* mise en forme du bouton de soumission du formulaire */
-    background-color: #F27457;
+    background-color: var(--light-orange);
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+    border: 1px solid var(--light-orange);
     cursor: pointer;
-    width: 100%;
     border-radius: 25px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     transition: all 0.3s ease-in-out;
+    padding: 5px 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 26px;
 }
 
 button[type=submit]:hover {
     /* mise en forme du bouton de soumission du formulaire au survol */
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: var(--light-background-green);
+    border: 1px solid var(--light-background-green);
 }
 
+a {
+    color: white;
+}
+
+a:hover {
+    color: var(--dark-blue);
+}

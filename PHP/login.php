@@ -21,36 +21,31 @@
 
 <!-- formulaire de connexion -->
 
-<div id="container" class="container">
-    <div class="row justify-content-center">
-        <form action="#" method="POST">
+<div id="container">
+    <form action="#" method="POST">
 
-            <!-- titre du formulaire -->
-            <p class="rectangle">Connexion j'ai déjà un compte Rythmic</p>
+        <!-- titre du formulaire -->
+        <h1>J'ai déjà un compte Rythmic</h1>
 
-            <div class="mb-3">
-                <label for="username" class="form-label"><b>Email utilisateur</b></label>
-                <input type="text" class="form-control" id="username" placeholder="Entrer l'email de l'utilisateur" name="username" required>
-            </div>
+        <label for="username" class="form-label"><b>Email utilisateur</b></label>
+        <input type="text" id="username" placeholder="Entrer l'email de l'utilisateur" name="username" required>
 
-            <!-- champ de saisie pour le mot de passe -->
-            <div class="mb-3">
-                <label for="password" class="form-label"><b>Mot de passe</b></label>
-                <input type="password" class="form-control" id="password" placeholder="Entrer le mot de passe" name="password" required>
-                <!--<button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                    <i class="bi bi-eye"></i>
-                </button>-->
+        <!-- champ de saisie pour le mot de passe -->
+        <label for="password"><b>Mot de passe</b></label>
+        <input type="password" id="password" placeholder="Entrer le mot de passe" name="password" required>
+            <!--<button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                <i class="bi bi-eye"></i>
+            </button>-->
 
-            </div>
+        <!-- bouton de soumission du formulaire -->
+        <div id="submitButton">
+            <button type="submit">Entrer</button>
+        </div>
 
-            <!-- bouton de soumission du formulaire -->
-            <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+        <!-- lien vers page enregistrement -->
+        <p class="text-center mt-3 mb-0">Vous n'avez pas de compte ? <br><a href="register.php" class="d-inline">Inscrivez-vous ici</a></p>
 
-            <!-- lien vers page enregistrement -->
-            <p class="text-center mt-3 mb-0">Vous n'avez pas de compte ? <a href="register.php" class="d-inline">Inscrivez-vous</a></p>
-
-        </form>
-    </div>
+    </form>
 </div>
 </div>
 

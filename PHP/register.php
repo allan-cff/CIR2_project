@@ -26,32 +26,35 @@
     <form action="#" method="POST">
 
         <!-- titre du formulaire -->
-        <p class="rectangle">Inscription à Rythmic</p>
+        <h1>Inscription à Rythmic</h1>
 
         <!-- champ de saisie pour le nom de l'utilisateur -->
-        <label for="lastname"><b>votre nom :</b></label>
-        <input type="text" placeholder="Entrer votre nom" name="lastname" required>
+        <label for="lastname"><b>Votre nom :</b></label>
+        <input type="text" placeholder="Dupont" name="lastname" required>
 
         <!-- champ de saisie pour le prenom de l'utilisateur-->
-        <label for="firstname"><b>votre prenom :</b></label>
-        <input type="text" placeholder="Entrer votre prenom" name="firstname" required>
+        <label for="firstname"><b>Votre prenom :</b></label>
+        <input type="text" placeholder="Jean" name="firstname" required>
 
         <!-- âge de la personne -->
-        <label for="start"><b>Start date:</b></label><br>
-        <input type="date" id="start" name="trip-start" required ><br>
+        <label for="birthdate"><b>Date de naissance :</b></label><br>
+        <input type="date" name="birthdate" required ><br>
 
         <!-- champ de saisie pour l'email de l'utilisateur-->
-        <label for="new_email"><b>votre email :</b></label>
-        <input type="text" placeholder="Entrer votre email" name="new_email" required>
+        <label for="new_email"><b>Votre email :</b></label>
+        <input type="text" placeholder="jean.dupont@mymail.com" name="new_email" required>
 
         <!-- champ de saisie pour le mot de passe de l'utilisateur-->
-        <label for="new_mdp"><b>votre mot de passe :</b></label>
-        <input type="password" id="new_mdp" placeholder="Entrer votre mot de passe" name="new_mdp" style="border-style:none; background-color:white; color:black;" tabindex="1">
+        <label for="new_mdp"><b>Votre mot de passe :</b></label>
+        <input type="password" id="new_mdp" placeholder="•••••••••••••" name="new_mdp" style="border-style:none; background-color:white; color:black;" tabindex="1">
 
-    </form>
 
         <!-- bouton de soumission du formulaire -->
-        <button type="submit" id='submit'>S'INSCRIRE</button>
+        <div id="submitButton">
+            <button type="submit" id='submit'>S'INSCRIRE</button>
+        </div>    
+
+    </form>
 
 <!-- On importe les scripts Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
