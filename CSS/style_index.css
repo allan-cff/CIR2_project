@@ -8,6 +8,17 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+button {
+    border-radius: 20px; /* Ajout : Bords arrondis */
+    padding: 0.5em 4rem; /* Ajout : Espace interne du rectangle */
+    background-color: #D9D9D9;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    border: none;
+}
+
 .sidebar {
     position: fixed;
     left: 0;
@@ -33,21 +44,30 @@ body {
 }
 
 .sidebar button {
-    background-color: #D9D9D9;
-    border-radius: 20px; /* Ajout : Bords arrondis */
-    padding: 0.5em 1em; /* Ajout : Espace interne du rectangle */
     width: 75%;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    border: none;
+
 }
 
 .sidebar ul {
-    border-radius: 20px; /* Ajout : Bords arrondis */
+    border-radius: 20px;
     width: 75%;
     border: none;
+    overflow: scroll;
+    max-height: calc(2em + 1px + 5 * calc(2.5em + 1px));
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    border: solid 1px #D9D9D9;
+}
+
+.sidebar ul::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.sidebar ul li {
+    font-size: 1em;
+    text-align: center;
+    border: solid 1px #D9D9D9;
+    white-space: nowrap;
 }
 
 .sidebar ul li:not(:first-child) {
@@ -58,18 +78,22 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
     padding: 0;
-    padding-right: 10%;
-    overflow: hidden;
+    padding-right: 5%;
+    border-width: 1px 0 0 0;
+    z-index: 0;
 }
 
-.sidebar ul li {
+.sidebar ul li:first-child {
+    border-width: 1px;
     background-color: #D9D9D9;
-    border-color: #D9D9D9;
     color: black;
     font-weight: bold;
-    font-size: 1em;
-    text-align: center;
+    position: sticky;
+    padding: 0.5em 1em;
+    top: 0;
+    z-index: 1;
 }
 
 .sidebar ul li img {
@@ -81,6 +105,10 @@ body {
 .sidebar ul li:not(:first-child) p {
     padding: 0;
     margin: 0;
+}
+
+.sidebar ul li p {
+    overflow: hidden;
 }
 
 .attente_info {
@@ -101,46 +129,55 @@ body {
     padding: 10px;
 }
 
-.navbar-nav .nav-link {
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+.navbar-nav button {
     margin: 10px;
+    background-color: white;
 }
 
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus {
-    color: #F27457;
+.navbar-nav button:hover {
+    background-color: #F27457;
+    color: white;
 }
-
 
 .form-control {
     border-radius: 20px;
+    margin-right: 0;
 }
 
-.btn-outline-success {
+#search-button {
+    border-radius: 0 20px 20px 0 !important;
+}
+
+.helper-btn {
     border-color: #F27457;
     color: #F27457;
+    background-color: white;
 }
 
-.btn-outline-success:hover,
-.btn-outline-success:focus {
+.helper-btn:hover,
+.helper-btn:focus {
     background-color: #F27457;
     color: #fff;
     border-color: #F27457;
 }
 
-.btn-link {
-    color: #000;
-    text-decoration: none;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-left: 52px;
+.input-group {
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.dropdown-toggle {
+    color: #F27457;
 }
 
 .btn-link:hover,
 .btn-link:focus {
     color: #04BF9D;
+}
+
+#disconnect {
+    background-color: #F27457;
+    color: white;
+    padding: 0.5em 2em;
+    margin-left: 10px;
 }
