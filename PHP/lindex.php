@@ -56,9 +56,31 @@
 
 <div class="main-container">
     <div class="topbar">
-        <div class="prev-next-buttons">
-            <button type="button" class="fa fas fa-chevron-left"></button>
-            <button type="button" class="fa fas fa-chevron-right"></button>
+        <div class="navbar">
+            <ul>
+                <li>
+                    <a href="#" class="rectangle">Titres Likes</a>
+                </li>
+                <li>
+                    <a href="#" class="rectangle">vos Playlists</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="../Ressources/filtre.png" alt="filtre" />
+                    </a>
+                </li>
+                <li>
+                    <form action="#" method="POST">
+                        <!-- champ de saisie pour le nom de l'utilisateur -->
+                        <input type="text" placeholder="Recherche" name="recherhce" required>
+                        <!-- mettre une icone de recherche (une loupe) -->
+                    </form>
+                </li>
+
+            </ul>
+            <!-- mettre une icone de recherche (une loupe) pour plus tard c du bonus chef -->
+            <button type="button">log out</button>
+        </div>
         </div>
 
 </div>
