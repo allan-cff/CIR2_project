@@ -49,6 +49,58 @@
 </div>
 </div>
 
+<?php
+        require_once("database.php");
+        session_start();
+
+
+        $fileName = explode('/', $_SERVER['PHP_SELF']);
+        $fileName = end($fileName);
+
+
+        // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
+        if (isset($_SESSION['ID'])) {
+            header('Location: lindex.php');
+            return $_SESSION['id_client'];
+        }
+
+        // Si l'utilisateur n'est pas connecte et qu'il ne se trouve pas deja sur la page d'authentification, on le redirige vers cette page
+       /* if (!isset($_SESSION['id_client']) && $fileName != 'auth_client_controller.php') {
+            header('Location: auth_client_controller.php');
+        }*/
+        //pas besoin de ça
+
+
+        // Si le formulaire de connexion a ete soumis, on verifie les informations de connexion
+        if (!empty($_POST['username']) && !empty($_POST['password'])) {
+            try {
+                $conn = database::connexionBD();
+                $stmt = $conn->prepare('SELECT ID, Password FROM Utilisateur WHERE Mail = :email');
+                $stmt->bindParam(':email', $_POST['username']);
+                $stmt->execute();
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                print_r($result);
+
+            } catch (PDOException $exception) {
+                error_log('Connection error: ' . $exception->getMessage());
+                return false;
+            }
+
+            // Si les informations de connexion sont correctes, on connecte l'utilisateur et on le redirige vers la page d'accueil
+            if (!empty($result) && password_verify($_POST['password'], $result['mdp_client'])) {
+                $_SESSION['id_client'] = $result['id_client'];
+                header('Location: lindex.php');
+            } else {
+                return "Mot de passe ou email incorrect !";
+            }
+        }
+
+        return false;
+    }
+
+
+?>
+
 <!-- On importe les scripts Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pzjFcF1pII3ZbJ+1B+IqOi/veUcibwlqTlYlMLevdvht+GqBnhHhU9i3zMfO2b8v"
