@@ -15,45 +15,78 @@ body {
     bottom: 0;
     width: 20%;
     background-color: #04BF9D;
-    padding: 0.5%;
     display: flex; /* Ajout : Centre les éléments horizontalement */
     flex-direction: column; /* Ajout : Aligne les éléments verticalement */
-    justify-content: center; /* Ajout : Centre les éléments verticalement */
+    justify-content: start; /* Ajout : Colle les éléments en haut */
+    align-items: center;
+    padding-top: 20px;
+    gap: 30px
 }
 
-.sidebar .logo img {
-    width: 100%;
-    height: auto; /* Modification : Utilise "auto" pour maintenir le ratio d'aspect de l'image */
-    align-self: center; /* Ajout : Centre l'image horizontalement */
-}
-
-.sidebar .navigation ul {
-    list-style: none;
-    margin-top: 25%;
-}
-
-.sidebar .navigation img {
+.sidebar img {
     width: 50%;
     height: auto; /* Modification : Utilise "auto" pour maintenir le ratio d'aspect de l'image */
 }
 
-.sidebar .navigation ul li {
-    padding: 5%;
+.sidebar .logo img {
+    width: 100%;
 }
 
-.sidebar .navigation ul li a {
+.sidebar button {
+    background-color: #D9D9D9;
+    border-radius: 20px; /* Ajout : Bords arrondis */
+    padding: 0.5em 1em; /* Ajout : Espace interne du rectangle */
+    width: 75%;
     color: black;
     text-decoration: none;
     font-weight: bold;
-    font-size: 65%;
-    display: block; /* Ajout : Transforme les liens en éléments de bloc */
-    margin-bottom: 10px; /* Ajout : Espacement entre les liens */
+    font-size: 1em;
+    border: none;
 }
 
-.sidebar .navigation ul li a .rectangle {
-    background-color: white;
-    border-radius: 10px; /* Ajout : Bords arrondis */
-    padding: 5px 10px; /* Ajout : Espace interne du rectangle */
+.sidebar ul {
+    border-radius: 20px; /* Ajout : Bords arrondis */
+    width: 75%;
+    border: none;
+}
+
+.sidebar ul li:not(:first-child) {
+    background-color: #253659;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    padding-right: 10%;
+    overflow: hidden;
+}
+
+.sidebar ul li {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+
+.sidebar ul li img {
+    height: 2.5em;
+    width: auto;
+    border-right: solid 1px #D9D9D9;
+}
+
+.sidebar ul li:not(:first-child) p {
+    padding: 0;
+    margin: 0;
+}
+
+.attente_info {
+    font-size: 0.8em;
+    color: #a9afbc;
+    text-align: left;
 }
 
 

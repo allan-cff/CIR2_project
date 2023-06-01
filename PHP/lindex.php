@@ -25,33 +25,36 @@
             <img src="../Ressources/Logo.png" alt="Logo" />
         </a>
     </div>
-    <div class="navigation">
-        <ul>
-            <li>
-                <a href="#">
-                    <img src="../Ressources/user2.png" alt="user" />
-                </a>
-            </li>
+    
+    <img src="../Ressources/user2.png" alt="user" />
 
-            <li>
-                <a href="#">
-                    <span class="rectangle">username</span>
-                </a>
-            </li>
+    <button>Username</button>
 
-            <li>
-                <a href="#">
-                    <span class="rectangle">réglages</span>
-                </a>
-            </li>
+    <button>Réglages</button>
 
-            <li>
-                <a href="#">
-                    <span class="rectangle">prochains titres</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <ul class="list-group">
+        <li class="list-group-item">File d'attente</li>
+        <li class="list-group-item">
+            <img src="../Ressources/album.png">
+            <p class="attente_title">Musique</p>
+            <p class="attente_info">Greg<br>3:31</p>
+        </li>
+        <li class="list-group-item">
+            <img src="../Ressources/album.png">
+            <p class="attente_title">Musique</p>
+            <p class="attente_info">Greg<br>3:31</p>
+        </li>
+        <li class="list-group-item">
+            <img src="../Ressources/album.png">
+            <p class="attente_title">Musique</p>
+            <p class="attente_info">Greg<br>3:31</p>
+        </li>
+        <li class="list-group-item">
+            <img src="../Ressources/album.png">
+            <p class="attente_title">Musique</p>
+            <p class="attente_info">Greg<br>3:31</p>
+        </li>
+    </ul>
 </div>
 
 <div class="main-container">
