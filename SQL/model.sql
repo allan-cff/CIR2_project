@@ -3,6 +3,19 @@
 ------------------------------------------------------------
 
 
+DROP TABLE IF EXISTS public.Type_Artiste;
+DROP TABLE IF EXISTS public.Album;
+DROP TABLE IF EXISTS public.Playlist;
+DROP TABLE IF EXISTS public.Utilisateur;
+DROP TABLE IF EXISTS public.Style_Musique;
+DROP TABLE IF EXISTS public.A_creer;
+DROP TABLE IF EXISTS public.Admin;
+DROP TABLE IF EXISTS public.Appartient_a;
+DROP TABLE IF EXISTS public.Artiste;
+DROP TABLE IF EXISTS public.Contenu_Dans;
+DROP TABLE IF EXISTS public.Cree_Par;
+DROP TABLE IF EXISTS public.Liste_Attente;
+DROP TABLE IF EXISTS public.Morceau;
 
 ------------------------------------------------------------
 -- Table: Type_Artiste

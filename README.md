@@ -40,5 +40,6 @@
 - Se connecter à la base de données nouvellement créée `psql dev_db postgres`
 - Créer les tables `\i model.sql`
 - Donner les droits d'accès à l'utilisateur web `grant insert, update, select, delete on all tables in schema public to web;`
+- Donner les droits usage de la sequence à l'utilisateur web `grant usage, select on all sequences in schema public to web;`
 
 ## Insérer des valeurs dans la base de données
