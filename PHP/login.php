@@ -37,19 +37,7 @@
                 <i class="bi bi-eye"></i>
             </button>-->
 
-        <!-- bouton de soumission du formulaire -->
-        <div id="submitButton">
-            <button type="submit">Entrer</button>
-        </div>
-
-        <!-- lien vers page enregistrement -->
-        <p class="text-center mt-3 mb-0">Vous n'avez pas de compte ? <br><a href="register.php" class="d-inline">Inscrivez-vous ici</a></p>
-
-    </form>
-</div>
-</div>
-
-<?php
+        <?php
         require_once("database.php");
         session_start();
 
@@ -65,9 +53,9 @@
         }
 
         // Si l'utilisateur n'est pas connecte et qu'il ne se trouve pas deja sur la page d'authentification, on le redirige vers cette page
-       /* if (!isset($_SESSION['id_client']) && $fileName != 'auth_client_controller.php') {
-            header('Location: auth_client_controller.php');
-        }*/
+        /* if (!isset($_SESSION['id_client']) && $fileName != 'auth_client_controller.php') {
+             header('Location: auth_client_controller.php');
+         }*/
         //pas besoin de ça
 
 
@@ -96,7 +84,21 @@
         }
 
 
-?>
+        ?>
+
+
+        <!-- bouton de soumission du formulaire -->
+        <div id="submitButton">
+            <button type="submit">Entrer</button>
+        </div>
+
+        <!-- lien vers page enregistrement -->
+        <p class="text-center mt-3 mb-0">Vous n'avez pas de compte ? <br><a href="register.php" class="d-inline">Inscrivez-vous ici</a></p>
+
+    </form>
+</div>
+</div>
+
 
 <!-- On importe les scripts Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

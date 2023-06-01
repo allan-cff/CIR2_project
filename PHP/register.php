@@ -48,16 +48,10 @@
         <label for="new_mdp"><b>Votre mot de passe :</b></label>
         <input type="password" id="new_mdp" placeholder="•••••••••••••" name="new_mdp" style="border-style:none; background-color:white; color:black;" tabindex="1">
 
-
-        <!-- bouton de soumission du formulaire -->
-        <div id="submitButton">
-            <button type="submit" id='submit'>S'INSCRIRE</button>
-        </div>    
-
-    </form>
-
-    <?php
-    // Le client devient membre du site
+        <?php
+        // Le client devient membre du site
+        require_once("database.php");
+        session_start();
 
         if(!empty($_POST)) {
             $nom_client = $_POST['lastname'];
@@ -99,7 +93,16 @@
         }
 
 
-    ?>
+        ?>
+
+        <!-- bouton de soumission du formulaire -->
+        <div id="submitButton">
+            <button type="submit" id='submit'>S'INSCRIRE</button>
+        </div>    
+
+    </form>
+
+
 
 <!-- On importe les scripts Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
