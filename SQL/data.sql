@@ -42,7 +42,10 @@ INSERT INTO morceau (titre,duree,id_album) VALUES
 INSERT INTO playlist (nom,date_creation,description) VALUES 
 ('Rap', '2021-08-10','Playlist de rap'),
 ('Rap US', '2021-04-10','Playlist de rap US'),
-('House', '2021-01-11','Playlist de house');
+('House', '2021-01-11','Playlist de house'),
+('FAVORIS', '2023-06-01','Vos titres favoris'),
+('LISTE ATTENTE', '2023-06-02', 'Vos titres en attente'),
+('HISTORIQUE', '2023-06-03', 'Vos derniers titres écoutés');
 
 INSERT INTO style_musique (type_musique) VALUES
 ('Rap'),
@@ -71,7 +74,10 @@ INSERT INTO a_creer (id, id_playlist, is_favorite, is_liste_attente, is_historiq
 (1, 3, FALSE, FALSE, FALSE),
 (4, 1, FALSE, FALSE, FALSE),
 (2, 2, FALSE, FALSE, FALSE),
-(3, 1, FALSE, FALSE, FALSE);
+(3, 1, FALSE, FALSE, FALSE),
+(1, 4, TRUE, FALSE, FALSE),
+(1, 5, FALSE, TRUE, FALSE),
+(1, 6, FALSE, FALSE, TRUE);
 
 INSERT INTO contenu_dans (id, id_playlist, date_ajout) VALUES
 (1, 2, '2004-12-23'),
@@ -80,7 +86,16 @@ INSERT INTO contenu_dans (id, id_playlist, date_ajout) VALUES
 (3, 2, '2012-12-12'),
 (11, 1, '2003-08-29'),
 (13, 3, '2008-09-09'),
-(12, 1, '2001-01-01');
+(12, 1, '2001-01-01'),
+(1, 4, '2002-02-17'),
+(3, 4, '2006-01-24'),
+(5, 4, '2010-06-17'),
+(7, 4, '2007-10-11'),
+(9, 4, '2020-02-06'),
+(13, 5, '2000-07-12'),
+(12, 5, '1997-05-13'),
+(10, 6, '1980-01-17'),
+(1, 6, '1999-08-10');
 
 INSERT INTO appartient_a (id, id_morceau) VALUES
 (2, 1),
@@ -109,5 +124,3 @@ INSERT INTO cree_par (id, id_morceau) VALUES
 (1, 8),
 (1, 9),
 (1, 10);
-
-
