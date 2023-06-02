@@ -150,4 +150,98 @@ function disconnect() {
     header('Location: login.php');
 }
 
+function show_user_per_id($id) {
+
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+
+    try {
+        $stmt = $conn->prepare('SELECT * FROM utilisateur WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+
+    return $result;
+
+}
+
+function modify_infos_user($id, $options) {
+    
+        $conn = database::connexionBD();
+        if (!$conn) {
+            return false;
+        }
+
+        try {
+
+            // On récupère les informations actuelles de l'utilisateur
+
+            $query = 'SELECT * FROM utilisateur WHERE id = :id';
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // On modifie les informations de l'utilisateur seulement pour les champs qui ont été remplis
+
+            $sql = 'UPDATE utilisateur SET prenom = :prenom, nom = :nom, age = :age, mail = :mail, password = :password, username = :username WHERE id = :id';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $id);
+
+            // EX : Le prenom est rempli, on modifie le prenom de l'utilisateur, sinon non
+
+            if(isset($options['prenom'])) {
+                $stmt->bindParam(':prenom', $options['prenom']);
+            } else {
+                $stmt->bindParam(':prenom', $result['prenom']);
+            }
+            if(isset($options['nom'])) {
+                $stmt->bindParam(':nom', $options['nom']);
+            } else {
+                $stmt->bindParam(':nom', $result['nom']);
+            }
+            if(isset($options['age'])) {
+                $stmt->bindParam(':age', $options['age']);
+            } else {
+                $stmt->bindParam(':age', $result['age']);
+            }
+            if(isset($options['mail'])) {
+                $stmt->bindParam(':mail', $options['mail']);
+            } else {
+                $stmt->bindParam(':mail', $result['mail']);
+            }
+            if(isset($options['password'])) {
+                $pwd = password_hash($options['password'], PASSWORD_BCRYPT);
+                $stmt->bindParam(':password', $pwd);
+            } else {
+                $stmt->bindParam(':password', $result['password']);
+            }
+            if(isset($options['username'])) {
+                $stmt->bindParam(':username', $options['username']);
+            } else {
+                $stmt->bindParam(':username', $result['username']);
+            }
+
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+    
+        } catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+        }
+    
+        return $result;
+    
+}
+
+
+
 ?>
