@@ -125,10 +125,9 @@ button {
     margin-bottom: 10%;
 }
 
-
-.topbar {
+nav {
     background-color: #D9D9D9;
-    padding: 10px;
+    margin-left: 20%;
 }
 
 .navbar-nav button {
@@ -385,7 +384,7 @@ footer {
     display: inline-block;
     padding: 0.5px;
     border-radius: 30em;
-    margin-top: 2.5em;
+    margin-top: 6em;
     margin-left: 2em;
     background-color: #43AD74;
 }
