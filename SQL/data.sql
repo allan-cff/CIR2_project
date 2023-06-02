@@ -44,8 +44,8 @@ INSERT INTO playlist (nom,date_creation,description) VALUES
 ('Rap US', '2021-04-10','Playlist de rap US'),
 ('House', '2021-01-11','Playlist de house'),
 ('FAVORIS', '2023-06-01','Vos titres favoris'),
-('LISTE ATTENTE', '2023-06-02', 'Vos titres en attente'),
-('HISTORIQUE', '2023-06-03', 'Vos derniers titres écoutés');
+('LISTE ATTENTE', '2023-06-02', ''),
+('HISTORIQUE', '2023-06-03', '');
 
 INSERT INTO style_musique (type_musique) VALUES
 ('Rap'),

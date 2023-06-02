@@ -54,13 +54,20 @@
         require_once("user.php");
         session_start();
 
+
+        // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
+        if (isset($_SESSION['id'])) {
+            header('Location: lindex.php');
+        }
+        
+
         if(!empty($_POST)) { // Si le formulaire est soumis et que les champs sont remplis
             $nom = $_POST['lastname'];
             $prenom = $_POST['firstname'];
             $age = $_POST['birthdate'];
             $mail = $_POST['new_email'];
             $password = $_POST['new_mdp'];
-
+            add_new_user($prenom, $nom, $age, $mail, $password);
         }
 
 
