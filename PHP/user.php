@@ -233,7 +233,6 @@ function modify_infos_user($id, $options) {
         }
     
         return $result;
-    
 }
 
 
