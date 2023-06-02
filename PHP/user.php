@@ -66,4 +66,12 @@ function add_new_user() {
 
 }
 
+
+function disconnect() {
+
+    unset($_SESSION['ID']);
+
+    header('Location: login.php');
+}
+
 ?>
