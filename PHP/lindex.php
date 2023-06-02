@@ -168,7 +168,6 @@
                     <div class="card-body">
                         <h5 class="card-title">apdl</h5>
                         <p class="card-text">Alpha wann</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -180,19 +179,17 @@
                     <div class="card-body">
                         <h5 class="card-title">Mort Ce soir</h5>
                         <p class="card-text">josman</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="card">
                     <div class="img-wrapper">
-                    <img src="../Ressources/j.png"alt="...">
+                    <img src="../Ressources/j.png" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">hydrolique</h5>
+                        <p class="card-text">Jack uzi</p>
                     </div>
                 </div>
             </div>
@@ -202,9 +199,8 @@
                     <img src="../Ressources/luth.png" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">LESSGUI</h5>
+                        <p class="card-text">Luther</p>
                     </div>
                 </div>
             </div>
@@ -214,9 +210,8 @@
                     <img src="../Ressources/magic.png" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">tu es fou</h5>
+                        <p class="card-text">Magic systeme</p>
                     </div>
                 </div>
             </div>
@@ -226,9 +221,8 @@
                     <img src="../Ressources/naps.png" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">la kiffance</h5>
+                        <p class="card-text">Naps</p>
                     </div>
                 </div>
             </div>
@@ -238,9 +232,9 @@
                     <img src="../Ressources/nek.png" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Galaté</h5>
+                        <p class="card-text">Nekfeu</p>
+
                     </div>
                 </div>
             </div>
