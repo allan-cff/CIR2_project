@@ -165,24 +165,22 @@
                 </div>
             </div>
             <div class="icons">
-                <i class="far fa-heart heart-icon"></i> <!-- si ne marche pas, tenter de retirer le heart-icon -->
+                <button class="play-pause-button"><i class="far fa-heart heart-icon"></i></button>
             </div>
         </div>
         <div class="progress_controller">
             <div class="control_buttons">
                 <!--   <i class="fas fa-random"></i> -->
-                <button class="okk"><i class="fas fa-step-backward"></i></button>
-                <button class="okk"><i class="play-pause fas fa-play"></i></button>
-                <button class="okk"><i class="fas fa-step-forward"></i></button>
+                <button class="backward-button"><i class="fas fa-step-backward"></i></button>
+                <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                <button class="forward-button"><i class="fas fa-step-forward"></i></button>
             </div>
             <div class="progress_container">
-                <span>0:49</span>
+                <span class="current_time">0:49</span>
                 <div class="progress_bar">
-                    <div class="progress">
-                        <!--    <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> -->
-                    </div>
+                    <div class="progress"></div>
                 </div>
-                <span>3:15</span>
+                <span class="total_time">3:15</span>
             </div>
         </div>
         <div class="other_features">
@@ -195,7 +193,6 @@
         </div>
     </div>
 </footer>
-
 
 
 <script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
