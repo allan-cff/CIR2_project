@@ -150,6 +150,88 @@
             </div>
         </nav>
     </div>
+
+    <div class="card">
+        <div class="card-body">
+           <b>Les 10 derniers sons que vous venez d'écouter</b>
+        </div>
+    </div>
+
+    <div class="center">
+        <div class="wrapper">
+            <div class="inner">
+                <div class="card">
+                    <img src="../Ressources/alpha.png">
+                    <div class="content">
+                        <h1>Product Design</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/j.png">
+                    <div class="content">
+                        <h1>Custom Website</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/jos.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/luth.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/magic.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/naps.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/nek.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/pat.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../Ressources/spot.png">
+                    <div class="content">
+                        <h1>Digital Marketing</h1>
+                        <h3>UI/UX, Design</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map">
+            <button class="active first"></button>
+            <button class="second"></button>
+            <button class="third"></button>
+        </div>
+    </div>
 </div>
 
 <footer>
