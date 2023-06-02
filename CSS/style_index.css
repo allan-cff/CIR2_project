@@ -180,6 +180,7 @@ button {
     color: white;
     padding: 0.5em 2em;
     margin-left: 10px;
+    border-radius: 20px; /* Ajout : Bords arrondis */
 }
 
 /* Footer */
@@ -377,6 +378,3 @@ footer {
     /* Votre style existant */
     --size: .8em;
 }
-
-
-

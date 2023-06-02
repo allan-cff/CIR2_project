@@ -1,10 +1,9 @@
 <?php
-
     session_start();
     if (!isset($_SESSION['id'])) {
         header('Location: login.php');
+        exit;
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +37,9 @@
 
     <img src="../Ressources/user2.png" alt="user" />
 
-    <button>Username</button>
+    <button type="button">Username</button>
 
-    <button>Réglages</button>
+    <button type="button">Réglages</button>
 
     <ul class="list-group">
         <li class="list-group-item">File d'attente</li>
@@ -143,7 +142,7 @@
                             </ul>
                         </div>
                     </form>
-                    <button id="disconnect"><i class="fas fa-sign-out-alt"></i></button>
+                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </nav>
