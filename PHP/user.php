@@ -142,4 +142,12 @@ function create_playlists($id_user_created) {
     $stmt->execute();
 }
 
+
+function disconnect() {
+
+    unset($_SESSION['ID']);
+
+    header('Location: login.php');
+}
+
 ?>

@@ -181,3 +181,202 @@ button {
     padding: 0.5em 2em;
     margin-left: 10px;
 }
+
+/* Footer */
+footer {
+    /* Votre style existant */
+    box-sizing: border-box;
+    font-family: "circular std book", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #253659;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.music_player {
+    /* Votre style existant */
+    --primary-color: #EBEEF0;
+    --secondary-color: #D9D9D9;
+    --green-color: #43AD74;
+    --padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 6rem;
+    padding: var(--padding);
+    color: var(--primary-color);
+}
+
+.music_player .song_bar {
+    /* Votre style existant */
+    position: absolute;
+    left: var(--padding);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    width: 20%;
+}
+
+.music_player .song_infos {
+    /* Votre style existant */
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.music_player .image_container {
+    /* Votre style existant */
+    flex-shrink: 0;
+}
+
+.music_player .image_container img {
+    /* Votre style existant */
+    width: 4.5em;
+    height: 4.5em;
+    object-fit: cover;
+}
+
+.music_player .song_description p {
+    /* Votre style existant */
+    margin: 0.2em;
+}
+
+.music_player .title:hover,
+.music_player .artist:hover {
+    /* Votre style existant */
+    text-decoration: underline;
+}
+
+.music_player .artist {
+    /* Votre style existant */
+    color: var(--secondary-color);
+}
+
+.music_player .icons {
+    /* Votre style existant */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.music_player .progress_controller {
+    /* Votre style existant */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    color: var(--secondary-color);
+}
+
+.music_player .control_buttons {
+    /* Votre style existant */
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.music_player .control_buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.music_player .play-pause-button {
+    display: inline-block;
+    padding: 1em;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.music_player .play-pause-button:hover {
+    /* Votre style existant */
+    transform: scale(1.1);
+    color: var(--green-color);
+}
+
+.music_player .progress_container {
+    /* Votre style existant */
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.music_player .progress_bar {
+    /* Votre style existant */
+    height: 4px; /* Réduction de la hauteur de la barre de progression */
+    border-radius: 10px;
+    width: 70%; /* Réduction de la largeur de la barre de progression */
+    background-color: #ccc4;
+}
+
+.music_player .progress_bar .progress {
+    /* Votre style existant */
+    height: 100%;
+    background-color: var(--green-color);
+    position: relative;
+}
+
+.music_player .progress_bar .progress::after {
+    /* Ajout d'un élément pseudo-élément pour afficher le point de progression */
+    content: "";
+    position: absolute;
+    --size: 8px; /* Taille du point de progression */
+    width: var(--size);
+    height: var(--size);
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.music_player .progress_bar:hover .progress {
+    /* Votre style existant */
+    background-color: var(--green-color);
+}
+
+.music_player .progress_bar:hover .progress::after {
+    /* Votre style existant */
+    --size: 10px; /* Taille agrandie du point de progression au survol */
+}
+
+.music_player .other_features {
+    /* Votre style existant */
+    position: absolute;
+    right: var(--padding);
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.music_player .volume_bar {
+    /* Votre style existant */
+    display: flex;
+    align-items: center;
+    gap: .7em;
+}
+
+.music_player .volume_bar .progress_bar {
+    /* Votre style existant */
+    width: 6em;
+}
+
+.music_player .volume_bar .progress_bar:hover .progress::after {
+    /* Votre style existant */
+    --size: .8em;
+}
+
+
+

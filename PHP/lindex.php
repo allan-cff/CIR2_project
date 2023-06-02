@@ -14,7 +14,7 @@
     <title>Rythmic - Accueil</title>
 
     <!-- On importe les icones fontawesome -->
-    <script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- On importe le fichier de style Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -35,7 +35,7 @@
             <img src="../Ressources/Logo.png" alt="Logo" />
         </a>
     </div>
-    
+
     <img src="../Ressources/user2.png" alt="user" />
 
     <button>Username</button>
@@ -150,11 +150,51 @@
     </div>
 </div>
 
+<footer>
+    <div class="music_player">
+        <div class="song_bar">
+            <div class="song_infos">
+                <div class="image_container">
+                    <img src="../Ressources/cascade.png" alt="" />
+                </div>
+                <div class="song_description">
+                    <p class="title">
+                        CASCADE
+                    </p>
+                    <p class="artist">Alpha Wann</p>
+                </div>
+            </div>
+            <div class="icons">
+                <button class="play-pause-button"><i class="far fa-heart heart-icon"></i></button>
+            </div>
+        </div>
+        <div class="progress_controller">
+            <div class="control_buttons">
+                <!--   <i class="fas fa-random"></i> -->
+                <button class="backward-button"><i class="fas fa-step-backward"></i></button>
+                <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                <button class="forward-button"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="progress_container">
+                <span class="current_time">0:49</span>
+                <div class="progress_bar">
+                    <div class="progress"></div>
+                </div>
+                <span class="total_time">3:15</span>
+            </div>
+        </div>
+        <div class="other_features">
+            <div class="volume_bar">
+                <i class="fas fa-volume-down"></i>
+                <div class="progress_bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
-
-
-<!-- <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script> -->
-
+<script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
 </body>
 </html>
