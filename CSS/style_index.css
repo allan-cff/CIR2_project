@@ -45,7 +45,8 @@ button {
 
 .sidebar button {
     width: 75%;
-
+    padding: 0.5em 0; /* Ajout : Espace interne du rectangle */
+    text-align: center;
 }
 
 .sidebar ul {
@@ -86,12 +87,13 @@ button {
 }
 
 .sidebar ul li:first-child {
+    text-align: center;
     border-width: 1px;
     background-color: #D9D9D9;
     color: black;
     font-weight: bold;
     position: sticky;
-    padding: 0.5em 1em;
+    padding: 0.5em 0;
     top: 0;
     z-index: 1;
 }

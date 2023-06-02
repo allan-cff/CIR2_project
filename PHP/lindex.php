@@ -120,30 +120,33 @@
     <div class="topbar">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button>Titres Likes</button>
+                    </li>
+                    <li class="nav-item">
+                        <button>Vos Playlists</button>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <div class="input-group dropdown">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
+                        <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
+                        <div class="dropdown-menu">
+                            <select class="dropdown-item form-select" aria-label="Default select example">
+                                <option value="artiste" selected>Artiste</option>
+                                <option value="album">Album</option>
+                                <option value="song">Morceau</option>
+                                <option value="playlist">Playlist</option>
+                                <option value="user">Utilisateur</option>
+                            </select>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
+                    </div>
+                </form>
+                <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
             </div>
         </nav>
     </div>
