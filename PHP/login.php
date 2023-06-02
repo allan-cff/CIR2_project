@@ -7,6 +7,7 @@
     <!-- On importe le fichier de style Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <!-- On importe le fichier style.css -->
     <link rel="stylesheet" href="../CSS/style.css" media="screen" type="text/css" />
@@ -20,6 +21,47 @@
 </div>
 
 <!-- formulaire de connexion -->
+<?php
+    require_once("user.php");
+    session_start();
+
+    // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
+    if (isset($_SESSION['id'])) {
+        header('Location: lindex.php');
+    }
+
+    // Si le formulaire de connexion a ete soumis, on verifie les informations de connexion
+    if (!empty($_POST['mail']) && !empty($_POST['password'])) {
+        $mail = $_POST['mail'];
+        $password = $_POST['password'];
+        $result = verify_user($mail, $password);
+        if(!$result){
+            echo '
+            <div class="container">
+              <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                </svg>
+                &nbsp;Erreur base de données !
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+            ';
+        } else {
+            echo '
+            <div class="container">
+              <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                </svg>
+                &nbsp;Nom d\'utilisateur ou mot de passe incorrects !
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+            ';
+        }
+    }
+ ?>     
 
 <div id="container">
     <form action="login.php" method="POST">
@@ -33,43 +75,9 @@
         <!-- champ de saisie pour le mot de passe -->
         <label for="password"><b>Mot de passe</b></label>
         <input type="password" id="password" placeholder="Entrer le mot de passe" name="password" required>
-            <!--<button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                <i class="bi bi-eye"></i>
-            </button>-->
-
-        <?php
-        
-        require_once("database.php");
-        require_once("user.php");
-        session_start();
-
-
-        $fileName = explode('/', $_SERVER['PHP_SELF']); // On recupere le nom du fichier courant
-        $fileName = end($fileName); // On recupere le dernier element du tableau, c'est a dire le nom du fichier courant
-
-
-        // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
-        if (isset($_SESSION['id'])) {
-            header('Location: lindex.php');
-        }
-
-        // Si l'utilisateur n'est pas connecte et qu'il ne se trouve pas deja sur la page d'authentification, on le redirige vers cette page
-        /* if (!isset($_SESSION['id_client']) && $fileName != 'auth_client_controller.php') {
-             header('Location: auth_client_controller.php');
-         }*/
-        //pas besoin de ça
-
-
-        // Si le formulaire de connexion a ete soumis, on verifie les informations de connexion
-        if (!empty($_POST['mail']) && !empty($_POST['password'])) {
-            $mail = $_POST['mail'];
-            $password = $_POST['password'];
-            verify_user($mail, $password);
-        }
-        
-
-        ?>
-
+        <!--<button class="btn btn-outline-secondary" type="button" id="togglePassword">
+            <i class="bi bi-eye"></i>
+        </button>-->
 
         <!-- bouton de soumission du formulaire -->
         <div id="submitButton">

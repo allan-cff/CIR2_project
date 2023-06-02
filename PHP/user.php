@@ -19,7 +19,6 @@ function verify_user($mail, $password) {
         $stmt->bindParam(':email', $mail);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        print_r($result);
 
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
@@ -30,10 +29,10 @@ function verify_user($mail, $password) {
     if (!empty($result) && password_verify($password, $result['password'])) {
         $_SESSION['id'] = $result['id'];
         header('Location: lindex.php'); // On redirige l'utilisateur vers la page d'accueil
+        exit;
     } else {
-        header('Location: login.php');
+        return true;
     }
-
 }
 
 
@@ -140,14 +139,6 @@ function create_playlists($id_user_created) {
     $stmt->bindParam(':id', $id_user_created);
     $stmt->bindParam(':id_playlist', $id_playlist_creee);
     $stmt->execute();
-}
-
-
-function disconnect() {
-
-    unset($_SESSION['ID']);
-
-    header('Location: login.php');
 }
 
 ?>
