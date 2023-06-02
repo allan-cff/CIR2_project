@@ -150,13 +150,181 @@
             </div>
         </nav>
     </div>
-
+    <div class="devanture">
     <div class="card">
         <div class="card-body">
-           <b>Les 10 derniers sons que vous venez d'écouter</b>
+            <b>Les 10 derniers sons que vous venez d'écouter</b>
         </div>
     </div>
+    </div>
 
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/alpha.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">apdl</h5>
+                        <p class="card-text">Alpha wann</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/jos.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Mort Ce soir</h5>
+                        <p class="card-text">josman</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/j.png"alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/luth.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/magic.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/naps.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/nek.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/pat.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/spot.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+</div>
+
+<footer>
+    <div class="music_player">
+        <div class="song_bar">
+            <div class="song_infos">
+                <div class="image_container">
+                    <img src="../Ressources/cascade.png" alt="" />
+                </div>
+                <div class="song_description">
+                    <p class="title">
+                        CASCADE
+                    </p>
+                    <p class="artist">Alpha Wann</p>
+                </div>
+            </div>
+            <div class="icons">
+                <button class="play-pause-button"><i class="far fa-heart heart-icon"></i></button>
+            </div>
+        </div>
+        <div class="progress_controller">
+            <div class="control_buttons">
+                <!--   <i class="fas fa-random"></i> -->
+                <button class="backward-button"><i class="fas fa-step-backward"></i></button>
+                <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                <button class="forward-button"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="progress_container">
+                <span class="current_time">0:49</span>
+                <div class="progress_bar">
+                    <div class="progress"></div>
+                </div>
+                <span class="total_time">3:15</span>
+            </div>
+        </div>
+        <div class="other_features">
+            <div class="volume_bar">
+                <i class="fas fa-volume-down"></i>
+                <div class="progress_bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 <script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
