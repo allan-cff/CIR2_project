@@ -23,7 +23,7 @@
 
 <!-- formulaire de connexion -->
 <div id="container">
-    <form action="#" method="POST">
+    <form action="register.php" method="POST">
 
         <!-- titre du formulaire -->
         <h1>Inscription à Rythmic</h1>
@@ -51,45 +51,16 @@
         <?php
         // Le client devient membre du site
         require_once("database.php");
+        require_once("user.php");
         session_start();
 
-        if(!empty($_POST)) {
-            $nom_client = $_POST['lastname'];
-            $prenom_client = $_POST['firstname'];
-            $age_client = $_POST['birthdate'];
+        if(!empty($_POST)) { // Si le formulaire est soumis et que les champs sont remplis
+            $nom = $_POST['lastname'];
+            $prenom = $_POST['firstname'];
+            $age = $_POST['birthdate'];
             $mail = $_POST['new_email'];
             $password = $_POST['new_mdp'];
 
-
-
-            $conn = Database::connexionBD();
-
-            if (!$conn) {
-                return false;
-            }
-            try {
-
-                $sql = 'INSERT INTO Utilisateur (Prenom, Nom, Age, Mail, Password) 
-                        VALUES ( :prenom_client, :nom_client, :age_client, :username, :password)';
-                $stmt = $conn->prepare($sql);
-
-                $pwd = password_hash($password, PASSWORD_BCRYPT);
-
-
-                $stmt->bindParam(':username', $mail);
-                $stmt->bindParam(':password', $pwd);
-                $stmt->bindParam(':age_client', $age_client);
-                $stmt->bindParam(':nom_client', $nom_client);
-                $stmt->bindParam(':prenom_client', $prenom_client);
-                $stmt->execute();
-
-
-                header('Location: login.php');
-                exit();
-            } catch (PDOException $exception) {
-                error_log('Connection error: ' . $exception->getMessage());
-                return false;
-            }
         }
 
 

@@ -22,13 +22,13 @@
 <!-- formulaire de connexion -->
 
 <div id="container">
-    <form action="#" method="POST">
+    <form action="login.php" method="POST">
 
         <!-- titre du formulaire -->
         <h1>J'ai déjà un compte Rythmic</h1>
 
-        <label for="username" class="form-label"><b>Email utilisateur</b></label>
-        <input type="text" id="username" placeholder="Entrer l'email de l'utilisateur" name="username" required>
+        <label for="main" class="form-label"><b>Email utilisateur</b></label>
+        <input type="text" id="main" placeholder="Entrer l'email de l'utilisateur" name="mail" required>
 
         <!-- champ de saisie pour le mot de passe -->
         <label for="password"><b>Mot de passe</b></label>
@@ -38,18 +38,19 @@
             </button>-->
 
         <?php
+        
         require_once("database.php");
+        require_once("user.php");
         session_start();
 
 
-        $fileName = explode('/', $_SERVER['PHP_SELF']);
-        $fileName = end($fileName);
+        $fileName = explode('/', $_SERVER['PHP_SELF']); // On recupere le nom du fichier courant
+        $fileName = end($fileName); // On recupere le dernier element du tableau, c'est a dire le nom du fichier courant
 
 
         // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
-        if (isset($_SESSION['ID'])) {
+        if (isset($_SESSION['id'])) {
             header('Location: lindex.php');
-            return $_SESSION['id_client'];
         }
 
         // Si l'utilisateur n'est pas connecte et qu'il ne se trouve pas deja sur la page d'authentification, on le redirige vers cette page
@@ -60,29 +61,12 @@
 
 
         // Si le formulaire de connexion a ete soumis, on verifie les informations de connexion
-        if (!empty($_POST['username']) && !empty($_POST['password'])) {
-            try {
-                $conn = database::connexionBD();
-                $stmt = $conn->prepare('SELECT ID, Password FROM Utilisateur WHERE Mail = :email');
-                $stmt->bindParam(':email', $_POST['username']);
-                $stmt->execute();
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                print_r($result);
-
-            } catch (PDOException $exception) {
-                error_log('Connection error: ' . $exception->getMessage());
-                return false;
-            }
-
-            // Si les informations de connexion sont correctes, on connecte l'utilisateur et on le redirige vers la page d'accueil
-            if (!empty($result) && password_verify($_POST['password'], $result['mdp_client'])) {
-                $_SESSION['id_client'] = $result['id_client'];
-                header('Location: lindex.php');
-            } else {
-                return "Mot de passe ou email incorrect !";
-            }
+        if (!empty($_POST['mail']) && !empty($_POST['password'])) {
+            $mail = $_POST['mail'];
+            $password = $_POST['password'];
+            verify_user($mail, $password);
         }
-
+        
 
         ?>
 
