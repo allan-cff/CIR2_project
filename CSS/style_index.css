@@ -45,7 +45,8 @@ button {
 
 .sidebar button {
     width: 75%;
-
+    padding: 0.5em 0; /* Ajout : Espace interne du rectangle */
+    text-align: center;
 }
 
 .sidebar ul {
@@ -86,12 +87,13 @@ button {
 }
 
 .sidebar ul li:first-child {
+    text-align: center;
     border-width: 1px;
     background-color: #D9D9D9;
     color: black;
     font-weight: bold;
     position: sticky;
-    padding: 0.5em 1em;
+    padding: 0.5em 0;
     top: 0;
     z-index: 1;
 }
@@ -123,10 +125,9 @@ button {
     margin-bottom: 10%;
 }
 
-
-.topbar {
+nav {
     background-color: #D9D9D9;
-    padding: 10px;
+    margin-left: 20%;
 }
 
 .navbar-nav button {
@@ -378,3 +379,45 @@ footer {
     /* Votre style existant */
     --size: .8em;
 }
+
+.devanture .card{
+    display: inline-block;
+    padding: 0.5px;
+    border-radius: 30em;
+    margin-top: 6em;
+    margin-left: 2em;
+    background-color: #43AD74;
+}
+
+.img-wrapper{
+    max-width: 100%;
+    height: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.img-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.carousel-inner{
+    display: flex;
+    padding: 1em;
+}
+
+.carousel-item{
+    display: block;
+    margin-right: 0;
+    flex: 0 0 calc(100%/6);
+}
+
+.card{
+    margin: 0 .5em;
+    background-color: #D9D9D9;
+}
+
+
+
+

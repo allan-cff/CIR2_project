@@ -117,36 +117,161 @@
 </div>
 
 <div class="main-container">
-    <div class="topbar">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
+    <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+        <div class="container-fluid">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button>Titres Likes</button>
+                </li>
+                <li class="nav-item">
+                    <button>Vos Playlists</button>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <div class="input-group dropdown">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
+                    <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="dropdown-menu">
+                        <select class="dropdown-item form-select" aria-label="Default select example">
+                            <option value="artiste" selected>Artiste</option>
+                            <option value="album">Album</option>
+                            <option value="song">Morceau</option>
+                            <option value="playlist">Playlist</option>
+                            <option value="user">Utilisateur</option>
+                        </select>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </div>
+                </div>
+            </form>
+            <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </nav>
+    <div class="devanture">
+    <div class="card">
+        <div class="card-body">
+            <b>Les 10 derniers sons que vous venez d'écouter</b>
+        </div>
+    </div>
+    </div>
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/alpha.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">apdl</h5>
+                        <p class="card-text">Alpha wann</p>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/jos.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Mort Ce soir</h5>
+                        <p class="card-text">josman</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/j.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">hydrolique</h5>
+                        <p class="card-text">Jack uzi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/luth.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">LESSGUI</h5>
+                        <p class="card-text">Luther</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/magic.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">tu es fou</h5>
+                        <p class="card-text">Magic systeme</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/naps.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">la kiffance</h5>
+                        <p class="card-text">Naps</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item active">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/nek.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Galaté</h5>
+                        <p class="card-text">Nekfeu</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/pat.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card">
+                    <div class="img-wrapper">
+                    <img src="../Ressources/spot.png" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+
+
 </div>
 
 <footer>
