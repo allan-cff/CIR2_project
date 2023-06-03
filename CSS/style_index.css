@@ -393,7 +393,7 @@ footer {
 .carousel{
     margin-left: 20%;
     margin-bottom: 10%;
-    margin-top: 30%;
+    margin-top: 6.5em;
 }
 
 .cards-wrapper{
@@ -403,6 +403,7 @@ footer {
 .card{
     margin: 0 .5em;
     width: calc(100%/3);
+    background-color: #D9D9D9;
 }
 
 
