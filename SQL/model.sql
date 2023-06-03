@@ -32,8 +32,8 @@ CREATE TABLE public.Type_Artiste(
 CREATE TABLE public.Artiste(
 	ID                INT GENERATED ALWAYS AS IDENTITY ,
 	Nom               VARCHAR (70) NOT NULL ,
-	Description       VARCHAR (2000)  NOT NULL ,
 	nb_auditeurs      INT  NOT NULL ,
+	Image           VARCHAR (200)  ,
 	ID_Type_Artiste   INT  NOT NULL  ,
 	CONSTRAINT Artiste_PK PRIMARY KEY (ID)
 
