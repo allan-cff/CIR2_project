@@ -161,7 +161,7 @@ if (!isset($_SESSION['id'])) {
 
 <div class="sidebar">
     <div class="logo">
-        <a href="#">
+        <a href="lindex.php">
             <img src="../Ressources/Logo.png" alt="Logo"/>
         </a>
     </div>
@@ -305,8 +305,8 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
+
                     </div>
                 </div>
                 <div class="card">
@@ -316,8 +316,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -327,8 +326,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -338,8 +336,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de dtail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -349,8 +346,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
             </div>
@@ -364,8 +360,8 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
+
                     </div>
                 </div>
                 <div class="card">
@@ -375,8 +371,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -386,8 +381,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -397,8 +391,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -408,8 +401,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
             </div>
@@ -423,8 +415,7 @@ if (!isset($_SESSION['id'])) {
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
-                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                        <button class="play-pause-button">...</button>
+                        <button class="play-pause-button">plus de detail</button>
                     </div>
                 </div>
                 <div class="card">
@@ -486,7 +477,190 @@ if (!isset($_SESSION['id'])) {
 
 
 <div class="artist">
+    <div class="card">
 <h5><b>Les playlistes de la semaine</b></h5>
+    </div>
+</div>
+
+<div id="#pablo" class="carousel carousel-white slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/alpha.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/j.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/jos.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/naps.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de dtail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/nek.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/pat.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/spot.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/naps.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/jos.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/j.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/nek.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button">plus de detail</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/cascade.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#pablo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#pablo" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 
