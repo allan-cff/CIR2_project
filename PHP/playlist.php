@@ -478,9 +478,12 @@ if (!isset($_SESSION['id'])) {
 
 <div class="artist">
     <div class="card">
-<h5><b>Les playlistes de la semaine</b></h5>
+<b>Les playlistes de la semaine</b>
     </div>
 </div>
+
+<br>
+<br>
 
 <div id="pablo" class="carousel carousel-white slide">
     <div class="carousel-inner">
