@@ -350,6 +350,11 @@
 </div>
 
 
+<div class="artist">
+    <div class="card">
+        <h5><b>Les artistes de la semaine</b></h5>
+    </div>
+</div>
 
 
 <footer>
