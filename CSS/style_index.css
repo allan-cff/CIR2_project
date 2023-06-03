@@ -426,3 +426,24 @@ footer {
 }
 
 
+.carousel2 {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist{
+    margin-left: 23%;
+}
+
+.artist .card{
+    background-color:  #43AD74;
+    border-radius: 30em;
+    text-align: center;
+}
