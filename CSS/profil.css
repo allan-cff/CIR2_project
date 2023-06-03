@@ -380,57 +380,102 @@ footer {
     --size: .8em;
 }
 
-.devanture .card{
-    display: inline-block;
-    padding: 0.5px;
-    border-radius: 30em;
-    margin-top: 6em;
-    margin-left: 2em;
-    background-color: #43AD74;
+
+.container {
+    width: 600px;
+    height: 400px;
+    margin-top: 15%;
+    background-color: #EBEEF0;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-icon {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 50%;
+    position: relative;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
     text-align: center;
+    line-height: 20px;
 }
 
-
-.carousel{
-    margin-left: 20%;
-    margin-bottom: 10%;
-}
-
-.cards-wrapper{
+.info {
     display: flex;
-}
-
-.card{
-    margin: 0 .5em;
-    width: calc(100%/3);
-    background-color: #D9D9D9;
-}
-
-.image-wrapper{
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    margin-top: 20px;
 }
 
-.image-wrapper img{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.artist{
-    margin-left: 23%;
-}
-
-.artist .card{
+.info input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     display: inline-block;
-    padding: 0.5px;
-    border-radius: 30em;
-    background-color: #43AD74;
+}
+
+.info .edit-input .edit-icon {
+    margin-right: 5px;
+}
+
+.edit-input {
+    position: relative;
+}
+
+.edit-input input {
+    padding-right: 30px;
+}
+
+.edit-input .edit-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+
+.edit-icon-text{
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+
+.center {
     text-align: center;
+    margin-top: 20px;
+    width: 100px;
+    margin-left: 40%;
+}
+
+.center input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.confirm-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

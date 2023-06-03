@@ -352,10 +352,201 @@
 
 <div class="artist">
     <div class="card">
-        <h5><b>Les artistes de la semaine</b></h5>
+        <b>Les meilleurs sons de la semaine</b>
     </div>
 </div>
+<br>
+<br>
 
+<div id="hello" class="carousel carousel-white slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/alpha.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/j.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/jos.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/naps.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/nek.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/pat.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/spot.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/naps.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/jos.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/j.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/nek.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/cascade.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-wrapper">
+                        <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
+                        <button class="play-pause-button">...</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#hello" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hello" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
 <footer>
     <div class="music-player">
