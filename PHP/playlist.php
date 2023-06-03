@@ -482,7 +482,7 @@ if (!isset($_SESSION['id'])) {
     </div>
 </div>
 
-<div id="#pablo" class="carousel carousel-white slide">
+<div id="pablo" class="carousel carousel-white slide">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="cards-wrapper">
