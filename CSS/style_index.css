@@ -393,7 +393,6 @@ footer {
 .carousel{
     margin-left: 20%;
     margin-bottom: 10%;
-    margin-top: 6.5em;
 }
 
 .cards-wrapper{
@@ -406,6 +405,24 @@ footer {
     background-color: #D9D9D9;
 }
 
+.image-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.image-wrapper img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.devanture2 .card{
+    display: inline-block;
+    padding: 0.5px;
+    border-radius: 30em;
+    margin-top: 6em;
+    margin-left: 20em;
+    background-color: #43AD74;
+}
 
 

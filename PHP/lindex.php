@@ -164,38 +164,53 @@
         <div class="carousel-item active">
             <div class="cards-wrapper">
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/alpha.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/j.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/jos.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/naps.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/nek.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
+                        <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
                 </div>
             </div>
@@ -203,35 +218,45 @@
         <div class="carousel-item">
             <div class="cards-wrapper">
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/pat.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/spot.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/naps.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/jos.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/j.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
@@ -242,35 +267,45 @@
         <div class="carousel-item">
             <div class="cards-wrapper">
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/nek.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/cascade.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
                     </div>
                 </div>
                 <div class="card">
+                    <div class="image-wrapper">
                     <img src="../Ressources/album.png" class="card-img-top" alt="...">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Artiste</p>
@@ -289,6 +324,17 @@
     </button>
 </div>
 
+<div class="devanture2">
+    <div class="card">
+        <div class="card-body">
+            <b>Artiste de la semaine</b>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 <footer>
@@ -296,7 +342,7 @@
         <div class="song-bar">
             <div class="song-infos">
                 <div class="image-container">
-                    <img src="images/cascade.png" alt="" />
+                    <img src="../Ressources/cascade.png" alt="" />
                 </div>
                 <div class="song-description">
                     <p class="title">
