@@ -172,17 +172,19 @@ if (!isset($_SESSION['id'])) {
     <table>
         <thead>
         <tr>
-            <th>#</th>
+            <th class="th4">#</th>
             <th>Album</th>
             <th>Titre</th>
-            <th>Artiste</th>
+            <th class="th4">Artiste</th>
             <th>Détail</th>
-            <th>Delete</th>
+            <th class="th4">Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>1</td>
+            <td>1
+                <button class="play-button"><i class="fa fa-play"></i></button>
+            </td>
             <td><img src="../Ressources/album.png" alt="Album 1"></td>
             <td>Titre 1</td>
             <td><button>Artiste 1</button></td>
@@ -190,6 +192,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="dropdown">
                     <span class="dropdown-toggle">&#9776;</span>
                     <div class="dropdown-menu">
+                        <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
                         <a href="#">Ajouter à une playlist</a>
                         <a href="#"><i class="fa fa-heart"></i> J'aime</a>
                         <a href="#">Ajouter à la file d'attente</a>
@@ -199,7 +202,9 @@ if (!isset($_SESSION['id'])) {
             <td><button><i class="fa fa-trash"></i></button></td>
         </tr>
         <tr>
-            <td>2</td>
+            <td>2
+                <button class="play-button"><i class="fa fa-play"></i></button>
+            </td>
             <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
             <td>Titre 2</td>
             <td class="bi-text-left"><button>Artiste 2</button></td>

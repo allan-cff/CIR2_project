@@ -438,15 +438,20 @@ footer {
 
 
 table {
-    margin-top: 15px;
+    margin-top: 5em;
     margin-left: 10px; /* Décale la table avec une marge à gauche */
-    border-radius: 10px; /* Bords arrondis pour le tableau */
+    border-radius: 30px; /* Bords arrondis pour le tableau */
     background-color: #D9D9D9; /* Fond gris pour le tableau */
 }
 
 th, td {
     padding: 10px; /* Ajoute un espace interne aux cellules */
 }
+
+.th4{
+    text-align: center; /* Centre le texte des titres */
+}
+
 
 th:first-child, td:first-child {
     width: 5%; /* Largeur de la première colonne */
@@ -481,12 +486,6 @@ td:nth-child(2) img {
     height: 100px; /* Hauteur des images carrées */
 }
 
-td:nth-child(4) button {
-    background-color: transparent; /* Fond transparent pour le bouton de l'artiste */
-    border: none; /* Supprime la bordure du bouton */
-    cursor: pointer; /* Change le curseur au survol du bouton */
-}
-
 td:nth-child(5) .dropdown-toggle {
     cursor: pointer; /* Change le curseur au survol de l'icône de filtre */
 }
@@ -504,6 +503,40 @@ td:last-child button {
     border: none; /* Supprime la bordure du bouton */
     cursor: pointer; /* Change le curseur au survol du bouton */
 }
+
+td:nth-child(5) .dropdown-menu {
+    display: none; /* Masque le menu déroulant par défaut */
+    background-color: #FFFFFF; /* Fond blanc pour le menu déroulant */
+    color: #000000; /* Couleur du texte du menu déroulant */
+    padding: 5px; /* Ajoute un espace interne au menu déroulant */
+}
+
+td:nth-child(5) .dropdown-menu a {
+    display: block; /* Affiche chaque élément sur une ligne séparée */
+    color: #000000; /* Couleur du texte des éléments du menu déroulant */
+    text-decoration: none; /* Supprime le soulignement du texte */
+    margin-bottom: 5px; /* Ajoute un espacement en bas entre les choix */
+}
+
+td:nth-child(5) .dropdown-menu a:hover {
+    background-color: #CCCCCC; /* Fond gris clair au survol des éléments du menu déroulant */
+}
+
+td:nth-child(4) button {
+    background-color: #43AD74; /* Fond du bouton de l'artiste */
+    border: none; /* Supprime la bordure du bouton */
+    cursor: pointer; /* Change le curseur au survol du bouton */
+    font-size: 14px; /* Réduit la taille de la police du bouton */
+}
+
+td:first-child button {
+    background-color: transparent; /* Fond transparent pour les boutons d'icône "play" */
+    border: none; /* Supprime la bordure du bouton */
+    cursor: pointer; /* Change le curseur au survol du bouton */
+    color: #000000; /* Couleur du texte des boutons d'icône "play" */
+    font-size: 14px; /* Réduit la taille de la police du bouton */
+}
+
 
 
 
