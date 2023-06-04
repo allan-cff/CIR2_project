@@ -169,12 +169,62 @@ if (!isset($_SESSION['id'])) {
         </div>
     </div>
 
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Album</th>
+            <th>Titre</th>
+            <th>Artiste</th>
+            <th>Détail</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td><img src="../Ressources/album.png" alt="Album 1"></td>
+            <td>Titre 1</td>
+            <td><button>Artiste 1</button></td>
+            <td>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">&#9776;</span>
+                    <div class="dropdown-menu">
+                        <a href="#">Ajouter à une playlist</a>
+                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
+                        <a href="#">Ajouter à la file d'attente</a>
+                    </div>
+                </div>
+            </td>
+            <td><button><i class="fa fa-trash"></i></button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
+            <td>Titre 2</td>
+            <td class="bi-text-left"><button>Artiste 2</button></td>
+            <td>
+                <div class="dropdown">
+                    <span class="dropdown-toggle">&#9776;</span>
+                    <div class="dropdown-menu">
+                        <a href="#">Ajouter à une playlist</a>
+                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
+                        <a href="#">Ajouter à la file d'attente</a>
+                    </div>
+                </div>
+            </td>
+            <td><button><i class="fa fa-trash"></i></button></td>
+        </tr>
+        <!-- Ajouter d'autres lignes de tableau ici -->
+        </tbody>
+    </table>
+
 
 </div>
 
 
 
-</div>
+
 
 
 

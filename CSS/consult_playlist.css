@@ -437,5 +437,73 @@ footer {
 }
 
 
+table {
+    margin-top: 15px;
+    margin-left: 10px; /* Décale la table avec une marge à gauche */
+    border-radius: 10px; /* Bords arrondis pour le tableau */
+    background-color: #D9D9D9; /* Fond gris pour le tableau */
+}
+
+th, td {
+    padding: 10px; /* Ajoute un espace interne aux cellules */
+}
+
+th:first-child, td:first-child {
+    width: 5%; /* Largeur de la première colonne */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 10%; /* Largeur de la deuxième colonne */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 30%; /* Largeur de la troisième colonne */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 20%; /* Largeur de la quatrième colonne */
+}
+
+th:nth-child(5), td:nth-child(5) {
+    width: 20%; /* Largeur de la cinquième colonne */
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 15%; /* Largeur de la sixième colonne */
+}
+
+td:first-child {
+    text-align: center; /* Centre le contenu de la première colonne */
+}
+
+td:nth-child(2) img {
+    width: 100px; /* Largeur des images carrées */
+    height: 100px; /* Hauteur des images carrées */
+}
+
+td:nth-child(4) button {
+    background-color: transparent; /* Fond transparent pour le bouton de l'artiste */
+    border: none; /* Supprime la bordure du bouton */
+    cursor: pointer; /* Change le curseur au survol du bouton */
+}
+
+td:nth-child(5) .dropdown-toggle {
+    cursor: pointer; /* Change le curseur au survol de l'icône de filtre */
+}
+
+td:nth-child(5) .dropdown-menu {
+    display: none; /* Masque le menu déroulant par défaut */
+}
+
+td:nth-child(5):hover .dropdown-menu {
+    display: block; /* Affiche le menu déroulant au survol */
+}
+
+td:last-child button {
+    background-color: #F27457; /* Fond rouge pour les boutons de suppression */
+    border: none; /* Supprime la bordure du bouton */
+    cursor: pointer; /* Change le curseur au survol du bouton */
+}
+
 
 
