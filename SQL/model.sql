@@ -15,6 +15,8 @@ DROP TABLE IF EXISTS public.Artiste CASCADE;
 DROP TABLE IF EXISTS public.Contenu_Dans CASCADE;
 DROP TABLE IF EXISTS public.Cree_Par CASCADE;
 DROP TABLE IF EXISTS public.Morceau CASCADE;
+DROP TABLE IF EXISTS public.a_compose CASCADE;
+DROP TABLE IF EXISTS public.liste_attente CASCADE;
 
 ------------------------------------------------------------
 -- Table: Type_Artiste
@@ -174,6 +176,19 @@ CREATE TABLE public.A_creer(
 
 	,CONSTRAINT A_creer_Utilisateur_FK FOREIGN KEY (ID) REFERENCES public.Utilisateur(ID)
 	,CONSTRAINT A_creer_Playlist0_FK FOREIGN KEY (ID_Playlist) REFERENCES public.Playlist(ID)
+)WITHOUT OIDS;
+
+
+------------------------------------------------------------
+-- Table: A composé
+------------------------------------------------------------
+CREATE TABLE public.A_compose(
+	ID           INT  NOT NULL ,
+	ID_Artiste   INT  NOT NULL  ,
+	CONSTRAINT A_compose_PK PRIMARY KEY (ID,ID_Artiste)
+
+	,CONSTRAINT A_compose_Album_FK FOREIGN KEY (ID) REFERENCES public.Album(ID)
+	,CONSTRAINT A_compose_Artiste0_FK FOREIGN KEY (ID_Artiste) REFERENCES public.Artiste(ID)
 )WITHOUT OIDS;
 
 

@@ -6,9 +6,12 @@
     require_once("album.php");
     require_once("user.php");
     require_once("playlist.php");
+    require_once("artiste.php");
     $database = database::connexionBD();
 
     //-------------On récupère le type de requête puis on agit en fonction
+
+    // ALBUMS
     
     /*if($_SERVER['REQUEST_METHOD'] == "GET") {
         $albums = show_albums();
@@ -40,6 +43,8 @@
         echo json_encode($tracks);
     }*/
 
+    // USERS
+
     /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $options = array(
             'mail' => 'modified@a.a',
@@ -48,6 +53,8 @@
         $tracks = modify_infos_user(2, $options);
         echo json_encode($tracks);
     }*/
+
+    // PLAYLISTS
 
     /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $playlists = show_playlists();
@@ -59,10 +66,10 @@
         echo json_encode($playlist);
     }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $playlists = show_playlists_of_user(1);
         echo json_encode($playlists);
-    }
+    }*/
 
     /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $tracks = show_tracks_of_favorite(1);
@@ -78,4 +85,65 @@
         $tracks = show_tracks_of_historique(1);
         echo json_encode($tracks);
     }*/
+
+    // ALBUMS
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $authors = show_authors_of_album(4);
+        echo json_encode($authors);
+    }*/
+
+    // ARTISTES
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $artists = show_artists();
+        echo json_encode($artists);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $artist = show_artist_per_id(1);
+        echo json_encode($artist);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $albums = show_albums_of_artist(1);
+        echo json_encode($albums);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_musics_of_artist(1);
+        echo json_encode($tracks);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $type = show_type_of_artist(1);
+        echo json_encode($type);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $artist = show_artist_from_a_type(2);
+        echo json_encode($artist);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $artists = show_type_of_artist_ordered_by_type();
+        echo json_encode($artists);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = add_album_on_a_playlist(10 , 2);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $options = array(
+            'nom' => 'TEST-Playlist',
+            'image' => 'AOAOAOAO',
+            'description' => 'Elle est super cette playlist',
+        );
+        $id = create_playlist($options, 2);
+        echo json_encode($id);
+    }*/
+
+
     

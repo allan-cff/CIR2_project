@@ -51,7 +51,8 @@ function show_playlists_of_user($id) {
         return false;
     }
     try {
-        $sql = 'SELECT p.id, p.nom, p.date_creation, p.image, p.description, (SELECT COUNT(*) FROM contenu_dans WHERE contenu_dans.id_playlist = p.id) AS nb_morceaux, (SELECT SUM(m.duree) FROM contenu_dans c JOIN morceau m USING (id) WHERE c.id_playlist = p.id) AS duree_totale FROM a_creer a JOIN playlist p ON a.id_playlist = p.id WHERE a.id = :id AND is_historique = FALSE AND is_liste_attente = FALSE
+        $sql = 'SELECT p.id, p.nom, p.date_creation, p.image, p.description, (SELECT COUNT(*) FROM contenu_dans WHERE contenu_dans.id_playlist = p.id) AS nb_morceaux, 
+        (SELECT SUM(m.duree) FROM contenu_dans c JOIN morceau m USING (id) WHERE c.id_playlist = p.id) AS duree_totale FROM a_creer a JOIN playlist p ON a.id_playlist = p.id WHERE a.id = :id AND is_historique = FALSE AND is_liste_attente = FALSE
         ';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
@@ -126,6 +127,83 @@ function show_tracks_of_historique($id) {
     return $tracks;
 
 }
+
+function show_tracks_of_playlist($id) {
+    $database = database::connexionBD();
+
+    if (!$database) {
+        return false;
+    }
+    try {
+        $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = :id';
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } 
+    catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return $tracks;
+
+}
+
+// COMME POUR LE USER, L'ARGUMENT PASSE POUR LA CREATION D'UNE PLAYLIST EST UN TABLEAU ASSOCIATIF CLE-VALEUR
+// ON CREE LA PLAYLIST POUR L'USER PASSE EN ARGUMENT
+
+function create_playlist($options, $id_user) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        $nom = $options['nom'];
+        $image = $options['image'];
+        $description = $options['description'];
+
+        $sql = 'INSERT INTO playlist (nom, date_creation, image, description) VALUES (:nom, current_timestamp, :image, :description) RETURNING id';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':image', $image);
+        $stmt->bindParam(':description', $description);
+        $stmt->execute();
+        $id_playlist_creee = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+
+        // ON LIE LA PLAYLIST AU USER QUI L'A CREE
+
+        $sql = 'INSERT INTO a_creer (id, id_playlist, is_favorite, is_historique, is_liste_attente) VALUES (:id, :id_playlist, FALSE, FALSE, FALSE)';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id_user);
+        $stmt->bindParam(':id_playlist', $id_playlist_creee);
+        $stmt->execute();
+    } 
+    catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+    }
+    return $id_playlist_creee;
+}
+
+function delete_playlist($id_playlist) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        $sql = 'DELETE FROM playlist WHERE id = :id';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id_playlist);
+        $stmt->execute();
+    } 
+    catch (PDOException $exception) {
+            error_log('Connection error: ' . $exception->getMessage());
+            return false;
+    }
+    return true;
+}
+
+
 
 
 session_start();
