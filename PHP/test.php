@@ -7,6 +7,7 @@
     require_once("user.php");
     require_once("playlist.php");
     require_once("artiste.php");
+    require_once("morceau.php");
     $database = database::connexionBD();
 
     //-------------On récupère le type de requête puis on agit en fonction
@@ -130,8 +131,10 @@
         echo json_encode($artists);
     }*/
 
+    // PLAYLISTS
+
     /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $bool = add_album_on_a_playlist(10 , 2);
+        $bool = add_album_on_a_playlist(9 , 2);
         echo json_encode($bool);
     }*/
 
@@ -141,9 +144,59 @@
             'image' => 'AOAOAOAO',
             'description' => 'Elle est super cette playlist',
         );
-        $id = create_playlist($options, 2);
+        $id = create_playlist($options, 1);
         echo json_encode($id);
     }*/
 
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = delete_playlist(9);
+        echo json_encode($bool);
+    }*/
 
+    // MORCEAUX
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_tracks();
+        echo json_encode($tracks);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_tracks_of_a_style(1);
+        echo json_encode($tracks);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = add_track_to_favorite(1, 13);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = remove_track_from_favorite(1, 13);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = add_track_to_liste_attente(1, 13);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = remove_track_from_liste_attente(1, 13);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = add_track_to_historique(1, 13);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = remove_track_from_historique(1, 13);
+        echo json_encode($bool);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_tracks_of_a_playlist_random_order(4);
+        echo json_encode($tracks);
+    }*/
     

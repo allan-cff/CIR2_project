@@ -147,36 +147,73 @@ if (!isset($_SESSION['id'])) {
             <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </nav>
+    <form action="profil.php" method="POST">
+        <div class="container">
+            <div class="profile-icon">
+            <!-- <img src="..." alt="Profile Icon"> -->
+                <div class="edit-icon">&#9998;</div>
+            </div>
+            <div class="info">
+                <!-- Champ de modif pour le prenom -->
+                <div class="edit-input">
+                    <input type="text" placeholder="Prénom" name="prenom">
+                    <div class="edit-icon-text">&#9998;</div>
+                </div>
+                <!-- Champ de modif pour le nom -->
+                <div class="edit-input">
+                    <input type="text" placeholder="Nom" name="nom">
+                    <div class="edit-icon-text">&#9998;</div>
+                </div>
+            </div>
+            <!-- Champ de modif de l'âge -->
+            <div class="center">
+                <input type="date" placeholder="Date de naissance" name="age">
+            </div>
+            <!-- Champ de modif pour le mail -->
+            <div class="info">
+                <div class="edit-input">
+                    <div class="edit-icon-text">&#9998;</div>
+                        <input type="email" placeholder="Email" name="mail">
+                    </div>
+            <!-- Champ de modif pour le mot de passe -->
+                <div class="edit-input">
+                    <input type="password" placeholder="Mot de passe" id="password" name="password">
+                </div>
+            </div>
+            <!-- Bouton de confirmation -->
+            <button class="confirm-button">Confirmer</button>
+        </div>
+    </form>
 
-    <div class="container">
-        <div class="profile-icon">
-           <!-- <img src="..." alt="Profile Icon"> -->
-            <div class="edit-icon">&#9998;</div>
-        </div>
-        <div class="info">
-            <div class="edit-input">
-                <input type="text" placeholder="Prénom">
-                <div class="edit-icon-text">&#9998;</div>
-            </div>
-            <div class="edit-input">
-                <input type="text" placeholder="Nom">
-                <div class="edit-icon-text">&#9998;</div>
-            </div>
-        </div>
-        <div class="center">
-            <input type="date" placeholder="Date de naissance">
-        </div>
-        <div class="info">
-            <div class="edit-input">
-                <div class="edit-icon-text">&#9998;</div>
-                <input type="email" placeholder="Email">
-            </div>
-            <div class="edit-input">
-                <input type="password" placeholder="Mot de passe" id="password">
-            </div>
-        </div>
-        <button class="confirm-button">Confirmer</button>
-    </div>
+    <?php 
+    require_once("user.php");
+
+    // On récupère les infos du formulaire
+    if(!empty($_POST['prenom']) || !empty($_POST['nom']) || !empty($_POST['age']) || !empty($_POST['mail']) || !empty($_POST['password'])) {
+        $options = array();
+        if(!empty($_POST['prenom'])) {
+            $options['prenom'] = $_POST['prenom'];
+        }
+        if(!empty($_POST['nom'])) {
+            $options['nom'] = $_POST['nom'];
+        }
+        if(!empty($_POST['age'])) {
+            $options['age'] = $_POST['age'];
+        }
+        if(!empty($_POST['mail'])) {
+            $options['mail'] = $_POST['mail'];
+        }
+        if(!empty($_POST['password'])) {
+            $options['password'] = $_POST['password'];
+        }
+        // On modifie les infos de l'utilisateur
+        $result = modify_infos_user($_SESSION['id'], $options);
+        //print_r($result);
+    }
+    
+
+
+    ?>
 
 </div>
 
