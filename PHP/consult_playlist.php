@@ -29,7 +29,7 @@ if (!isset($_SESSION['id'])) {
 
 <div class="sidebar">
     <div class="logo">
-        <a href="#">
+        <a href="lindex.php">
             <img src="../Ressources/Logo.png" alt="Logo" />
         </a>
     </div>

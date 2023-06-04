@@ -18,7 +18,9 @@
 <!-- à faire plus tard image cliquante qui permet de ramener a la connexion-->
 
 <div id="header">
+    <a href="login.php">
     <span><img class="ryt" src="../Ressources/Logo.png"> </span>
+    </a>
 </div>
 
 <!-- formulaire de connexion -->

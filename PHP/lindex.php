@@ -152,7 +152,7 @@
     <div class="devanture">
         <div class="card">
             <div class="card-body">
-                <b>10 derniers sons écouter</b>
+                <b>10 derniers titres écoutés</b>
             </div>
         </div>
     </div>
@@ -352,7 +352,7 @@
 
 <div class="artist">
     <div class="card">
-        <b>Les meilleurs sons de la semaine</b>
+        <b>Les meilleurs titres de la semaine</b>
     </div>
 </div>
 <br>
