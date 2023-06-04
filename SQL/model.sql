@@ -48,7 +48,7 @@ CREATE TABLE public.Artiste(
 ------------------------------------------------------------
 CREATE TABLE public.Album(
 	ID              INT GENERATED ALWAYS AS IDENTITY ,
-	Titre           VARCHAR (70) NOT NULL ,
+	Titre           VARCHAR (200) NOT NULL ,
 	Date_parution   DATE  NOT NULL ,
 	Image           VARCHAR (200)   ,
 	CONSTRAINT Album_PK PRIMARY KEY (ID)
@@ -60,8 +60,9 @@ CREATE TABLE public.Album(
 ------------------------------------------------------------
 CREATE TABLE public.Morceau(
 	ID         INT GENERATED ALWAYS AS IDENTITY ,
-	Titre      VARCHAR (60) NOT NULL ,
+	Titre      VARCHAR (200) NOT NULL ,
 	Duree      INT  NOT NULL ,
+	Data           VARCHAR (1000)   ,
 	ID_Album   INT    ,
 	CONSTRAINT Morceau_PK PRIMARY KEY (ID)
 
@@ -155,11 +156,11 @@ CREATE TABLE public.Contenu_dans(
 ------------------------------------------------------------
 CREATE TABLE public.Appartient_a(
 	ID           INT  NOT NULL ,
-	ID_Morceau   INT  NOT NULL  ,
-	CONSTRAINT Appartient_a_PK PRIMARY KEY (ID,ID_Morceau)
+	ID_Album   INT  NOT NULL  ,
+	CONSTRAINT Appartient_a_PK PRIMARY KEY (ID,ID_Album)
 
 	,CONSTRAINT Appartient_a_Style_musique_FK FOREIGN KEY (ID) REFERENCES public.Style_musique(ID)
-	,CONSTRAINT Appartient_a_Morceau0_FK FOREIGN KEY (ID_Morceau) REFERENCES public.Morceau(ID)
+	,CONSTRAINT Appartient_a_Album0_FK FOREIGN KEY (ID_Album) REFERENCES public.Album(ID)
 )WITHOUT OIDS;
 
 
