@@ -23,7 +23,7 @@ if (!isset($_SESSION['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- On importe le fichier style.css -->
-    <link rel="stylesheet" href="../CSS/consult_playlist.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../CSS/artiste.css" media="screen" type="text/css" />
 </head>
 <body>
 
@@ -150,22 +150,26 @@ if (!isset($_SESSION['id'])) {
 
     <div class="placement">
         <div class="container">
-            <img src="../Ressources/playlist.png">
+            <img src="../Ressources/alpha.png">
             <div class="info-sup">
-                <b>nom de votre playlist</b>
+                <b>nom de l'artiste</b>
             </div>
-            <button class="play-pause-button"><i class="fas fa-play"></i></button>
         </div>
         <div class="container">
             <div class="card">
                 <div class="card-content">
-                    <p>Description de la playlist</p>
+                    <p>Description :</p>
                 </div>
             </div>
             <div class="playlist-details">
-                <span class="total-duration">Durée totale : 2h30m</span> <!-- la duré sera à modifié plus tard via du php -->
-                <span class="track-count">Nombre de titres : 15</span>
+                <span class="total-duration">Nombre d'auditeur par mois :</span> <!-- la duré sera à modifié plus tard via du php -->
             </div>
+        </div>
+    </div>
+
+    <div class="artist">
+        <div class="card">
+            <b>populaire : </b>
         </div>
     </div>
 
@@ -177,7 +181,7 @@ if (!isset($_SESSION['id'])) {
             <th>Titre</th>
             <th class="th4">Artiste</th>
             <th>Détail</th>
-            <th class="th4">Delete</th>
+            <th class="th4">Time</th>
         </tr>
         </thead>
         <tbody>
@@ -199,7 +203,7 @@ if (!isset($_SESSION['id'])) {
                     </div>
                 </div>
             </td>
-            <td><button><i class="fa fa-trash"></i></button></td>
+            <td>3:31</td>
         </tr>
         <tr>
             <td>2
@@ -218,7 +222,7 @@ if (!isset($_SESSION['id'])) {
                     </div>
                 </div>
             </td>
-            <td><button><i class="fa fa-trash"></i></button></td>
+            <td>3:31</td>
         </tr>
         <!-- Ajouter d'autres lignes de tableau ici -->
         </tbody>

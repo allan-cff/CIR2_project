@@ -475,6 +475,7 @@ th:nth-child(5), td:nth-child(5) {
 
 th:nth-child(6), td:nth-child(6) {
     width: 15%; /* Largeur de la sixième colonne */
+    text-align: center;
 }
 
 td:first-child {
@@ -537,6 +538,13 @@ td:first-child button {
     font-size: 14px; /* Réduit la taille de la police du bouton */
 }
 
-
+.artist .card{
+    display: inline-block;
+    padding: 0.5px;
+    border-radius: 30em;
+    background-color: #226D68;
+    text-align: center;
+    margin-top: 10%;
+}
 
 
