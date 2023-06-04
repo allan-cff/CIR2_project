@@ -23,7 +23,7 @@ if (!isset($_SESSION['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- On importe le fichier style.css -->
-    <link rel="stylesheet" href="../CSS/consult_playlist.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="../CSS/info_profil.css" media="screen" type="text/css" />
 </head>
 <body>
 
@@ -152,20 +152,78 @@ if (!isset($_SESSION['id'])) {
         <div class="container">
             <img src="../Ressources/playlist.png">
             <div class="info-sup">
-                <b>nom de votre playlist</b>
+                <br>
+                <b>votre prenom</b>
+                <br>
+                <br>
+                <b>votre nom</b>
+                <br>
+                <br>
+                <b>votre email</b>
+                <br>
+                <br>
+                <b>votre âge</b>
             </div>
-            <button class="play-pause-button"><i class="fas fa-play"></i></button>
+
         </div>
         <div class="container">
-            <div class="card">
-                <div class="card-content">
-                    <p>Description de la playlist</p>
-                </div>
-            </div>
-            <div class="playlist-details">
-                <span class="total-duration">Durée totale : 2h30m</span> <!-- la duré sera à modifié plus tard via du php -->
-                <span class="track-count">Nombre de titres : 15</span>
-            </div>
+            <b><span style="text-decoration: underline">Titres likés :</span></b>
+            <p>nombre de titre likés :</p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th class="th4">#</th>
+                    <th>Album</th>
+                    <th>Titre</th>
+                    <th class="th4">Artiste</th>
+                    <th>Détail</th>
+                    <th class="th4">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1
+                        <button class="play-button"><i class="fa fa-play"></i></button>
+                    </td>
+                    <td><img src="../Ressources/album.png" alt="Album 1"></td>
+                    <td>Titre 1</td>
+                    <td><button>Artiste 1</button></td>
+                    <td>
+                        <div class="dropdown">
+                            <span class="dropdown-toggle">&#9776;</span>
+                            <div class="dropdown-menu">
+                                <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
+                                <a href="#">Ajouter à une playlist</a>
+                                <a href="#"><i class="fa fa-heart"></i> J'aime</a>
+                                <a href="#">Ajouter à la file d'attente</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button><i class="fa fa-trash"></i></button></td>
+                </tr>
+                <tr>
+                    <td>2
+                        <button class="play-button"><i class="fa fa-play"></i></button>
+                    </td>
+                    <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
+                    <td>Titre 2</td>
+                    <td class="bi-text-left"><button>Artiste 2</button></td>
+                    <td>
+                        <div class="dropdown">
+                            <span class="dropdown-toggle">&#9776;</span>
+                            <div class="dropdown-menu">
+                                <a href="#">Ajouter à une playlist</a>
+                                <a href="#"><i class="fa fa-heart"></i> J'aime</a>
+                                <a href="#">Ajouter à la file d'attente</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button><i class="fa fa-trash"></i></button></td>
+                </tr>
+                <!-- Ajouter d'autres lignes de tableau ici -->
+                </tbody>
+            </table>
         </div>
     </div>
     <!--
@@ -186,60 +244,6 @@ if (!isset($_SESSION['id'])) {
         </div>
     </div>
 -->
-    <table>
-        <thead>
-        <tr>
-            <th class="th4">#</th>
-            <th>Album</th>
-            <th>Titre</th>
-            <th class="th4">Artiste</th>
-            <th>Détail</th>
-            <th class="th4">Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1
-                <button class="play-button"><i class="fa fa-play"></i></button>
-            </td>
-            <td><img src="../Ressources/album.png" alt="Album 1"></td>
-            <td>Titre 1</td>
-            <td><button>Artiste 1</button></td>
-            <td>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">&#9776;</span>
-                    <div class="dropdown-menu">
-                        <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
-                        <a href="#">Ajouter à une playlist</a>
-                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                        <a href="#">Ajouter à la file d'attente</a>
-                    </div>
-                </div>
-            </td>
-            <td><button><i class="fa fa-trash"></i></button></td>
-        </tr>
-        <tr>
-            <td>2
-                <button class="play-button"><i class="fa fa-play"></i></button>
-            </td>
-            <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
-            <td>Titre 2</td>
-            <td class="bi-text-left"><button>Artiste 2</button></td>
-            <td>
-                <div class="dropdown">
-                    <span class="dropdown-toggle">&#9776;</span>
-                    <div class="dropdown-menu">
-                        <a href="#">Ajouter à une playlist</a>
-                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                        <a href="#">Ajouter à la file d'attente</a>
-                    </div>
-                </div>
-            </td>
-            <td><button><i class="fa fa-trash"></i></button></td>
-        </tr>
-        <!-- Ajouter d'autres lignes de tableau ici -->
-        </tbody>
-    </table>
 
 
 </div>
@@ -294,7 +298,6 @@ if (!isset($_SESSION['id'])) {
         </div>
     </div>
 </footer>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/4e06933d63.js" crossorigin="anonymous"></script>
 </body>
