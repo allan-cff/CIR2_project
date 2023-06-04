@@ -24,6 +24,9 @@
 
     <!-- On importe le fichier style.css -->
     <link rel="stylesheet" href="../CSS/style_index.css" media="screen" type="text/css" />
+
+    <!-- On importe le JS -->
+    <script src="../JS/lindex.js" defer></script>
 </head>
 <body>
 
@@ -563,7 +566,7 @@
                 </div>
             </div>
             <div class="icons">
-                <button class="play-pause-button"><i class="far fa-heart heart-icon"></i></button>
+                <button class="like-button"><i class="far fa-heart heart-icon"></i></button>
             </div>
         </div>
         <div class="progress-controller">

@@ -233,6 +233,10 @@ footer {
     gap: 1em;
 }
 
+.music-player .like-button {
+    color: #43AD74;
+}
+
 .music-player .image-container {
     /* Votre style existant */
     flex-shrink: 0;
