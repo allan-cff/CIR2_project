@@ -164,6 +164,45 @@ if (!isset($_SESSION['id'])) {
         </div>
     </div>
 
+    <!-- Button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popup">
+        Ajouter une playlist
+    </button>
+
+    <div id="popup" class="modal">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>Entête du pop-up</p>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nomplaylist" class="form-label">Nom playlist</label>
+                            <input type="text" class="form-control" id="nomplaylist" placeholder="Nom playlist">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description_playlist" class="form-label">Description playlist</label>
+                            <input type="text" class="form-control" id="description_playlist" placeholder="Description playlist">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Valider</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Footer du pop-up</p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer le popup
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
 </div>
 
 <div id="carouselExample" class="carousel carousel-white slide">
@@ -583,7 +622,11 @@ if (!isset($_SESSION['id'])) {
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-XCpGKQ7Fymk2sLb2R5m3dJi6Ig2TMWDJj3E3twCrGCwwuB8A4faz7Cf3vbbKT9MQ"
+        crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>

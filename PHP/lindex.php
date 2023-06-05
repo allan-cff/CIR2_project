@@ -113,7 +113,11 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
+<!--
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+30JUSyExlq6GsyGHK7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+-->
 
 <div class="artist">
     <div class="card">

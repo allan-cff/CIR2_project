@@ -537,6 +537,9 @@ td:first-child button {
     font-size: 14px; /* Réduit la taille de la police du bouton */
 }
 
-
+.modal{
+    display: block;
+    position: relative;
+}
 
 

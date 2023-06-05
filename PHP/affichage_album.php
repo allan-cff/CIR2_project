@@ -153,24 +153,29 @@ if (!isset($_SESSION['id'])) {
             <div class="container">
                 <img src="../Ressources/playlist.png">
                 <div class="info-sup">
-                    <b>nom de l'album</b>
+                    <b>nom de l'album :</b>
                 </div>
                 <button class="play-pause-button"><i class="fas fa-play"></i></button>
             </div>
             <div class="container">
                 <div class="card">
                     <div class="card-content">
-                        <p>nom de l'artiste</p>
+                        <p>nom de l'artiste :</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <p>durée totale</p>
+                        <p>durée totale :</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <p>Nombre de titres</p>
+                        <p>Nombre de titres :</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <p>Style musique :</p>
                     </div>
                 </div>
         </div>

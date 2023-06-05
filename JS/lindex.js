@@ -121,6 +121,18 @@ function showLastAlbums(){
         }
     })
 }
+/*
+var carouselWidth = $('.carousel-inner')[0].scrollWidth;
+var cardWidth = $('.carousel-item');
+
+var scrollPosition = 0;
+
+$('.carousel-control-next').on('click', function (){
+    console.log('next');
+    scrollPosition = scrollPosition + cardWidth;
+    $('.carousel-inner').animate({scrollLeft: scrollPosition},
+    600);
+});*/
 
 function showWaitingList(userId){
     waitingList = document.querySelector("#waitingList")
