@@ -41,44 +41,6 @@ function show_tracks_alphabetic_order() {
     return $result;
 }
 
-// Affichage des morceaux d'un style (Rap, Rap US ,etc...)
-
-function show_tracks_of_a_style($id) {
-    $conn = database::connexionBD();
-    if (!$conn) {
-        return false;
-    }
-    try {
-        $stmt = $conn->prepare('SELECT morceau.titre, style_musique.type_musique FROM appartient_a JOIN style_musique USING (id) JOIN morceau ON appartient_a.id_morceau = morceau.id WHERE style_musique.id = :id');
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $exception) {
-        error_log('Connection error: ' . $exception->getMessage());
-        return false;
-    }
-    return $result;
-}
-
-// Affichage des morceaux d'un style (Rap, Rap US ,etc...) par ordre alphabétique
-
-function show_tracks_of_a_style_alphabetic_order($id) {
-    $conn = database::connexionBD();
-    if (!$conn) {
-        return false;
-    }
-    try {
-        $stmt = $conn->prepare('SELECT morceau.titre, style_musique.type_musique FROM appartient_a JOIN style_musique USING (id) JOIN morceau ON appartient_a.id_morceau = morceau.id WHERE style_musique.id = :id ORDER BY morceau.titre ASC');
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $exception) {
-        error_log('Connection error: ' . $exception->getMessage());
-        return false;
-    }
-    return $result;
-}
-
 // AJOUT D'UN MORCEAU DANS LES FAVORIS D'UN UTILISATEUR
 
 function add_track_to_favorite($id_user, $id_track) {

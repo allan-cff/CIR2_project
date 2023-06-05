@@ -39,7 +39,7 @@ CREATE TABLE public.Artiste(
 	ID_Type_Artiste   INT  NOT NULL  ,
 	CONSTRAINT Artiste_PK PRIMARY KEY (ID)
 
-	,CONSTRAINT Artiste_Type_Artiste_FK FOREIGN KEY (ID_Type_Artiste) REFERENCES public.Type_Artiste(ID)
+	,CONSTRAINT Artiste_Type_Artiste_FK FOREIGN KEY (id_type_Artiste) REFERENCES public.Type_Artiste(ID)
 )WITHOUT OIDS;
 
 
@@ -81,7 +81,6 @@ CREATE TABLE public.Utilisateur(
 	Mail         VARCHAR (100) NOT NULL ,
 	Username	 VARCHAR (100) NOT NULL ,
 	Password     VARCHAR (100) NOT NULL ,
-	is_admin     BOOLEAN  NOT NULL ,
 	ID_Morceau   INT    ,
 	CONSTRAINT Utilisateur_PK PRIMARY KEY (ID)
 
@@ -100,19 +99,6 @@ CREATE TABLE public.Playlist(
 	Description     VARCHAR (2000)  NOT NULL  ,
 	CONSTRAINT Playlist_PK PRIMARY KEY (ID)
 )WITHOUT OIDS;
-
-
-------------------------------------------------------------
--- Table: Admin
-------------------------------------------------------------
-CREATE TABLE public.Admin(
-	ID               INT GENERATED ALWAYS AS IDENTITY ,
-	ID_Utilisateur   INT  NOT NULL  ,
-	CONSTRAINT Admin_PK PRIMARY KEY (ID)
-
-	,CONSTRAINT Admin_Utilisateur_FK FOREIGN KEY (ID_Utilisateur) REFERENCES public.Utilisateur(ID)
-)WITHOUT OIDS;
-
 
 ------------------------------------------------------------
 -- Table: Style_musique

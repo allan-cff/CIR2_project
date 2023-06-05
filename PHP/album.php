@@ -209,5 +209,39 @@ function show_newest_albums() {
     return $result;
 }
 
+function show_type_of_album($id) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        $stmt = $conn->prepare("SELECT album.titre, style_musique.type_musique FROM appartient_a JOIN style_musique USING (id) JOIN album ON album.id = appartient_a.album_id WHERE appartient_a.album_id = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+}
+
+function show_album_by_type($id_type) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        $stmt = $conn->prepare("SELECT album.titre, style_musique.type_musique FROM appartient_a JOIN style_musique USING (id) JOIN album ON album.id = appartient_a.album_id WHERE appartient_a.id = :id");
+        $stmt->bindParam(':id', $id_type);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+}
+
 ?>
 
