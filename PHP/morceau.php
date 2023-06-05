@@ -17,12 +17,39 @@ function music_playing($id_user) {
         $id = $conn->prepare("SELECT id_morceau from utilisateur WHERE id = :id");
         $id->bindParam(':id', $id_user);
         $id->execute();
-        $id_du_morceau = $id->fetchAll(PDO::FETCH_ASSOC);
+        $id_du_morceau = $id->fetch(PDO::FETCH_ASSOC);
+        // On convertit l'ID en int
+        $id_du_morceau = intval($id_du_morceau['id_morceau']);
 
 
         // ON RECUP LE TITRE ET LA DUREE DU MORCEAU
-        $stmt = $conn->prepare("SELECT morceau.titre, morceau.duree, artiste.nom, album.image FROM morceau JOIN album ON morceau.id_album = album.id JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste USING(id) WHERE morceau.id = :id");
+        $stmt = $conn->prepare("SELECT morceau.titre, morceau.duree, artiste.nom, album.titre AS album FROM morceau JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste ON artiste.id = cree_par.id JOIN appartient_a ON morceau.id = appartient_a.id JOIN album ON appartient_a.id_album = album.id WHERE morceau.id = :id");
         $stmt->bindParam(':id', $id_du_morceau);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+
+    // On aura ici un tableau associatif avec les infos du morceau actuellement joué 
+    //($result['titre'], $result['duree'], $result['nom'], $result['album'])
+    return $result;
+}
+
+// FONCTION QUI PERMET DE CHANGER LE MORCEAU ACTUELLEMENT JOUE
+
+function change_music_playing($id_user, $id_track) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        // ON CHANGE L'ID DU MORCEAU EN SAH
+        $stmt = $conn->prepare("UPDATE utilisateur SET id_morceau = :id_track WHERE id = :id_user");
+        $stmt->bindParam(':id_track', $id_track);
+        $stmt->bindParam(':id_user', $id_user);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -32,6 +59,8 @@ function music_playing($id_user) {
     }
     return $result;
 }
+
+
 
 
 

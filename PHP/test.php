@@ -166,10 +166,10 @@
         echo json_encode($bool);
     }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $bool = remove_track_from_favorite(1, 13);
         echo json_encode($bool);
-    }
+    }*/
 /*
     if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $bool = add_track_to_liste_attente(1, 13);
@@ -210,6 +210,11 @@
         $albums = show_albums_by_research('o');
         echo json_encode($albums);
     }*/
+
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $playlists = music_playing(1);
+        echo json_encode($playlists);
+    }
     
 
     
