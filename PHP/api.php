@@ -13,8 +13,8 @@
     # GET /users/:id
     # PUT /users/:id
     # DELETE /users/:id 
-    # GET /users/:id/nowlistening                   // TODO (ecoute en cours)
-    # GET /users/:id/nextsong                       // TODO (prochaine ecoute)
+    # GET /users/:id/nowlistening                   // TODO (ecoute en cours) // done
+    # GET /users/:id/nextsong                       // TODO (prochaine ecoute) //
     # GET /users/:id/recents
     # POST /users/:id/recents                       // TODO (nouvelle ecoute recente)
     # DELETE /users/:id/recents/:id                 // TODO (suppression d'une musique écoutée récemment)
@@ -32,7 +32,7 @@
     if($path[1] === 'users'){
         if($path[3] === 'nowlistening' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-           // TODO $res = ;  
+           $res = show_track_per_id($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -127,6 +127,7 @@
     # GET /artists
     # GET /artists/:id              // TODO : artist info
     # GET /artists/:id/albums
+    # nombre d'auditeur GET /artist/:id/auditor
 
     if($path[1] === 'artists'){
         if($path[3] === 'albums' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -140,7 +141,7 @@
         }
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-           // TODO $res = ;
+           $res = show_artist_per_id($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);

@@ -5,6 +5,39 @@ error_reporting(E_ALL);
 require_once("config.php");
 require_once("database.php");
 
+// FONCTION QUI AFFICHE LE MORCEAU ACTUELLEMENT JOUE
+
+function music_playing($id_user) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        // ON CHOPPE L'ID DU MORCEAU EN SAH
+        $id = $conn->prepare("SELECT id_morceau from utilisateur WHERE id = :id");
+        $id->bindParam(':id', $id_user);
+        $id->execute();
+        $id_du_morceau = $id->fetchAll(PDO::FETCH_ASSOC);
+
+
+        // ON RECUP LE TITRE ET LA DUREE DU MORCEAU
+        $stmt = $conn->prepare("SELECT morceau.titre, morceau.duree, artiste.nom, album.image FROM morceau JOIN album ON morceau.id_album = album.id JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste USING(id) WHERE morceau.id = :id");
+        $stmt->bindParam(':id', $id_du_morceau);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+}
+
+
+
+
+
+
 // FONCTION QUI AFFICHE TOUS LES MORCEAUX DE LA BDD
 
 function show_tracks() {

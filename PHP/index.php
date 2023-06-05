@@ -433,5 +433,9 @@
             <!-- Ajouter d'autres lignes de tableau ici -->
             </tbody>
         </table>
+        <br>
+        <br>
     </div>
+    <br>
+    <br>
 </template>
