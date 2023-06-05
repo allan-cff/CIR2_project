@@ -6,6 +6,11 @@ function jsonToFormdata(data){
     return form_data
 }
 
+function getUserId(callback){
+    callback(1);
+    //ajaxRequest('get', `/users/logged_id`, callback);
+}
+
 function getUser(userId, callback){
     callback({
         image:"../Ressources/pat.png",
@@ -26,12 +31,13 @@ function deleteUser(userId, callback){
 }
 
 function getNowListening(userId, callback){
-    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"})
+    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
     //ajaxRequest('get', `/users/${userId}/nowlistening`, callback);
 }
 
 function getNextSong(userId, callback){
-    ajaxRequest('get', `/users/${userId}/nextsong`, callback);
+    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
+    //ajaxRequest('get', `/users/${userId}/nextsong`, callback);
 }
 
 function getRecentSongs(userId, callback){
