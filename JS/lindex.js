@@ -149,6 +149,69 @@ function showWaitingList(userId){
     })
 }
 
+function moveToIndex(){
+    let previousStyles = document.querySelectorAll('link.current-media-style')
+    previousStyles.forEach(elem => {
+        elem.remove();
+    })
+    let head = document.querySelector('head');
+    let style = document.createElement('link');
+    style.setAttribute("href", '../CSS/index.css');
+    style.setAttribute("type", 'text/css');
+    style.setAttribute("rel", 'stylesheet');
+    style.classList.add("current-media-style")
+    head.append(style);
+    const template = document.querySelector('#affichage-index');
+    const clone = template.content.cloneNode(true);
+    const content = document.querySelector('#main-content');
+    console.log(content)
+    console.log(clone.querySelector('#main-content'))
+    content.replaceWith(clone.querySelector('#main-content'));
+}
+
+function moveToAlbum(){
+    let previousStyles = document.querySelectorAll('link.current-media-style')
+    previousStyles.forEach(elem => {
+        elem.remove();
+    })
+    let head = document.querySelector('head');
+    let style = document.createElement('link');
+    style.setAttribute("href", '../CSS/album.css');
+    style.setAttribute("type", 'text/css');
+    style.setAttribute("rel", 'stylesheet');
+    style.classList.add("current-media-style")
+    head.append(style);
+    const template = document.querySelector('#affichage-album');
+    const clone = template.content.cloneNode(true);
+    const content = document.querySelector('#main-content');
+    console.log(content)
+    console.log(clone.querySelector('#main-content'))
+    content.replaceWith(clone.querySelector('#main-content'));
+}
+
+function moveToArtist(){
+    let previousStyles = document.querySelectorAll('link.current-media-style')
+    previousStyles.forEach(elem => {
+        elem.remove();
+    })
+    let head = document.querySelector('head');
+    let style = document.createElement('link');
+    style.setAttribute("href", '../CSS/artist.css');
+    style.setAttribute("type", 'text/css');
+    style.setAttribute("rel", 'stylesheet');
+    style.classList.add("current-media-style")
+    head.append(style);
+    const template = document.querySelector('#affichage-artist');
+    const clone = template.content.cloneNode(true);
+    const content = document.querySelector('#main-content');
+    console.log(content)
+    console.log(clone.querySelector('#main-content'))
+    content.replaceWith(clone.querySelector('#main-content'));
+}
+
+
+
+
 showWaitingList(1);
 showLastListened(1);
 showUser(1);

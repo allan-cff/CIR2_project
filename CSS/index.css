@@ -1,17 +1,6 @@
-.devanture .card{
-    display: inline-block;
-    padding: 0.5px;
-    border-radius: 30em;
-    margin-top: 6em;
-    margin-left: 2em;
-    background-color: #43AD74;
-    text-align: center;
-}
-
-
 .carousel{
     margin-left: 20%;
-    margin-bottom: 10%;
+    margin-bottom: 3em;
 }
 
 .cards-wrapper{
@@ -41,14 +30,16 @@
     align-items: center;
 }
 
-.artist{
+h2 {
+    font-size: 24px;
+    display: inline-block;
     margin-left: 23%;
+    padding: 0.25em 1em;
+    border-radius: 3em;
+    background-color: #43AD74;
+    text-align: center;
 }
 
-.artist .card{
-    display: inline-block;
-    padding: 0.5px;
-    border-radius: 30em;
-    background-color: #226D68;
-    text-align: center;
+#lastListenedTitle {
+    margin-top: 10%
 }

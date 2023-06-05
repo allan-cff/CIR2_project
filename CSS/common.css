@@ -34,9 +34,10 @@ button {
     gap: 30px
 }
 
-.sidebar img {
+.sidebar>img {
     width: 50%;
     height: auto; /* Modification : Utilise "auto" pour maintenir le ratio d'aspect de l'image */
+    clip-path: circle();
 }
 
 .sidebar .logo img {
@@ -382,59 +383,4 @@ footer {
 .music-player .volume-bar .progress-bar:hover .progress::after {
     /* Votre style existant */
     --size: .8em;
-}
-
-.devanture .card{
-    display: inline-block;
-    padding: 0.5px;
-    border-radius: 30em;
-    margin-top: 6em;
-    margin-left: 2em;
-    background-color: #43AD74;
-    text-align: center;
-}
-
-
-.carousel{
-    margin-left: 20%;
-    margin-bottom: 10%;
-}
-
-.cards-wrapper{
-    display: flex;
-}
-
-.card{
-    margin: 0 .5em;
-    width: calc(100%/3);
-    background-color: #D9D9D9;
-}
-
-.image-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.image-wrapper img{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.artist{
-    margin-left: 23%;
-}
-
-.artist .card{
-    display: inline-block;
-    padding: 0.5px;
-    border-radius: 30em;
-    background-color: #43AD74;
-    text-align: center;
 }
