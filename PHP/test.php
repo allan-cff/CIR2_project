@@ -8,6 +8,7 @@
     require_once("playlist.php");
     require_once("artiste.php");
     require_once("morceau.php");
+    require_once("fonctions_recherche.php");
     $database = database::connexionBD();
 
     //-------------On récupère le type de requête puis on agit en fonction
@@ -199,4 +200,20 @@
         $tracks = show_tracks_of_a_playlist_random_order(4);
         echo json_encode($tracks);
     }*/
+    
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_morceaux_by_research('no');
+        echo json_encode($tracks);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $artists = show_artists_by_research('o');
+        echo json_encode($artists);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $albums = show_albums_by_research('o');
+        echo json_encode($albums);
+    }*/
+
     

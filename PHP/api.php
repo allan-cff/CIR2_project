@@ -32,7 +32,7 @@
     if($path[1] === 'users'){
         if($path[3] === 'nowlistening' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = ;  // TODO
+           // TODO $res = ;  
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -68,7 +68,7 @@
         }
         if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
-            $res = ;  // TODO
+         // TODO   $res = ;  
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -86,7 +86,7 @@
         }
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
-            $res = ;    //TODO
+           // TODO $res = ;   
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -140,7 +140,7 @@
         }
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = ;
+           // TODO $res = ;
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -166,7 +166,7 @@
     if($path[1] === 'albums'){
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = ;            // TODO : album avec détails + liste des sons
+          // TODO  $res = ;            // TODO : album avec détails + liste des sons
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -174,7 +174,7 @@
             }
         }
         if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-            $res = ;            // TODO : album sans la liste des sons (titre, image, auteurs, styles)
+        // TODO    $res = ;            // TODO : album sans la liste des sons (titre, image, auteurs, styles)
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -191,7 +191,7 @@
     if($path[1] === 'musics'){
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = ;            
+         // TODO   $res = ;            
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -199,7 +199,7 @@
             }
         }
         if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-            $res = ;            
+          // TODO  $res = ;            
             if($res){
                 echo json_encode($res);
                 http_response_code(200);

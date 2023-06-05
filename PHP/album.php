@@ -148,6 +148,8 @@ function show_tracks_of_album_default_order($id) {
     
 }
 
+// Fonction qui montre les artistes présents dans un album
+
 function show_authors_of_album($id) {
     $conn = database::connexionBD();
     if (!$conn) {
@@ -164,6 +166,8 @@ function show_authors_of_album($id) {
     }
     return $result;
 }
+
+// Fonction qui ajoute un album à une playlist
 
 function add_album_on_a_playlist($id_playlist, $id_album) {
     $conn = database::connexionBD();
@@ -185,6 +189,24 @@ function add_album_on_a_playlist($id_playlist, $id_album) {
     }
     return true;
     
+}
+
+// Fonction qui montre les albums les plus récents
+
+function show_newest_albums() {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        $stmt = $conn->prepare("SELECT * FROM album ORDER BY date_parution DESC LIMIT 10");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
 }
 
 ?>

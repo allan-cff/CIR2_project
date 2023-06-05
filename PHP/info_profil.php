@@ -152,17 +152,19 @@ if (!isset($_SESSION['id'])) {
         <div class="container">
             <img src="../Ressources/playlist.png">
             <div class="info-sup">
-                <br>
-                <b>votre prenom</b>
-                <br>
-                <br>
-                <b>votre nom</b>
+                <b>Votre username</b>
                 <br>
                 <br>
-                <b>votre email</b>
+                <b>Votre prenom</b>
                 <br>
                 <br>
-                <b>votre âge</b>
+                <b>Votre nom</b>
+                <br>
+                <br>
+                <b>Votre email</b>
+                <br>
+                <br>
+                <b>Votre âge</b>
             </div>
 
         </div>
