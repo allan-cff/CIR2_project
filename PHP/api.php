@@ -160,21 +160,22 @@
 
     require_once 'album.php';
 
-    # GET /albums           // TODO
+    # GET /albums/recents           // TODO
     # GET /albums/:id       // TODO
 
     if($path[1] === 'albums'){
-        if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 3 && $path[2] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-          // TODO  $res = ;            // TODO : album avec détails + liste des sons
+          // TODO  $res = ;            // TODO : derniers albums sortis par date sans la liste des sons
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
         }
-        if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-        // TODO    $res = ;            // TODO : album sans la liste des sons (titre, image, auteurs, styles)
+        if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            $id = $path[2];
+        // TODO    $res = ;            // TODO : album avecv la liste des sons
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
