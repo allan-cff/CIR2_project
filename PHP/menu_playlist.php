@@ -34,7 +34,7 @@ if (!isset($_SESSION['id'])) {
 
 <div class="sidebar">
     <div class="logo">
-        <a href="lindex.php">
+        <a href="index.php">
             <img src="../Ressources/Logo.png" alt="Logo"/>
         </a>
     </div>
@@ -166,16 +166,18 @@ if (!isset($_SESSION['id'])) {
     </div>
 
 <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
+    <div class="plae">
+    <button type="button" class="btn btn-primary mo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    ajouter une playlist
     </button>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">ajouter playlist</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -197,7 +199,6 @@ if (!isset($_SESSION['id'])) {
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
         </div>
         </div>
     </div>
