@@ -3898,147 +3898,147 @@ ALTER TABLE ONLY public.utilisateur
 -- Name: TABLE a_compose; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_compose TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_compose TO web;
 
 
 --
 -- Name: TABLE a_creer; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_creer TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_creer TO web;
 
 
 --
 -- Name: TABLE admin; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.admin TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.admin TO web;
 
 
 --
 -- Name: SEQUENCE admin_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.admin_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.admin_id_seq TO web;
 
 
 --
 -- Name: TABLE album; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.album TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.album TO web;
 
 
 --
 -- Name: SEQUENCE album_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.album_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.album_id_seq TO web;
 
 
 --
 -- Name: TABLE appartient_a; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.appartient_a TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.appartient_a TO web;
 
 
 --
 -- Name: TABLE artiste; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.artiste TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.artiste TO web;
 
 
 --
 -- Name: SEQUENCE artiste_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.artiste_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.artiste_id_seq TO web;
 
 
 --
 -- Name: TABLE contenu_dans; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.contenu_dans TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.contenu_dans TO web;
 
 
 --
 -- Name: TABLE cree_par; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.cree_par TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.cree_par TO web;
 
 
 --
 -- Name: TABLE morceau; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.morceau TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.morceau TO web;
 
 
 --
 -- Name: SEQUENCE morceau_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.morceau_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.morceau_id_seq TO web;
 
 
 --
 -- Name: TABLE playlist; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.playlist TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.playlist TO web;
 
 
 --
 -- Name: SEQUENCE playlist_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.playlist_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.playlist_id_seq TO web;
 
 
 --
 -- Name: TABLE style_musique; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.style_musique TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.style_musique TO web;
 
 
 --
 -- Name: SEQUENCE style_musique_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.style_musique_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.style_musique_id_seq TO web;
 
 
 --
 -- Name: TABLE type_artiste; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.type_artiste TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.type_artiste TO web;
 
 
 --
 -- Name: SEQUENCE type_artiste_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.type_artiste_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.type_artiste_id_seq TO web;
 
 
 --
 -- Name: TABLE utilisateur; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.utilisateur TO web_project;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.utilisateur TO web;
 
 
 --
 -- Name: SEQUENCE utilisateur_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.utilisateur_id_seq TO web_project;
+GRANT SELECT,USAGE ON SEQUENCE public.utilisateur_id_seq TO web;
 
 
 --
