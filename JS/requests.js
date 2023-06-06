@@ -7,8 +7,7 @@ function jsonToFormdata(data){
 }
 
 function getUserId(callback){
-    callback(1);
-    //ajaxRequest('get', `/users/logged_id`, callback);
+    ajaxRequest('get', `users/loggedId`, (body) => {callback(body.id)});
 }
 
 function getUser(userId, callback){
@@ -23,26 +22,26 @@ function getUser(userId, callback){
 }
 
 function modifyUser(userId, body, callback){
-    ajaxRequest('put', `/users/${userId}`, callback, jsonToFormdata(body));
+    ajaxRequest('put', `users/${userId}`, callback, jsonToFormdata(body));
 }
 
 function deleteUser(userId, callback){
-    ajaxRequest('delete', `/users/${userId}`, callback);
+    ajaxRequest('delete', `users/${userId}`, callback);
 }
 
 function getNowListening(userId, callback){
     callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
-    //ajaxRequest('get', `/users/${userId}/nowlistening`, callback);
+    //ajaxRequest('get', `users/${userId}/nowlistening`, callback);
 }
 
 function setNowListening(userId, songId, callback){
     callback();
-    //ajaxRequest('post', `/users/${userId}/nowlistening`, callback, jsonToFormdata({"id":songId}));
+    //ajaxRequest('post', `users/${userId}/nowlistening`, callback, jsonToFormdata({"id":songId}));
 }
 
 function getNextSong(userId, callback){
     callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
-    //ajaxRequest('get', `/users/${userId}/nextsong`, callback);
+    //ajaxRequest('get', `users/${userId}/nextsong`, callback);
 }
 
 function getRecentSongs(userId, callback){
@@ -58,15 +57,15 @@ function getRecentSongs(userId, callback){
         {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
         {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
     ])
-    //ajaxRequest('get', `/users/${userId}/recents`, callback);
+    //ajaxRequest('get', `users/${userId}/recents`, callback);
 }
 
 function addRecentSong(userId, body, callback){
-    ajaxRequest('post', `/users/${userId}/recents`, callback, jsonToFormdata(body));
+    ajaxRequest('post', `users/${userId}/recents`, callback, jsonToFormdata(body));
 }
 
 function deleteRecentSong(userId, songId, callback){
-    ajaxRequest('delete', `/users/${userId}/recents/${songId}`, callback);
+    ajaxRequest('delete', `users/${userId}/recents/${songId}`, callback);
 }
 
 function getWaitList(userId, callback){
@@ -82,11 +81,11 @@ function getWaitList(userId, callback){
         {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png", duration: 110},
         {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png", duration: 110}
     ])
-    //ajaxRequest('get', `/users/${userId}/waitlist`, callback);
+    //ajaxRequest('get', `users/${userId}/waitlist`, callback);
 }
 
 function addToWaitlist(userId, body, callback){
-    ajaxRequest('put', `/users/${userId}/waitlist`, callback, jsonToFormdata(body));
+    ajaxRequest('put', `users/${userId}/waitlist`, callback, jsonToFormdata(body));
 }
 
 function getFavorites(userId, callback){
@@ -107,15 +106,15 @@ function getFavorites(userId, callback){
         {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png", image:"../Ressources/jos.png", duration:146},
         {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png", image:"../Ressources/naps.png", duration:146}
     ]})
-    //ajaxRequest('get', `/users/${userId}/favorites`, callback);
+    //ajaxRequest('get', `users/${userId}/favorites`, callback);
 }
 
 function addFavorite(userId, body, callback){
-    ajaxRequest('put', `/users/${userId}/favorites`, callback, jsonToFormdata(body));
+    ajaxRequest('put', `users/${userId}/favorites`, callback, jsonToFormdata(body));
 }
 
 function deleteFavorite(userId, songId, callback){
-    ajaxRequest('delete', `/users/${userId}/favorites/${songId}`, callback);
+    ajaxRequest('delete', `users/${userId}/favorites/${songId}`, callback);
 }
 
 function listPlaylists(userId, callback){
@@ -193,11 +192,11 @@ function listPlaylists(userId, callback){
         "duration": 1299,
         "tracksCount": 14 },
     ])
-   // ajaxRequest('get', `/users/${userId}/playlists`, callback);
+   // ajaxRequest('get', `users/${userId}/playlists`, callback);
 }
 
 function addPlaylist(userId, body, callback){
-    ajaxRequest('post', `/users/${userId}/playlists`, callback, jsonToFormdata(body));
+    ajaxRequest('post', `users/${userId}/playlists`, callback, jsonToFormdata(body));
 }
 
 function getPlaylist(userId, playlistId, callback){
@@ -218,27 +217,27 @@ function getPlaylist(userId, playlistId, callback){
         {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png", image:"../Ressources/jos.png", duration:146},
         {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png", image:"../Ressources/naps.png", duration:146}
     ]})
-    //ajaxRequest('delete', `/users/${userId}/playlists/${playlistId}`, callback);
+    //ajaxRequest('delete', `users/${userId}/playlists/${playlistId}`, callback);
 }
 
 function addToPlaylist(userId, playlistId, body, callback){
-    ajaxRequest('post', `/users/${userId}/playlists/${playlistId}/tracks`, callback, jsonToFormdata(body));
+    ajaxRequest('post', `users/${userId}/playlists/${playlistId}/tracks`, callback, jsonToFormdata(body));
 }
 
 function deleteFromPlaylist(userId, playlistId, songId, callback){
-    ajaxRequest('delete', `/users/${userId}/playlists/${playlistId}/tracks/${songId}`, callback);
+    ajaxRequest('delete', `users/${userId}/playlists/${playlistId}/tracks/${songId}`, callback);
 }
 
 function listArtists(callback){
-    ajaxRequest('get', `/artists`, callback);
+    ajaxRequest('get', `artists`, callback);
 }
 
 function getArtist(artistId, callback){
-    ajaxRequest('get', `/artists/${artistId}`, callback);
+    ajaxRequest('get', `artists/${artistId}`, callback);
 }
 
 function listArtistAlbums(artistId, callback){
-    ajaxRequest('get', `/artists/${artistId}/albums`, callback);
+    ajaxRequest('get', `artists/${artistId}/albums`, callback);
 }
 
 function getRecentAlbums(callback){
@@ -254,7 +253,7 @@ function getRecentAlbums(callback){
         {id:9, title:"good album8", author:"JackUzi", image:"../Ressources/j.png"},
         {id:10, title:"good album9", author:"JackUzi", image:"../Ressources/j.png"},
     ])
-    //ajaxRequest('get', `/albums/recents`, callback);
+    //ajaxRequest('get', `albums/recents`, callback);
 }
 
 function getAlbum(albumId, callback){
@@ -276,7 +275,7 @@ function getAlbum(albumId, callback){
             {id:10, author:"Allan", title:"Bon son9", duration:150}
         ]
     })
-  //  ajaxRequest('get', `/albums/${albumId}`, callback);
+  //  ajaxRequest('get', `albums/${albumId}`, callback);
 }
 
 function listMusics(callback){
@@ -286,5 +285,5 @@ function listMusics(callback){
 function getMusic(trackId, callback){
     console.log("Getting music ", trackId)
     callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
-//    ajaxRequest('get', `/musics/${trackId}`, callback);
+//    ajaxRequest('get', `musics/${trackId}`, callback);
 }

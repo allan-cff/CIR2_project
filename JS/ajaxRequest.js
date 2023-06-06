@@ -7,6 +7,7 @@ function ajaxRequest(type, url, callback, data = null)
 
   let path = window.location.href.split('/');
   path.pop();
+  path.push('api.php')
   path.push(url);
 
   xhr.open(type , path.join('/'));
@@ -20,14 +21,13 @@ function ajaxRequest(type, url, callback, data = null)
       case 200:
         console.log(xhr.responseText);
         let resp = JSON.parse(xhr.responseText);
-        // console.log(resp);
+        console.log(resp);
         callback(resp);
         break;
       case 201:
         // console.log(url);
       default:
-        // console.log(xhr.status);
-        displayErrors(xhr.status);
+        console.error(xhr.status);
     }
   };
 

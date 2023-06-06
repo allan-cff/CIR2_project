@@ -58,7 +58,7 @@ function setNowPlaying(song, forcePlay=false){
         }
     });
     if(forcePlay){
-        if(!audioLector.paused){
+        if(audioLector.paused){
             let icon = document.querySelector('footer .music-player .progress-controller .control-buttons .play-pause-button i');
             icon.classList.toggle("fa-play")
             icon.classList.toggle("fa-pause")

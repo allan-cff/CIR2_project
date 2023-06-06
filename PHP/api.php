@@ -1,13 +1,15 @@
 <?php
-    require_once 'database.php';
+    require_once 'utils/database.php';
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
     $path = explode('/', $_SERVER['PATH_INFO']);
 
     
-    require_once 'playlist.php';
-    require_once 'user.php';
+    require_once 'utils/playlist.php';
+    require_once 'utils/user.php';
+
+    session_start();
 
     # POST /users
     # GET /users/:id
@@ -31,9 +33,19 @@
     # DELETE /users/:id/playlists/:id/tracks/:id    // TODO (suppression d'une musique d'une playlist)
 
 
-// TITRE ACTUELLEMENT JOUE
     if($path[1] === 'users'){
-        if($path[3] === 'nowlistening' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+// ID DE UTILISATEUR CONNECTE
+        if(count($path) === 3 && $path[2] === 'loggedId' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            if (isset($_SESSION['id'])) {
+                $res = array("id" => $_SESSION['id']);
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+// TITRE ACTUELLEMENT JOUE
+        if(count($path) === 4 && $path[3] === 'nowlistening' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
            $res = music_playing($id);
             if($res){
@@ -44,7 +56,7 @@
         }
 
 // PROCHAIN TITRE A JOUER
-        if($path[3] === 'nextsong' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'nextsong' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = next_track($id);
             if($res){
@@ -59,7 +71,7 @@
 
 // MONTRE LES DERNIER TITRE ECOUTE PAR L USER (HISTORIQUE)
 
-        if($path[3] === 'recents' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_historique($id);
             if($res){
@@ -71,7 +83,7 @@
 
 // AJOUTE UN TITRE DANS L HISTORIQUE DES TITRES ECOUTE
 
-        if($path[3] === 'recents' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 5 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
             $id_morceau = $path[4];
             $res = add_track_to_historical($id, $id_morceau); //METTRE LA FONCTION QUI PERMET D AJOUTER UN SONS A 10 DERNIER MORCEAUX 2COUTER
@@ -84,7 +96,7 @@
 
 //  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE
 
-        if($path[3] === 'recents' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+        if(count($path) === 5 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_morceau = $path[4];
             //$res = ($id, $id_morceau); //METTRE LA FONCTION QUI PERMET DE SUPP UN DES 10 DERNIER MORCEAUX ECOUTER
@@ -96,7 +108,7 @@
         }
 
 // MONTRE LES TITRES DANS LA FILE D ATTENTE
-        if($path[3] === 'waitlist' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'waitlist' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_liste_attente($id);
             if($res){
@@ -107,7 +119,7 @@
         }
 
 // RETIRE UN TITRE DE LA FILE D ATTENTE
-        if($path[3] === 'waitlist' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+        if(count($path) === 5 && $path[3] === 'waitlist' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_morceau = $path[4];
             $res = remove_track_from_liste_attente($id, $id_morceau);
@@ -119,7 +131,7 @@
         }
 
 //  AJOUT D UN TITRE DANS LA LISTE D ATTENTE
-        if($path[3] === 'waitlist' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 5 && $path[3] === 'waitlist' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
             $id_morceau = $path[4];
             $res = add_track_to_liste_attente($id, $id_morceau); //AJOUT D UN SON A LA LISTE D ATTENTE
@@ -131,7 +143,7 @@
         }
 
 // MONTRE LES TITRE FAVORIE DE LUTILISATEUR
-        if($path[3] === 'favorites' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_favorite($id);
             if($res){
@@ -142,7 +154,7 @@
         }
 
 // AJOUT D UN TITRE AUX FAVORI
-        if($path[3] === 'favorites' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 5 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
             $id_morceau = $path[4];
             $res = add_track_to_favorite($id, $id_morceau);
@@ -155,7 +167,7 @@
 
 // SUPPRESSION D UN TITRE FAVORI
 
-        if($path[3] === 'favorites' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+        if(count($path) === 5 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_morceau = $path[4];
             $res = remove_track_from_favorite($id, $id_morceau);
@@ -168,7 +180,7 @@
 
 
 //AJOUT D UNE NOUVELLE PLAYLIST
-        if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 4 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $titre = NULL;
             $description = NULL;
             $image = NULL;
@@ -187,7 +199,7 @@
         }
 
 //AFFICHE LES PLAYLISTS DE L UTILISATEUR
-        if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_playlists_of_user($id);
             if($res){
@@ -198,7 +210,7 @@
         }
 
 //AFFICHE LES INFO D UNE PLAYLIST x LES TITRES DE LA PLAYLIST
-        if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_infos_of_playlist($id);
             $res["tracks"] = show_tracks_of_playlist($id);
@@ -212,7 +224,7 @@
 
         # POST /users/:id/playlists/:id/tracks/
 
-        if($path[3] === 'playlists' && $path[5] === 'tracks' && count($path) === 6 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 6 && $path[3] === 'playlists' && $path[5] === 'tracks' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
             $id_playlist = $path[4];
             $id_morceau = $_POST["musique"];
@@ -226,7 +238,7 @@
 
         # DELETE /users/:id/playlists/:id/tracks/:id    // TODO (suppression d'une musique d'une playlist)
 
-        if($path[3] === 'playlists' && $path[5] === 'tracks' && count($path) === 7 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+        if(count($path) === 7 && $path[3] === 'playlists' && $path[5] === 'tracks' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_playlist = $path[4];
             $id_morceau = $path[6];
@@ -240,7 +252,7 @@
 
 
 //DELETE UNE PLAYLIST DE L UTILISATEUR
-        if($path[3] === 'playlists' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+        if(count($path) === 5 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_play = $path[4];
             $res = delete_playlist($id);
@@ -289,7 +301,7 @@
     }
 
 
-    require_once 'artiste.php';
+    require_once 'utils/artiste.php';
 
     # GET /artists
     # GET /artists/:id              // TODO : artist info
@@ -297,7 +309,7 @@
     # nombre d'auditeur GET /artist/:id/auditor
 
     if($path[1] === 'artists'){
-        if($path[3] === 'albums' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'albums' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_albums_of_artist($id);
             if($res){
@@ -326,7 +338,7 @@
     }
 
 
-    require_once 'album.php';
+    require_once 'utils/album.php';
 
     # GET /albums/recents           // TODO
     # GET /albums/:id       // TODO
@@ -352,7 +364,7 @@
         }
     }
 
-    require_once 'morceau.php';
+    require_once 'utils/morceau.php';
 
     # GET /musics           // TODO  renvoie 10 musiques au hasard (top de la semaine)
     # GET /musics/:id       // TODO 
