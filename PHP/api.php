@@ -344,7 +344,7 @@
         }
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            show_album_per_id($id);
+            $res = show_album_per_id($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
