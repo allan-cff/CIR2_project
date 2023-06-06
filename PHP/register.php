@@ -29,14 +29,22 @@
 
         <!-- titre du formulaire -->
         <h1>Inscription à Rythmic</h1>
+        <div class="placement">
+            <div class="container">
+                <!-- champ de saisie pour le nom de l'utilisateur -->
+                <label for="lastname"><b>Nom :</b></label>
+                <input type="text" placeholder="Dupont" name="lastname" required>
+            </div>
+            <div class="container">
+                <!-- champ de saisie pour le prénom de l'utilisateur -->
+                <label for="firstname"><b>Prénom :</b></label>
+                <input type="text" placeholder="Jean" name="firstname" required>
+            </div>
+        </div>
 
-        <!-- champ de saisie pour le nom de l'utilisateur -->
-        <label for="lastname"><b>Votre nom :</b></label>
-        <input type="text" placeholder="Dupont" name="lastname" required>
-
-        <!-- champ de saisie pour le prenom de l'utilisateur-->
-        <label for="firstname"><b>Votre prenom :</b></label>
-        <input type="text" placeholder="Jean" name="firstname" required>
+        <!-- champ de saisie pour le nom d'utilisateur -->
+        <label for="username"><b>Username :</b></label>
+        <input type="text" placeholder="john_doe" name="username" required>
 
         <!-- âge de la personne -->
         <label for="birthdate"><b>Date de naissance :</b></label><br>
