@@ -340,13 +340,14 @@
 
     require_once 'utils/album.php';
 
-    # GET /albums/recents           // TODO
-    # GET /albums/:id       // TODO
+    # GET /albums/recents
+    # GET /albums/:id
+    # GET /album/:id/titre
 
     if($path[1] === 'albums'){
         if(count($path) === 3 && $path[2] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-          // TODO  $res = ;            // TODO : derniers albums sortis par date sans la liste des sons
+            $res = show_newest_albums();
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -355,32 +356,16 @@
         }
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-        // TODO    $res = ;            // TODO : album avecv la liste des sons
+            show_album_per_id($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
         }
-    }
-
-    require_once 'utils/morceau.php';
-
-    # GET /musics           // TODO  renvoie 10 musiques au hasard (top de la semaine)
-    # GET /musics/:id       // TODO 
-
-    if($path[1] === 'musics'){
-        if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'titre' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-         // TODO   $res = ;            
-            if($res){
-                echo json_encode($res);
-                http_response_code(200);
-                exit;
-            }
-        }
-        if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-          // TODO  $res = ;            
+            $res = show_tracks_of_album($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -388,6 +373,7 @@
             }
         }
     }
+
 
     # GET /search PARAMS :
     #                       artist=string
