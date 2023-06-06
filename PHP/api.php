@@ -8,6 +8,7 @@
     
     require_once 'utils/playlist.php';
     require_once 'utils/user.php';
+    require_once 'utils/morceau.php';
 
     session_start();
 
@@ -95,7 +96,7 @@
             }
         }
 
-//  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE // faire peut être demain
+//  SUPPRIME UN TITRE DE L HISTORIQUE DES ECOUTE // faire peut être demain
 
         if(count($path) === 5 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
@@ -147,7 +148,7 @@
         if(count($path) === 4 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $favorite_id = get_favorite_id($id)['id_playlist'];
-            $res = show_infos_of_playlist($favorite_id)[0];
+            $res = show_infos_of_playlist($favorite_id);
             $res["tracks"] = show_tracks_of_playlist($id);
             if($res){
                 echo json_encode($res);
@@ -157,12 +158,12 @@
         }
 
 // AJOUT D UN TITRE AUX FAVORI
-        if(count($path) === 5 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 4 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
-            $id_morceau = $path[4];
+            $id_morceau = $_POST['id'];
             $res = add_track_to_favorite($id, $id_morceau);
             if($res){
-                echo json_encode($res);
+                echo '{}';
                 http_response_code(200);
                 exit;
             }
@@ -213,8 +214,9 @@
         }
 
 //AFFICHE LES INFO D UNE PLAYLIST x LES TITRES DE LA PLAYLIST
-        if(count($path) === 4 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 5 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
+            $id_playlist = $path[4];
             $res = show_infos_of_playlist($id);
             $res["tracks"] = show_tracks_of_playlist($id);
             if($res){

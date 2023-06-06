@@ -73,7 +73,7 @@ function get_favorite_id($id) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_favorite)';
+        $sql = 'SELECT id_playlist FROM a_creer WHERE id = :id AND is_favorite';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -292,9 +292,9 @@ function show_infos_of_playlist($id_playlist) {
         $sql = $conn->prepare('SELECT playlist.id, playlist.nom, playlist.date_creation, playlist.image, playlist.description FROM playlist WHERE playlist.id = :id');
         $sql->bindParam(':id', $id_playlist);
         $sql->execute();
-        $infos = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $infos = $sql->fetchAll(PDO::FETCH_ASSOC)[0];
 
-        $sql2 = $conn->prepare('SELECT SUM(morceau.duree) from contenu_dans JOIN morceau using (id) JOIN playlist ON playlist.id = contenu_dans.id_playlist WHERE playlist.id = :id');
+        $sql2 = $conn->prepare('SELECT SUM(morceau.duree) from contenu_dans JOIN morceau using (id) WHERE id_playlist = :id');
         $sql2->bindParam(':id', $id_playlist);
         $sql2->execute();
         $duree_totale = $sql2->fetch(PDO::FETCH_ASSOC)['sum'];

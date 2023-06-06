@@ -1,4 +1,4 @@
-function ajaxRequest(type, url, callback, data = null)
+function ajaxRequest(type, url, callback=()=>{}, data = null)
 {
   let xhr;
 
@@ -19,6 +19,7 @@ function ajaxRequest(type, url, callback, data = null)
     switch (xhr.status)
     {
       case 200:
+        console.log(xhr.responseText)
         let resp = JSON.parse(xhr.responseText);
         callback(resp);
         break;

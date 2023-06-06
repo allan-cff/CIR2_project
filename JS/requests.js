@@ -1,7 +1,7 @@
 function jsonToFormdata(data){
     let form_data = new FormData();
     for (let key in data) {
-        form_data.append(key, item[key]);
+        form_data.append(key, data[key]);
     }
     return form_data
 }
@@ -83,24 +83,7 @@ function addToWaitlist(userId, body, callback){
 }
 
 function getFavorites(userId, callback){
-    callback({
-        "title": "Favoris",
-        "image": "../Ressources/magic.png",
-        "description": "Liste de vos titres likés",
-        "duration": 1299,
-        "tracks": [
-        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/j.png", duration:146},
-        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png", duration:146},
-        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png", duration:146},
-        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/j.png", duration:146},
-        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/magic.png", duration:146},
-        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/magic.png", duration:146},
-        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/j.png", duration:146},
-        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/jos.png", duration:146},
-        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/jos.png", duration:146},
-        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/naps.png", duration:146}
-    ]})
-    ajaxRequest('get', `users/${userId}/favorites`, callback);
+    ajaxRequest('get', `users/${userId}/favorites`, (body) => {callback(body)});
 }
 
 function addFavorite(userId, body, callback){
@@ -112,81 +95,7 @@ function deleteFavorite(userId, songId, callback){
 }
 
 function listPlaylists(userId, callback){
-    callback([
-        {"title": "Favoris",
-        "id":1,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play1",
-        "id":2,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play2",
-        "id":3,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play3",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play4",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play5",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play6",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play7",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play8",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play9",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play10",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-        {"title": "Play11",
-        "id":4,
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracksCount": 14 },
-    ])
-   // ajaxRequest('get', `users/${userId}/playlists`, callback);
+    ajaxRequest('get', `users/${userId}/playlists`, (body) => {callback(body)});
 }
 
 function addPlaylist(userId, body, callback){
@@ -194,24 +103,7 @@ function addPlaylist(userId, body, callback){
 }
 
 function getPlaylist(userId, playlistId, callback){
-    callback({
-        "title": "Ma playlist 5",
-        "image": "../Ressources/magic.png",
-        "description": "C'est une playlist vraiment trop stylée",
-        "duration": 1299,
-        "tracks": [
-        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", image:"../Ressources/j.png", duration:146},
-        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png", image:"../Ressources/alpha.png", duration:146},
-        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png", image:"../Ressources/alpha.png", duration:146},
-        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png", image:"../Ressources/j.png", duration:146},
-        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png", image:"../Ressources/magic.png", duration:146},
-        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png", image:"../Ressources/magic.png", duration:146},
-        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png", image:"../Ressources/j.png", duration:146},
-        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png", image:"../Ressources/jos.png", duration:146},
-        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png", image:"../Ressources/jos.png", duration:146},
-        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png", image:"../Ressources/naps.png", duration:146}
-    ]})
-    //ajaxRequest('delete', `users/${userId}/playlists/${playlistId}`, callback);
+    ajaxRequest('delete', `users/${userId}/playlists/${playlistId}`, (body) => {callback(body)});
 }
 
 function addToPlaylist(userId, playlistId, body, callback){
@@ -235,19 +127,7 @@ function listArtistAlbums(artistId, callback){
 }
 
 function getRecentAlbums(callback){
-    callback([
-        {id:1, title:"good album", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:2, title:"good album1", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:3, title:"good album2", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:4, title:"good album3", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:5, title:"good album4", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:6, title:"good album5", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:7, title:"good album6", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:8, title:"good album7", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:9, title:"good album8", author:"JackUzi", image:"../Ressources/j.png"},
-        {id:10, title:"good album9", author:"JackUzi", image:"../Ressources/j.png"},
-    ])
-    //ajaxRequest('get', `albums/recents`, callback);
+    ajaxRequest('get', `albums/recents`, (body) => {callback(body)});
 }
 
 function getAlbum(albumId, callback){

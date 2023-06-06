@@ -93,13 +93,14 @@ function initLikeButton(){
         }
         icon.classList.toggle("far")
         icon.classList.toggle("fas")
-        if(classList.contains("fas")){
+        userId = localStorage.getItem('userId');
+        if(icon.classList.contains("fas")){
             getNowListening(userId, song => {
-                addFavorite(userId, {"id": song.id}, ()=>{})
+                addFavorite(userId, {"id": song.id})
             })
         } else {
             getNowListening(userId, song => {
-                deleteFavorite(userId, song.id, ()=>{})
+                deleteFavorite(userId, song.id)
             })
         }
     })
@@ -183,12 +184,12 @@ function showLastAlbums(){
         for(let album of firstPage){
             let p = document.createElement("p");
             p.textContent = album.author;
-            wrappers[0].insertAdjacentElement("beforeend", createCardElement(album.image, album.title, album.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
+            wrappers[0].insertAdjacentElement("beforeend", createCardElement(album.image, album.titre, album.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
         }
         for(let album of secondPage){
             let p = document.createElement("p");
             p.textContent = album.author;
-            wrappers[1].insertAdjacentElement("beforeend", createCardElement(album.image, album.title, album.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
+            wrappers[1].insertAdjacentElement("beforeend", createCardElement(album.image, album.titre, album.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
         }
     })
 }               
@@ -230,21 +231,21 @@ function initAlbum(albumId){
 }
 
 function showPlaylist(playlist){
-    document.querySelector('#playlist-title').innerHTML = playlist.title
+    document.querySelector('#playlist-title').innerHTML = playlist.nom
     document.querySelector('.container img').setAttribute('src', playlist.image)
     document.querySelector('#playlist-description').innerHTML = playlist.description
-    document.querySelector('.playlist-details .total-duration').innerHTML = 'Durée totale : ' + secondsToHoursTimeString(playlist.duration)
+    document.querySelector('.playlist-details .total-duration').innerHTML = 'Durée totale : ' + secondsToHoursTimeString(playlist.duree_totale)
     document.querySelector('.playlist-details .track-count').innerHTML = 'Nombre de titres : ' + playlist.tracks.length;
     for(let track of playlist.tracks){
         const template = document.querySelector('#playlist-row-template');
         const clone = template.content.cloneNode(true);
         clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
-        clone.querySelector("td:nth-child(3)").innerHTML = track.title;
-        clone.querySelector("td:nth-child(4)>button").innerHTML = track.author;
+        clone.querySelector("td:nth-child(3)").innerHTML = track.titre;
+        clone.querySelector("td:nth-child(4)>button").innerHTML = track.artistes;
         clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
             elem.setAttribute("data-rythmicId", track.id);
         })
-        clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duration);
+        clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duree);
         document.querySelector('tbody').appendChild(clone);
     }
 }
@@ -265,8 +266,8 @@ function showPlaylistList(playlistList){
         carousel.appendChild(item)
         for(playlist of page){
             let p = document.createElement("p");
-            p.textContent = secondsToHoursTimeString(playlist.duration) + " - " + playlist.tracksCount + " titres";
-            wrapper.appendChild(createCardElement(playlist.image, playlist.title, playlist.id, p, (playlistId) => {
+            p.textContent = secondsToHoursTimeString(playlist.duree_totale) + " - " + playlist.nb_morceaux + " titres";
+            wrapper.appendChild(createCardElement(playlist.image, playlist.nom, playlist.id, p, (playlistId) => {
                 moveToPlaylist(()=>{
                     userId = localStorage.getItem('userId');
                     getPlaylist(userId, playlistId, (playlist)=>{
