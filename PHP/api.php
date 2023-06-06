@@ -12,6 +12,7 @@
     session_start();
 
     # POST /users
+    # GET /users/loggedId
     # GET /users/:id
     # PUT /users/:id
     # DELETE /users/:id 
@@ -145,7 +146,9 @@
 // MONTRE LES TITRES FAVORIS DE LUTILISATEUR
         if(count($path) === 4 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = show_tracks_of_favorite($id);
+            $favorite_id = get_favorite_id($id)['id_playlist'];
+            $res = show_infos_of_playlist($favorite_id)[0];
+            $res["tracks"] = show_tracks_of_playlist($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -279,7 +282,14 @@
             $id = $path[2];
             $res = show_user_per_id($id);
             if($res){
-                echo json_encode($res);
+                echo json_encode(array(
+                    "name" => $res["nom"],
+                    "surname" => $res["prenom"],
+                    "mail" => $res["mail"],
+                    "image" => $res["image"],
+                    "birth" => $res["age"],
+                    "username" => strtolower($res["prenom"]).'.'.strtolower($res["nom"]),
+                ));
                 http_response_code(200);
                 exit;
             }

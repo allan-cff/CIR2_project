@@ -71,7 +71,7 @@ function moveToProfile(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback();
 }
 
 function moveToSearch(callback){

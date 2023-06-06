@@ -66,7 +66,7 @@ function show_playlists_of_user($id) {
     return $playlist;
 }
 
-function show_tracks_of_favorite($id) {
+function get_favorite_id($id) {
     $database = database::connexionBD();
 
     if (!$database) {
@@ -77,7 +77,7 @@ function show_tracks_of_favorite($id) {
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tracks = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
@@ -128,18 +128,28 @@ function show_tracks_of_historique($id) {
 
 }
 
-function show_tracks_of_playlist($id) {
+function show_tracks_of_playlist($id_playlist) {
     $database = database::connexionBD();
 
     if (!$database) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = :id';
+        $sql = 'SELECT morceau.titre, morceau.duree, morceau.id, album.id AS id_album, album.image from morceau JOIN contenu_dans using (id) JOIN playlist ON contenu_dans.id_playlist = playlist.id JOIN album ON album.id = morceau.id_album WHERE playlist.id = :id';
         $stmt = $database->prepare($sql);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $id_playlist);
         $stmt->execute();
         $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($tracks as $track) {
+            $sql = 'SELECT artiste.id, artiste.nom FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau WHERE morceau.id = :id_morceau';
+            $stmt = $database->prepare($sql);
+            $stmt->bindParam(':id_morceau', $track['id']);
+            $stmt->execute();
+            $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $track['artistes'] = $artistes;
+        }
+        
     } 
     catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
@@ -254,21 +264,30 @@ function remove_a_track_from_playlist($id_playlist, $id_track) {
    
 }
 
-function show_infos_of_playlist($id) {
+function show_infos_of_playlist($id_playlist) {
     $conn = database::connexionBD();
     if(!$conn) {
         return false;
     }
     try {
-        $sql = $conn->prepare('SELECT * FROM playlist WHERE id = :id');
-        $sql->bindParam(':id', $id);
+        $sql = $conn->prepare('SELECT playlist.id, playlist.nom, playlist.date_creation, playlist.image, playlist.description FROM playlist WHERE playlist.id = :id');
+        $sql->bindParam(':id', $id_playlist);
         $sql->execute();
-        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $infos = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $sql2 = $conn->prepare('SELECT SUM(morceau.duree) from contenu_dans JOIN morceau using (id) JOIN playlist ON playlist.id = contenu_dans.id_playlist WHERE playlist.id = :id');
+        $sql2->bindParam(':id', $id_playlist);
+        $sql2->execute();
+        $duree_totale = $sql2->fetch(PDO::FETCH_ASSOC)['sum'];
+
+        // On créé un tableau associatif avec les infos de la playlist et la durée totale
+        $infos['duree_totale'] = $duree_totale;
+
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
-    return $result;
+    return $infos;
 
 }
 

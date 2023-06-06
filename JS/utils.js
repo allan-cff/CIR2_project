@@ -252,11 +252,9 @@ function showPlaylist(playlist){
 function showPlaylistList(playlistList){
     carousel = document.querySelector("#playlistsCarousel .carousel-inner")
     pages = []
-    console.log(playlistList)
     for(let i=5; i-5 < playlistList.length; i=i+5){
         end = Math.min(i, playlistList.length)
         pages.push(playlistList.slice(i-5, end))
-        console.log("Slicing " + (i-5).toString(10) + " - " + end)
     }
     for(page of pages){
         item = document.createElement("div")
@@ -279,4 +277,14 @@ function showPlaylistList(playlistList){
         }
     }
     carousel.querySelector("#playlistsCarousel .carousel-inner .carousel-item").classList.add("active")
+}
+
+function showProfile(profile){
+    console.log(profile)
+    document.querySelector('#username').innerHTML = profile.username;
+    document.querySelector('#name').innerHTML = profile.name;
+    document.querySelector('#surname').innerHTML = profile.surname;
+    document.querySelector('#mail').innerHTML = profile.mail;
+    document.querySelector('#birth').innerHTML = profile.birth;
+
 }

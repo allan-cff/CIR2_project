@@ -73,15 +73,15 @@ function show_albums_of_artist($id) {
 
 // FONCTION D'AFFICHAGE DES MORCEAUX D'UN ARTISTE PAR SON ID
 
-function show_musics_of_artist($id) {
+function show_musics_of_artist($id_artist) {
     $conn = database::connexionBD();
     if (!$conn) {
         return false;
     }
     try {
-        $stmt = 'SELECT morceau.titre, morceau.duree, artiste.nom AS artiste FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau WHERE artiste.id = :id';
+        $stmt = 'SELECT morceau.titre, morceau.duree, artiste.nom AS artiste, album.image FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau JOIN album ON album.id = morceau.id_album WHERE artiste.id = :id';
         $stmt = $conn->prepare($stmt);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $id_artist);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -176,3 +176,8 @@ function show_artists_alphabetic_order() {
     return $result;
 
 }
+
+
+
+
+
