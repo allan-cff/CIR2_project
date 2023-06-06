@@ -23,12 +23,12 @@ function music_playing($id_user) {
 
 
         // ON RECUP LE TITRE ET LA DUREE DU MORCEAU
-        $stmt = $conn->prepare("SELECT morceau.titre, morceau.duree, artiste.nom, album.image AS album FROM morceau JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste ON artiste.id = cree_par.id JOIN appartient_a ON morceau.id = appartient_a.id JOIN album ON appartient_a.id_album = album.id WHERE morceau.id = :id");
+        $stmt = $conn->prepare("SELECT morceau.id, morceau.titre, duree, data, album.image AS image FROM morceau JOIN album ON morceau.id_album = album.id WHERE morceau.id = :id");
         $stmt->bindParam(':id', $id_track);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         // ON RECUPERE LE NOM DES ARTISTES DU MORCEAU
-        $stmt = $conn->prepare("SELECT artiste.nom FROM morceau JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste ON artiste.id = cree_par.id WHERE morceau.id = :id");
+        $stmt = $conn->prepare("SELECT artiste.nom, artiste.id FROM morceau JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste ON artiste.id = cree_par.id WHERE morceau.id = :id");
         $stmt->bindParam(':id', $id_track);
         $stmt->execute();
         // ON ASSOCIE LE NOM DES ARTISTES A LA VARIABLE $ARTISTES
@@ -108,7 +108,7 @@ function next_track($id_user) {
     }
     // On récupère l'ID de la playlist liste d'attente de l'utilisateur
     try {
-        $sql = $conn->prepare('SELECT playlist.id FROM a_creer JOIN utilisateur USING (id) JOIN playlist ON a_creer.id_playlist = playlist.id WHERE utilisateur.id = :id_user AND a_creer.is_liste_attente = TRUE');
+        $sql = $conn->prepare('SELECT playlist.id FROM a_creer JOIN utilisateur USING (id) JOIN playlist ON a_creer.id_playlist = playlist.id WHERE utilisateur.id = :id_user AND a_creer.is_liste_attente');
         $sql->bindParam(':id_user', $id_user);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_ASSOC);
@@ -188,8 +188,82 @@ function next_track($id_user) {
     }
 }
 
+// POUR JOUER LE DERNIER MORCEAU AJOUTE A L HISTORIQUE
+function previous_track($id_user){
+    $conn = database::connexionBD();
+    if(!$conn) {
+        return false;
+    }
+    // On récupère l'ID de la playlist historique de l'utilisateur
+    try {
+        $sql = $conn->prepare('SELECT playlist.id FROM a_creer JOIN utilisateur USING (id) JOIN playlist ON a_creer.id_playlist = playlist.id WHERE utilisateur.id = :id_user AND a_creer.is_historique');
+        $sql->bindParam(':id_user', $id_user);
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_ASSOC);
 
+        $id_playlist = $result['id'];
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
 
+    // On récupère l'ID du dernier morceau dans l'historique
+    try {
+        $sql = $conn->prepare('SELECT c.id FROM contenu_dans c JOIN playlist ON id_playlist = playlist.id WHERE id_playlist = :id_playlist AND date_ajout < (SELECT date_ajout FROM contenu_dans c2 WHERE c2.id_playlist = :id_playlist AND c2.id = (SELECT id_morceau FROM utilisateur WHERE id = :id_user) ORDER BY date_ajout DESC LIMIT 1) ORDER BY date_ajout DESC LIMIT 1');
+        $sql->bindParam(':id_playlist', $id_playlist);
+        $sql->bindParam(':id_user', $id_user);
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_ASSOC);
+
+        echo $result;
+
+        // Si aucun morceau n'est dans l'historique jouer un morceau random
+        if(!$result) {
+            
+            $sql_random = $conn->prepare('SELECT id FROM morceau ORDER BY random() LIMIT 1');
+            $sql_random->execute();
+            $result = $sql_random->fetch(PDO::FETCH_ASSOC);
+            
+            $id_track = $result['id'];
+
+            // On change le morceau actuellement joué par le morceau choisit aleatoirement
+            try {
+                $sql = $conn->prepare('UPDATE utilisateur SET id_morceau = :id_track WHERE id = :id_user');
+                $sql->bindParam(':id_track', $id_track);
+                $sql->bindParam(':id_user', $id_user);
+                $sql->execute();
+                $result = $sql->fetch(PDO::FETCH_ASSOC);
+            }
+            catch (PDOException $exception) {
+                error_log('Connection error: ' . $exception->getMessage());
+                return false;
+            }
+
+        } 
+        
+        else {
+        
+            $id_track = $result['id'];
+            // On change le morceau actuellement joué par le morceau suivant
+            try {
+                $sql = $conn->prepare('UPDATE utilisateur SET id_morceau = :id_track WHERE id = :id_user');
+                $sql->bindParam(':id_track', $id_track);
+                $sql->bindParam(':id_user', $id_user);
+                $sql->execute();
+                $result = $sql->fetch(PDO::FETCH_ASSOC);
+            }
+            catch (PDOException $exception) {
+                error_log('Connection error: ' . $exception->getMessage());
+                return false;
+            }
+        }
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+}
 
 
 

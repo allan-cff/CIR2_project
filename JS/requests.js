@@ -24,38 +24,19 @@ function deleteUser(userId, callback){
 }
 
 function getNowListening(userId, callback){
-    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
-    //ajaxRequest('get', `users/${userId}/nowlistening`, callback);
-}
-
-function setNowListening(userId, songId, callback){
-    callback();
-    //ajaxRequest('post', `users/${userId}/nowlistening`, callback, jsonToFormdata({"id":songId}));
+    ajaxRequest('get', `users/${userId}/nowlistening`, (body) => {callback(body)});
 }
 
 function getNextSong(userId, callback){
-    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
-    //ajaxRequest('get', `users/${userId}/nextsong`, callback);
+    ajaxRequest('get', `users/${userId}/nextsong`, (body) => {callback(body)});
+}
+
+function getPrevSong(userId, callback){
+    ajaxRequest('get', `users/${userId}/prevsong`, (body) => {callback(body)});
 }
 
 function getRecentSongs(userId, callback){
-    callback([
-        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"},
-        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png"},
-        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png"},
-        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png"},
-        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png"},
-        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png"},
-        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png"},
-        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png"},
-        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
-        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
-    ])
-    //ajaxRequest('get', `users/${userId}/recents`, callback);
-}
-
-function addRecentSong(userId, body, callback){
-    ajaxRequest('post', `users/${userId}/recents`, callback, jsonToFormdata(body));
+    ajaxRequest('get', `users/${userId}/recents`, (body) => {callback(body)});
 }
 
 function deleteRecentSong(userId, songId, callback){

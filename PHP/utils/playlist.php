@@ -124,7 +124,7 @@ function show_tracks_of_historique($id) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id, album.image, morceau.duree, album.description, album.image as image_album, album.id as album_id from contenu_dans JOIN morceau using (id) JOIN album ON album.id = morceau.id_album where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_historique)';
+        $sql = 'SELECT morceau.titre, morceau.id, album.image, morceau.duree, album.id as album_id from contenu_dans JOIN morceau using (id) JOIN album ON album.id = morceau.id_album WHERE id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_historique) ORDER BY contenu_dans.date_ajout DESC LIMIT 10';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

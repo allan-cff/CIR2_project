@@ -9,7 +9,6 @@ function ajaxRequest(type, url, callback=()=>{}, data = null)
   path.pop();
   path.push('api.php')
   path.push(url);
-
   xhr.open(type , path.join('/'));
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -19,7 +18,6 @@ function ajaxRequest(type, url, callback=()=>{}, data = null)
     switch (xhr.status)
     {
       case 200:
-        console.log(xhr.responseText)
         let resp = JSON.parse(xhr.responseText);
         callback(resp);
         break;
