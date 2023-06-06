@@ -381,5 +381,8 @@
     #                       music=string
     #                       user=string
     #                       type=artist,album,music,user
+
+    if($path[1] === 'search')
+
     
 ?>

@@ -86,7 +86,7 @@ function show_tracks_of_album($id) {
     }
 
     try {
-        $stmt = $conn->prepare('SELECT * FROM morceau WHERE id_album = :id');
+        $stmt = $conn->prepare('SELECT morceau.titre, morceau.duree, albm.image, a.nom FROM morceau JOIN album albm on albm.id = morceau.id_album JOIN cree_par cp on morceau.id = cp.id_morceau join artiste a on a.id = cp.id WHERE id_album = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -202,7 +202,7 @@ function show_newest_albums() {
         return false;
     }
     try {
-        $stmt = $conn->prepare("SELECT * FROM album ORDER BY date_parution DESC LIMIT 10");
+        $stmt = $conn->prepare("SELECT album.titre, album.image, album.date_parution, ac.id_artiste, a.nom FROM album JOIN a_compose ac on album.id = ac.id JOIN artiste a on ac.id_artiste = a.id ORDER BY date_parution DESC LIMIT 10");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $exception) {
