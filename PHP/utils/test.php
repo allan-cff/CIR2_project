@@ -211,10 +211,35 @@
         echo json_encode($albums);
     }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $playlists = music_playing(1);
         echo json_encode($playlists);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $playlists = change_music_playing(1, 2);
+        echo json_encode($playlists);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        next_track(1);
+        $music = music_playing(1);
+    //    echo json_encode($music);
+        $musics_from_historical = show_musics_from_historical(1);
+        echo json_encode($musics_from_historical);
+    }*/
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $bool = remove_track_from_liste_attente(1, 2);
+        echo json_encode($bool);
+    }*/
+
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_nb_tracks_per_album(2);
+        echo json_encode($tracks);
     }
+
+
     
 
     
