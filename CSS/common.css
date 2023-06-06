@@ -235,7 +235,12 @@ footer {
 }
 
 .music-player .like-button {
-    color: #43AD74;
+    color: crimson;
+}
+
+.music-player .icons button{
+    background-color: #253659;
+    border: none;
 }
 
 .music-player .image-container {
