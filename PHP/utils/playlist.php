@@ -235,5 +235,24 @@ function show_tracks_of_a_playlist_random_order($id_playlist) {
     return $result;
 }
 
+function remove_a_track_from_playlist($id_playlist, $id_track) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        $stmt = $conn->prepare('DELETE FROM contenu_dans WHERE id_playlist = :id_playlist AND id = :id_track');
+        $stmt->bindParam(':id_playlist', $id_playlist);
+        $stmt->bindParam(':id_track', $id_track);
+        $stmt->execute();
+        
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return true;
+   
+}
+
 
 
