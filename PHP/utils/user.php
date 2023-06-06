@@ -60,8 +60,8 @@ function add_new_user($prenom, $nom, $age, $mail, $password) {
             if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 
                 try {
-                    $sql = 'INSERT INTO utilisateur (prenom, nom, age, mail, password, username, is_admin) 
-                            VALUES ( :prenom, :nom, :age, :mail, :password, :username, FALSE) RETURNING id';
+                    $sql = 'INSERT INTO utilisateur (prenom, nom, age, mail, password, username) 
+                            VALUES ( :prenom, :nom, :age, :mail, :password, :username) RETURNING id';
                     $stmt = $conn->prepare($sql);
     
                     $pwd = password_hash($password, PASSWORD_BCRYPT);
