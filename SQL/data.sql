@@ -178,6 +178,7 @@ INSERT INTO appartient_a (id, id_album) VALUES
 INSERT INTO cree_par (id, id_morceau) VALUES 
 (3, 12),
 (11, 12),
+(11, 11),
 (1, 2),
 (1, 3),
 (1, 4),

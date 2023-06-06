@@ -94,11 +94,21 @@ function show_tracks_of_liste_attente($id) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_liste_attente)';
+        $sql = 'SELECT morceau.titre, contenu_dans.id, album.image as image_album, album.id as album_id from contenu_dans JOIN morceau using (id) JOIN album ON album.id = morceau.id_album where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_liste_attente)';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        // ON RECUPERE LES ARTISTES DE CHAQUE MORCEAU
+        for($i=0; $i<count($tracks); $i++){
+            $sql = 'SELECT artiste.id, artiste.nom FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau WHERE morceau.id = :id_morceau';
+            $stmt = $database->prepare($sql);
+            $stmt->bindParam(':id_morceau', $tracks[$i]['id']);
+            $stmt->execute();
+            $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tracks[$i]['artistes'] = $artistes;
+        }
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
@@ -114,13 +124,22 @@ function show_tracks_of_historique($id) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_historique)';
+        $sql = 'SELECT morceau.titre, contenu_dans.id, album.image, morceau.duree, album.description, album.image as image_album, album.id as album_id from contenu_dans JOIN morceau using (id) JOIN album ON album.id = morceau.id_album where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_historique)';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } 
-    catch (PDOException $exception) {
+        
+        // ON RECUPERE LES ARTISTES DE CHAQUE MORCEAU
+        for($i=0; $i<count($tracks); $i++){
+            $sql = 'SELECT artiste.id, artiste.nom FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau WHERE morceau.id = :id_morceau';
+            $stmt = $database->prepare($sql);
+            $stmt->bindParam(':id_morceau', $tracks[$i]['id']);
+            $stmt->execute();
+            $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tracks[$i]['artistes'] = $artistes;
+        }
+    } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
@@ -141,13 +160,13 @@ function show_tracks_of_playlist($id_playlist) {
         $stmt->execute();
         $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach($tracks as $track) {
+        for($i=0; $i<count($tracks); $i++){
             $sql = 'SELECT artiste.id, artiste.nom FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau WHERE morceau.id = :id_morceau';
             $stmt = $database->prepare($sql);
-            $stmt->bindParam(':id_morceau', $track['id']);
+            $stmt->bindParam(':id_morceau', $tracks[$i]['id']);
             $stmt->execute();
             $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $track['artistes'] = $artistes;
+            $tracks[$i]['artistes'] = $artistes;
         }
         
     } 

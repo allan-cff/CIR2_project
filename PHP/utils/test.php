@@ -28,26 +28,27 @@
     if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $nb_tracks = show_nb_tracks_per_album(1);
         echo json_encode($nb_tracks);
-    }
+    }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $tracks = show_tracks_of_album(2);
         echo json_encode($tracks);
-    }
+    }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $tracks = show_tracks_of_album_alphabetic_order(2);
         echo json_encode($tracks);
-    }
+    }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $tracks = show_tracks_of_album_default_order(2);
         echo json_encode($tracks);
-    }
+    }*/
 
     // USERS
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $options = array(
             'mail' => 'modified@a.a',
             'username' => 'modified'
@@ -234,11 +235,15 @@
         echo json_encode($bool);
     }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $tracks = show_nb_tracks_per_album(2);
         echo json_encode($tracks);
-    }
+    }*/
 
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_tracks_of_liste_attente(1);
+        echo json_encode($tracks);
+    }
 
     
 
