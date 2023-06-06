@@ -18,28 +18,28 @@ audioLector.addEventListener("ended", playNext);
 
 playerTimeInterval = null;
 
-document.querySelector("input#musicProgress").addEventListener('change', (e) => {
-    document.querySelector(".progress-controller .current-time").innerHTML = secondsToTimeString(e.target.value);
-    if(e.target.value > audioLector.currentTime + 1 || e.target.value < audioLector.currentTime - 1){
-        audioLector.currentTime = e.target.value;
-        playerTimeInterval = setInterval(() => {
-            document.querySelector(".progress-controller .current-time").innerHTML = secondsToTimeString(audioLector.currentTime);
-            let range = document.querySelector("input#musicProgress").setAttribute("value", audioLector.currentTime);
-        }, 1000)
-    }
-})
 
-getUserId(userId => {
+getUserId((userId) => {
     //show left bar infos
     showWaitingList(userId);
     showUser(userId);
     //show footer info
     initPlayPauseButton();
     initLikeButton();
-    getNowListening(userId, setNowPlaying)
-    //show nav info
-
+    initMusicProgress();
+    initMusicVolume();
+    getNowListening(userId, setNowPlaying);
     //show index page info
     showLastListened(userId);
     showLastAlbums();
 });
+
+document.querySelector('.logo img').addEventListener("click", (e)=>{
+    moveToIndex(()=>{
+        console.log("index clicked")
+        getUserId((userId) => {
+            showLastListened(userId);
+            showLastAlbums();
+        })
+    });
+})

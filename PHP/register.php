@@ -52,14 +52,14 @@
 
         <?php
         // Le client devient membre du site
-        require_once("database.php");
-        require_once("user.php");
+        require_once("utils/database.php");
+        require_once("utils/user.php");
         session_start();
 
 
         // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
         if (isset($_SESSION['id'])) {
-            header('Location: lindex.php');
+            header('Location: index.php');
         }
         
 

@@ -22,12 +22,12 @@
 
 <!-- formulaire de connexion -->
 <?php
-    require_once("user.php");
+    require_once("utils/user.php");
     session_start();
 
     // Si l'utilisateur est deja connecte, on le redirige vers la page d'accueil
     if (isset($_SESSION['id'])) {
-        header('Location: lindex.php');
+        header('Location: index.php');
     }
 
     // Si le formulaire de connexion a ete soumis, on verifie les informations de connexion
