@@ -254,5 +254,38 @@ function remove_a_track_from_playlist($id_playlist, $id_track) {
    
 }
 
+// Fonction qui supprime tout dans l'historique des derniers morceaux écoutés
+
+function clear_historique($id_user) {
+    $conn = database::connexionBD();
+    if (!$conn) {
+        return false;
+    }
+    try {
+        // On récup en premier l'id de la playlist historique de l'user
+        $sql = 'SELECT id_playlist FROM a_creer WHERE id = :id_user AND is_historique = TRUE';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_user', $id_user);
+        $stmt->execute();
+        $id_playlist = $stmt->fetch(PDO::FETCH_ASSOC)['id_playlist'];
+
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    try {
+        // On supprime ensuite tout dans la table contenu_dans
+        $sql = 'DELETE FROM contenu_dans WHERE id_playlist = :id_playlist';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_playlist', $id_playlist);
+        $stmt->execute();
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+}
+
 
 
