@@ -13,12 +13,9 @@ function toggleMusic(){
     }    
 }
 
-function playNext(){
-    console.log("Playing next");
-}
-
-function playPrevious(){
-    console.log("Playing previous");
+function initPreviousNextButtons(){
+    document.querySelector('button.forward-button').addEventListener('click', playNext);
+    document.querySelector('button.backward-button').addEventListener('click', playPrevious);
 }
 
 function secondsToMinutesTimeString(seconds){
@@ -38,10 +35,33 @@ function playNow(songId){
     })
 }
 
+function playNext(){
+    userId = localStorage.getItem('userId');
+    getNextSong(userId, (song) => {
+        setNowPlaying(song, true);
+        showLastListened(userId);
+    })
+}
+
+function playPrevious(){
+    userId = localStorage.getItem('userId');
+    getPrevSong(userId, (song) => {
+        setNowPlaying(song, true);
+        showLastListened(userId);
+    })
+}
+
 function setNowPlaying(song, forcePlay=false){
     document.querySelector(".music-player .image-container img").setAttribute("src", song.image)
-    document.querySelector(".music-player .song-description .title").innerHTML = song.title;
-    document.querySelector(".music-player .song-description .artist").innerHTML = song.author;
+    document.querySelector(".music-player .song-description .title").innerHTML = song.titre;
+    song.artistes.forEach((artist) => {
+        let artistButton = document.createElement("button")
+        artistButton.classList.add('artist')
+        artistButton.setAttribute('data-rythmicid', artist.id)
+        artistButton.innerHTML = artist.nom
+        document.querySelector(".music-player .song-description .artists-list").appendChild(artistButton)
+    })
+    userId = localStorage.getItem('userId');
     audioLector.setAttribute("src", song.data)
     audioLector.load()
     document.querySelector(".progress-controller .current-time").innerHTML = "0:00";
@@ -159,28 +179,33 @@ function showUser(userId){
 }
 
 function showLastListened(userId){
-    wrappers = document.querySelectorAll("#lastListened .carousel-inner .carousel-item .cards-wrapper")
+    let wrappers = document.querySelectorAll("#lastListened .carousel-inner .carousel-item .cards-wrapper")
+    wrappers.forEach(wrapper => {
+        while (wrapper.firstChild) {
+            wrapper.removeChild(wrapper.lastChild);
+        }
+    })
     getRecentSongs(userId, (songsList) => {
-        firstPage = songsList.slice(0, 5);
-        secondPage = songsList.slice(5, 10);
+        let firstPage = songsList.slice(0, 5);
+        let secondPage = songsList.slice(5, 10);
         for(let song of firstPage){
             let p = document.createElement("p");
             p.textContent = song.author;
-            wrappers[0].insertAdjacentElement("beforeend", createCardElement(song.image, song.title, song.id, p, (songId) => {playNow(songId)}))
+            wrappers[0].appendChild(createCardElement(song.image, song.titre, song.id, p, (songId) => {playNow(songId)}))
         }
         for(let song of secondPage){
             let p = document.createElement("p");
             p.textContent = song.author;
-            wrappers[1].insertAdjacentElement("beforeend", createCardElement(song.image, song.title, song.id, p, (songId) => {playNow(songId)}))
+            wrappers[1].appendChild(createCardElement(song.image, song.title, song.id, p, (songId) => {playNow(songId)}))
         }
     })
 }
 
 function showLastAlbums(){
-    wrappers = document.querySelectorAll("#recentAlbums .carousel-inner .carousel-item .cards-wrapper")
+    let wrappers = document.querySelectorAll("#recentAlbums .carousel-inner .carousel-item .cards-wrapper")
     getRecentAlbums((albumsList) => {
-        firstPage = albumsList.slice(0, 5);
-        secondPage = albumsList.slice(5, 10);
+        let firstPage = albumsList.slice(0, 5);
+        let secondPage = albumsList.slice(5, 10);
         for(let album of firstPage){
             let p = document.createElement("p");
             p.textContent = album.author;
@@ -201,8 +226,8 @@ function showWaitingList(userId){
             waitingList.insertAdjacentHTML("beforeend", `
             <li class="list-group-item">
                 <img src="${song.image}">
-                <p class="attente_title">${song.title}</p>
-                <p class="attente_info">${song.author}<br>${secondsToMinutesTimeString(song.duration)}</p>
+                <p class="attente_title">${song.titre}</p>
+                <p class="attente_info">${'coucou'}<br>${secondsToMinutesTimeString(song.duree)}</p>
             </li>
             `);
         }
