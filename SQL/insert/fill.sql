@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: a_compose; Type: TABLE; Schema: public; Owner: admin
+-- Name: a_compose; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.a_compose (
@@ -30,10 +30,10 @@ CREATE TABLE public.a_compose (
 );
 
 
-ALTER TABLE public.a_compose OWNER TO admin;
+ALTER TABLE public.a_compose OWNER TO postgres;
 
 --
--- Name: a_creer; Type: TABLE; Schema: public; Owner: admin
+-- Name: a_creer; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.a_creer (
@@ -45,10 +45,10 @@ CREATE TABLE public.a_creer (
 );
 
 
-ALTER TABLE public.a_creer OWNER TO admin;
+ALTER TABLE public.a_creer OWNER TO postgres;
 
 --
--- Name: album; Type: TABLE; Schema: public; Owner: admin
+-- Name: album; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.album (
@@ -59,10 +59,10 @@ CREATE TABLE public.album (
 );
 
 
-ALTER TABLE public.album OWNER TO admin;
+ALTER TABLE public.album OWNER TO postgres;
 
 --
--- Name: album_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: album_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.album ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -76,7 +76,7 @@ ALTER TABLE public.album ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: appartient_a; Type: TABLE; Schema: public; Owner: admin
+-- Name: appartient_a; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.appartient_a (
@@ -85,10 +85,10 @@ CREATE TABLE public.appartient_a (
 );
 
 
-ALTER TABLE public.appartient_a OWNER TO admin;
+ALTER TABLE public.appartient_a OWNER TO postgres;
 
 --
--- Name: artiste; Type: TABLE; Schema: public; Owner: admin
+-- Name: artiste; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.artiste (
@@ -100,10 +100,10 @@ CREATE TABLE public.artiste (
 );
 
 
-ALTER TABLE public.artiste OWNER TO admin;
+ALTER TABLE public.artiste OWNER TO postgres;
 
 --
--- Name: artiste_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: artiste_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.artiste ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -117,7 +117,7 @@ ALTER TABLE public.artiste ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: contenu_dans; Type: TABLE; Schema: public; Owner: admin
+-- Name: contenu_dans; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.contenu_dans (
@@ -127,10 +127,10 @@ CREATE TABLE public.contenu_dans (
 );
 
 
-ALTER TABLE public.contenu_dans OWNER TO admin;
+ALTER TABLE public.contenu_dans OWNER TO postgres;
 
 --
--- Name: cree_par; Type: TABLE; Schema: public; Owner: admin
+-- Name: cree_par; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cree_par (
@@ -139,10 +139,10 @@ CREATE TABLE public.cree_par (
 );
 
 
-ALTER TABLE public.cree_par OWNER TO admin;
+ALTER TABLE public.cree_par OWNER TO postgres;
 
 --
--- Name: morceau; Type: TABLE; Schema: public; Owner: admin
+-- Name: morceau; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.morceau (
@@ -154,10 +154,10 @@ CREATE TABLE public.morceau (
 );
 
 
-ALTER TABLE public.morceau OWNER TO admin;
+ALTER TABLE public.morceau OWNER TO postgres;
 
 --
--- Name: morceau_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: morceau_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.morceau ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -171,7 +171,7 @@ ALTER TABLE public.morceau ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: playlist; Type: TABLE; Schema: public; Owner: admin
+-- Name: playlist; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.playlist (
@@ -183,10 +183,10 @@ CREATE TABLE public.playlist (
 );
 
 
-ALTER TABLE public.playlist OWNER TO admin;
+ALTER TABLE public.playlist OWNER TO postgres;
 
 --
--- Name: playlist_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: playlist_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.playlist ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -200,7 +200,7 @@ ALTER TABLE public.playlist ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: style_musique; Type: TABLE; Schema: public; Owner: admin
+-- Name: style_musique; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.style_musique (
@@ -209,10 +209,10 @@ CREATE TABLE public.style_musique (
 );
 
 
-ALTER TABLE public.style_musique OWNER TO admin;
+ALTER TABLE public.style_musique OWNER TO postgres;
 
 --
--- Name: style_musique_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: style_musique_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.style_musique ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -226,7 +226,7 @@ ALTER TABLE public.style_musique ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTIT
 
 
 --
--- Name: type_artiste; Type: TABLE; Schema: public; Owner: admin
+-- Name: type_artiste; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.type_artiste (
@@ -235,10 +235,10 @@ CREATE TABLE public.type_artiste (
 );
 
 
-ALTER TABLE public.type_artiste OWNER TO admin;
+ALTER TABLE public.type_artiste OWNER TO postgres;
 
 --
--- Name: type_artiste_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: type_artiste_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.type_artiste ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -252,7 +252,7 @@ ALTER TABLE public.type_artiste ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY
 
 
 --
--- Name: utilisateur; Type: TABLE; Schema: public; Owner: admin
+-- Name: utilisateur; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.utilisateur (
@@ -267,10 +267,10 @@ CREATE TABLE public.utilisateur (
 );
 
 
-ALTER TABLE public.utilisateur OWNER TO admin;
+ALTER TABLE public.utilisateur OWNER TO postgres;
 
 --
--- Name: utilisateur_id_seq; Type: SEQUENCE; Schema: public; Owner: admin
+-- Name: utilisateur_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 ALTER TABLE public.utilisateur ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -284,7 +284,7 @@ ALTER TABLE public.utilisateur ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY 
 
 
 --
--- Data for Name: a_compose; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: a_compose; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.a_compose (id, id_artiste) FROM stdin;
@@ -352,7 +352,7 @@ COPY public.a_compose (id, id_artiste) FROM stdin;
 
 
 --
--- Data for Name: a_creer; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: a_creer; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.a_creer (id, id_playlist, is_favorite, is_historique, is_liste_attente) FROM stdin;
@@ -360,7 +360,7 @@ COPY public.a_creer (id, id_playlist, is_favorite, is_historique, is_liste_atten
 
 
 --
--- Data for Name: album; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: album; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.album (id, titre, date_parution, image) FROM stdin;
@@ -419,7 +419,7 @@ COPY public.album (id, titre, date_parution, image) FROM stdin;
 
 
 --
--- Data for Name: appartient_a; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: appartient_a; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.appartient_a (id, id_album) FROM stdin;
@@ -593,7 +593,7 @@ COPY public.appartient_a (id, id_album) FROM stdin;
 
 
 --
--- Data for Name: artiste; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: artiste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.artiste (id, nom, nb_auditeurs, image, id_type_artiste) FROM stdin;
@@ -807,7 +807,7 @@ COPY public.artiste (id, nom, nb_auditeurs, image, id_type_artiste) FROM stdin;
 
 
 --
--- Data for Name: contenu_dans; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: contenu_dans; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.contenu_dans (id, id_playlist, date_ajout) FROM stdin;
@@ -815,7 +815,7 @@ COPY public.contenu_dans (id, id_playlist, date_ajout) FROM stdin;
 
 
 --
--- Data for Name: cree_par; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: cree_par; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.cree_par (id, id_morceau) FROM stdin;
@@ -1856,7 +1856,7 @@ COPY public.cree_par (id, id_morceau) FROM stdin;
 
 
 --
--- Data for Name: morceau; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: morceau; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.morceau (id, titre, duree, data, id_album) FROM stdin;
@@ -2628,7 +2628,7 @@ COPY public.morceau (id, titre, duree, data, id_album) FROM stdin;
 
 
 --
--- Data for Name: playlist; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: playlist; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.playlist (id, nom, date_creation, image, description) FROM stdin;
@@ -2636,7 +2636,7 @@ COPY public.playlist (id, nom, date_creation, image, description) FROM stdin;
 
 
 --
--- Data for Name: style_musique; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: style_musique; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.style_musique (id, type_musique) FROM stdin;
@@ -2670,7 +2670,7 @@ COPY public.style_musique (id, type_musique) FROM stdin;
 
 
 --
--- Data for Name: type_artiste; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: type_artiste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.type_artiste (id, type) FROM stdin;
@@ -2685,7 +2685,7 @@ COPY public.type_artiste (id, type) FROM stdin;
 
 
 --
--- Data for Name: utilisateur; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: utilisateur; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.utilisateur (id, prenom, nom, age, mail, username, password, id_morceau) FROM stdin;
@@ -2693,56 +2693,56 @@ COPY public.utilisateur (id, prenom, nom, age, mail, username, password, id_morc
 
 
 --
--- Name: album_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: album_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.album_id_seq', 51, true);
 
 
 --
--- Name: artiste_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: artiste_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.artiste_id_seq', 206, true);
 
 
 --
--- Name: morceau_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: morceau_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.morceau_id_seq', 764, true);
 
 
 --
--- Name: playlist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: playlist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.playlist_id_seq', 1, false);
 
 
 --
--- Name: style_musique_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: style_musique_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.style_musique_id_seq', 26, true);
 
 
 --
--- Name: type_artiste_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: type_artiste_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.type_artiste_id_seq', 7, true);
 
 
 --
--- Name: utilisateur_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+-- Name: utilisateur_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.utilisateur_id_seq', 1, false);
 
 
 --
--- Name: a_compose a_compose_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: a_compose a_compose_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.a_compose
@@ -2750,7 +2750,7 @@ ALTER TABLE ONLY public.a_compose
 
 
 --
--- Name: a_creer a_creer_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: a_creer a_creer_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.a_creer
@@ -2758,7 +2758,7 @@ ALTER TABLE ONLY public.a_creer
 
 
 --
--- Name: album album_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: album album_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.album
@@ -2766,7 +2766,7 @@ ALTER TABLE ONLY public.album
 
 
 --
--- Name: appartient_a appartient_a_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: appartient_a appartient_a_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.appartient_a
@@ -2774,7 +2774,7 @@ ALTER TABLE ONLY public.appartient_a
 
 
 --
--- Name: artiste artiste_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: artiste artiste_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.artiste
@@ -2782,7 +2782,7 @@ ALTER TABLE ONLY public.artiste
 
 
 --
--- Name: contenu_dans contenu_dans_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: contenu_dans contenu_dans_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.contenu_dans
@@ -2790,7 +2790,7 @@ ALTER TABLE ONLY public.contenu_dans
 
 
 --
--- Name: cree_par cree_par_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: cree_par cree_par_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cree_par
@@ -2798,7 +2798,7 @@ ALTER TABLE ONLY public.cree_par
 
 
 --
--- Name: morceau morceau_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: morceau morceau_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.morceau
@@ -2806,7 +2806,7 @@ ALTER TABLE ONLY public.morceau
 
 
 --
--- Name: playlist playlist_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: playlist playlist_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.playlist
@@ -2814,7 +2814,7 @@ ALTER TABLE ONLY public.playlist
 
 
 --
--- Name: style_musique style_musique_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: style_musique style_musique_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.style_musique
@@ -2822,7 +2822,7 @@ ALTER TABLE ONLY public.style_musique
 
 
 --
--- Name: type_artiste type_artiste_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: type_artiste type_artiste_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.type_artiste
@@ -2830,7 +2830,7 @@ ALTER TABLE ONLY public.type_artiste
 
 
 --
--- Name: utilisateur utilisateur_pk; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: utilisateur utilisateur_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.utilisateur
@@ -2838,7 +2838,7 @@ ALTER TABLE ONLY public.utilisateur
 
 
 --
--- Name: a_compose a_compose_album_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: a_compose a_compose_album_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.a_compose
@@ -2846,7 +2846,7 @@ ALTER TABLE ONLY public.a_compose
 
 
 --
--- Name: a_compose a_compose_artiste0_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: a_compose a_compose_artiste0_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.a_compose
@@ -2854,7 +2854,7 @@ ALTER TABLE ONLY public.a_compose
 
 
 --
--- Name: a_creer a_creer_playlist0_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: a_creer a_creer_playlist0_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.a_creer
@@ -2862,7 +2862,7 @@ ALTER TABLE ONLY public.a_creer
 
 
 --
--- Name: a_creer a_creer_utilisateur_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: a_creer a_creer_utilisateur_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.a_creer
@@ -2870,7 +2870,7 @@ ALTER TABLE ONLY public.a_creer
 
 
 --
--- Name: appartient_a appartient_a_album0_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: appartient_a appartient_a_album0_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.appartient_a
@@ -2878,7 +2878,7 @@ ALTER TABLE ONLY public.appartient_a
 
 
 --
--- Name: appartient_a appartient_a_style_musique_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: appartient_a appartient_a_style_musique_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.appartient_a
@@ -2886,7 +2886,7 @@ ALTER TABLE ONLY public.appartient_a
 
 
 --
--- Name: artiste artiste_type_artiste_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: artiste artiste_type_artiste_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.artiste
@@ -2894,7 +2894,7 @@ ALTER TABLE ONLY public.artiste
 
 
 --
--- Name: contenu_dans contenu_dans_morceau_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: contenu_dans contenu_dans_morceau_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.contenu_dans
@@ -2902,7 +2902,7 @@ ALTER TABLE ONLY public.contenu_dans
 
 
 --
--- Name: contenu_dans contenu_dans_playlist0_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: contenu_dans contenu_dans_playlist0_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.contenu_dans
@@ -2910,7 +2910,7 @@ ALTER TABLE ONLY public.contenu_dans
 
 
 --
--- Name: cree_par cree_par_artiste_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: cree_par cree_par_artiste_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cree_par
@@ -2918,7 +2918,7 @@ ALTER TABLE ONLY public.cree_par
 
 
 --
--- Name: cree_par cree_par_morceau0_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: cree_par cree_par_morceau0_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cree_par
@@ -2926,7 +2926,7 @@ ALTER TABLE ONLY public.cree_par
 
 
 --
--- Name: morceau morceau_album_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: morceau morceau_album_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.morceau
@@ -2934,7 +2934,7 @@ ALTER TABLE ONLY public.morceau
 
 
 --
--- Name: utilisateur utilisateur_morceau_fk; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: utilisateur utilisateur_morceau_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.utilisateur
@@ -2942,136 +2942,136 @@ ALTER TABLE ONLY public.utilisateur
 
 
 --
--- Name: TABLE a_compose; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE a_compose; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_compose TO www;
-
-
---
--- Name: TABLE a_creer; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_creer TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_compose TO web;
 
 
 --
--- Name: TABLE album; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE a_creer; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.album TO www;
-
-
---
--- Name: SEQUENCE album_id_seq; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,USAGE ON SEQUENCE public.album_id_seq TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.a_creer TO web;
 
 
 --
--- Name: TABLE appartient_a; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE album; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.appartient_a TO www;
-
-
---
--- Name: TABLE artiste; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.artiste TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.album TO web;
 
 
 --
--- Name: SEQUENCE artiste_id_seq; Type: ACL; Schema: public; Owner: admin
+-- Name: SEQUENCE album_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.artiste_id_seq TO www;
-
-
---
--- Name: TABLE contenu_dans; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.contenu_dans TO www;
+GRANT SELECT,USAGE ON SEQUENCE public.album_id_seq TO web;
 
 
 --
--- Name: TABLE cree_par; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE appartient_a; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.cree_par TO www;
-
-
---
--- Name: TABLE morceau; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.morceau TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.appartient_a TO web;
 
 
 --
--- Name: SEQUENCE morceau_id_seq; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE artiste; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.morceau_id_seq TO www;
-
-
---
--- Name: TABLE playlist; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.playlist TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.artiste TO web;
 
 
 --
--- Name: SEQUENCE playlist_id_seq; Type: ACL; Schema: public; Owner: admin
+-- Name: SEQUENCE artiste_id_seq; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.playlist_id_seq TO www;
-
-
---
--- Name: TABLE style_musique; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.style_musique TO www;
+GRANT SELECT,USAGE ON SEQUENCE public.artiste_id_seq TO web;
 
 
 --
--- Name: SEQUENCE style_musique_id_seq; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE contenu_dans; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.style_musique_id_seq TO www;
-
-
---
--- Name: TABLE type_artiste; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.type_artiste TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.contenu_dans TO web;
 
 
 --
--- Name: SEQUENCE type_artiste_id_seq; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE cree_par; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.type_artiste_id_seq TO www;
-
-
---
--- Name: TABLE utilisateur; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.utilisateur TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.cree_par TO web;
 
 
 --
--- Name: SEQUENCE utilisateur_id_seq; Type: ACL; Schema: public; Owner: admin
+-- Name: TABLE morceau; Type: ACL; Schema: public; Owner: postgres
 --
 
-GRANT SELECT,USAGE ON SEQUENCE public.utilisateur_id_seq TO www;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.morceau TO web;
+
+
+--
+-- Name: SEQUENCE morceau_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,USAGE ON SEQUENCE public.morceau_id_seq TO web;
+
+
+--
+-- Name: TABLE playlist; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.playlist TO web;
+
+
+--
+-- Name: SEQUENCE playlist_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,USAGE ON SEQUENCE public.playlist_id_seq TO web;
+
+
+--
+-- Name: TABLE style_musique; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.style_musique TO web;
+
+
+--
+-- Name: SEQUENCE style_musique_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,USAGE ON SEQUENCE public.style_musique_id_seq TO web;
+
+
+--
+-- Name: TABLE type_artiste; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.type_artiste TO web;
+
+
+--
+-- Name: SEQUENCE type_artiste_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,USAGE ON SEQUENCE public.type_artiste_id_seq TO web;
+
+
+--
+-- Name: TABLE utilisateur; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.utilisateur TO web;
+
+
+--
+-- Name: SEQUENCE utilisateur_id_seq; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,USAGE ON SEQUENCE public.utilisateur_id_seq TO web;
 
 
 --
