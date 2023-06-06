@@ -99,7 +99,7 @@
         if(count($path) === 5 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_morceau = $path[4];
-            //$res = ($id, $id_morceau); //METTRE LA FONCTION QUI PERMET DE SUPP UN DES 10 DERNIER MORCEAUX ECOUTER
+            $res = remove_track_from_historical($id, $id_morceau);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -374,6 +374,8 @@
             }
         }
     }
+
+    require_once 'utils/fonctions_recherche.php';
 
 
     # GET /search PARAMS :
