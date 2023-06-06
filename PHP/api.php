@@ -13,13 +13,14 @@
     # GET /users/:id
     # PUT /users/:id
     # DELETE /users/:id 
-    # GET /users/:id/nowlistening                   // TODO (ecoute en cours) // done
-    # GET /users/:id/nextsong                       // TODO (prochaine ecoute) //
+    # GET /users/:id/nowlistening
+    # GET /users/:id/nextsong
     # GET /users/:id/recents
-    # POST /users/:id/recents                       // TODO (nouvelle ecoute recente)
-    # DELETE /users/:id/recents/:id                 // TODO (suppression d'une musique écoutée récemment)
+    # POST /users/:id/recents
+    # DELETE /users/:id/recents/:id                 // TODO (suppression d'une musique écoutée récemment) // plus tard pas forcement obligatory
     # GET /users/:id/waitlist
     # PUT /users/:id/waitlist                       // TODO (ajout d'un son à la liste d'attente)
+    # DELETE /users/:id/waitlist/:id
     # GET /users/:id/favorites
     # PUT /users/:id/favorites                      // TODO (ajout d'un son aux favorits)
     # DELETE /users/:id/favorites/:id               // TODO (suppression d'un favori)
@@ -29,16 +30,35 @@
     # POST /users/:id/playlists/:id/tracks          // TODO (ajout d'un son dans une playlist)
     # DELETE /users/:id/playlists/:id/tracks/:id    // TODO (suppression d'une musique d'une playlist)
 
+
+// TITRE ACTUELLEMENT JOUE
     if($path[1] === 'users'){
         if($path[3] === 'nowlistening' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-           $res = show_track_per_id($id);
+           $res = music_playing($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
         }
+
+// PROCHAIN TITRE A JOUER
+        if($path[3] === 'nextsong' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            $id = $path[2];
+            $res = next_track($id);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+
+
+        }
+
+
+// MONTRE LES DERNIER TITRE ECOUTE PAR L USER (HISTORIQUE)
+
         if($path[3] === 'recents' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_historique($id);
@@ -48,6 +68,34 @@
                 exit;
             }
         }
+
+// AJOUTE UN TITRE DANS L HISTORIQUE DES TITRES ECOUTE
+
+        if($path[3] === 'recents' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id = $path[2];
+            $id_morceau = $path[4];
+            $res = add_track_to_historical($id, $id_morceau); //METTRE LA FONCTION QUI PERMET D AJOUTER UN SONS A 10 DERNIER MORCEAUX 2COUTER
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+//  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE
+
+        if($path[3] === 'recents' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+            $id = $path[2];
+            $id_morceau = $path[4];
+            //$res = ($id, $id_morceau); //METTRE LA FONCTION QUI PERMET DE SUPP UN DES 10 DERNIER MORCEAUX ECOUTER
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+// MONTRE LES TITRES DANS LA FILE D ATTENTE
         if($path[3] === 'waitlist' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_liste_attente($id);
@@ -57,6 +105,32 @@
                 exit;
             }
         }
+
+// RETIRE UN TITRE DE LA FILE D ATTENTE
+        if($path[3] === 'waitlist' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+            $id = $path[2];
+            $id_morceau = $path[4];
+            $res = remove_track_from_liste_attente($id, $id_morceau);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+//  AJOUT D UN TITRE DANS LA LISTE D ATTENTE
+        if($path[3] === 'waitlist' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id = $path[2];
+            $id_morceau = $path[4];
+            $res = add_track_to_liste_attente($id, $id_morceau); //AJOUT D UN SON A LA LISTE D ATTENTE
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+// MONTRE LES TITRE FAVORIE DE LUTILISATEUR
         if($path[3] === 'favorites' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_favorite($id);
@@ -66,15 +140,53 @@
                 exit;
             }
         }
-        if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+
+// AJOUT D UN TITRE AUX FAVORI
+        if($path[3] === 'favorites' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
-         // TODO   $res = ;  
+            $id_morceau = $path[4];
+            $res = add_track_to_favorite($id, $id_morceau);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
         }
+
+// SUPPRESSION D UN TITRE FAVORI
+
+        if($path[3] === 'favorites' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+            $id = $path[2];
+            $id_morceau = $path[4];
+            $res = remove_track_from_favorite($id, $id_morceau);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+
+//AJOUT D UNE NOUVELLE PLAYLIST
+        if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+            $titre = NULL;
+            $description = NULL;
+            $image = NULL;
+            $option = array(
+                $titre => $_POST["titre"],
+                $description => $_POST["description"],
+                $image => $_POST["image"],
+            );
+            $id = $path[2];
+            $res = create_playlist($id, $option);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+//AFFICHE LES PLAYLISTS DE L UTILISATEUR
         if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_playlists_of_user($id);
@@ -84,15 +196,62 @@
                 exit;
             }
         }
-        if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+
+//AFFICHE LES INFO D UNE PLAYLIST x LES TITRES DE LA PLAYLIST
+        if($path[3] === 'playlists' && count($path) === 4 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-           // TODO $res = ;   
+            $res = show_infos_of_playlist($id);
+            $res["tracks"] = show_tracks_of_playlist($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
         }
+
+
+        # POST /users/:id/playlists/:id/tracks/
+
+        if($path[3] === 'playlists' && $path[5] === 'tracks' && count($path) === 6 && $_SERVER['REQUEST_METHOD'] === 'POST'){
+            $id = $path[2];
+            $id_playlist = $path[4];
+            $id_morceau = $_POST["musique"];
+            $res = add_track_to_playlist($id, $id_morceau, $id_playlist);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+        # DELETE /users/:id/playlists/:id/tracks/:id    // TODO (suppression d'une musique d'une playlist)
+
+        if($path[3] === 'playlists' && $path[5] === 'tracks' && count($path) === 7 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+            $id = $path[2];
+            $id_playlist = $path[4];
+            $id_morceau = $path[6];
+            $res = remove_track_from_playlist($id, $id_morceau, $id_playlist);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+
+//DELETE UNE PLAYLIST DE L UTILISATEUR
+        if($path[3] === 'playlists' && count($path) === 5 && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
+            $id = $path[2];
+            $id_play = $path[4];
+            $res = delete_playlist($id);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
+// MODIFIE LES INFO DE L UTILISATEUR
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'PUT'){
             $id = $path[2];
             $res = modify_infos_user($id, $_POST);
@@ -102,6 +261,8 @@
                 exit;
             }
         }
+
+//DONNE LES INFO DE L UTILISATEUR
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_user_per_id($id);
@@ -111,6 +272,12 @@
                 exit;
             }
         }
+
+
+
+
+
+
         /*if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $res = add_new_user($_POST['nom'], $_POST['nom'], $_POST['date_naissance'], $_POST['mail'], $_POST['password']);
             if($res){
