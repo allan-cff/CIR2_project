@@ -58,7 +58,11 @@ document.querySelector('nav button#playlist-list').addEventListener("click", (e)
 });
 
 document.querySelector('#go-to-profile').addEventListener("click", () => {
-    moveToProfile();
+    moveToProfile(()=>{
+        userId = localStorage.getItem('userId');
+        console.log("Showing " + userId)
+        getUser(userId, (user)=>{showProfile(user)})
+    });
 });
 
 document.querySelector('#go-to-settings').addEventListener("click", () => {

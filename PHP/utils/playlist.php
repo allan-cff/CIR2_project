@@ -66,18 +66,18 @@ function show_playlists_of_user($id) {
     return $playlist;
 }
 
-function show_tracks_of_favorite($id) {
+function get_favorite_id($id) {
     $database = database::connexionBD();
 
     if (!$database) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_favorite)';
+        $sql = 'SELECT id_playlist FROM a_creer WHERE id = :id AND is_favorite';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tracks = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
@@ -94,6 +94,7 @@ function show_tracks_of_liste_attente($id) {
         return false;
     }
     try {
+        
         $sql = 'SELECT morceau.titre, contenu_dans.id from contenu_dans JOIN morceau using (id) where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_liste_attente)';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);

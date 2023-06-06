@@ -40,7 +40,7 @@
         <img src="../Ressources/Logo.png" alt="Logo" />
     </div>
 
-    <img src="../Ressources/user2.png" alt="user" />
+    <img src="../Ressources/profiles/default.png" alt="user" />
 
     <button id="go-to-profile" type="button">Username</button>
 
@@ -67,15 +67,16 @@
                 <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
                 <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
                 <div class="dropdown-menu">
-                    <select class="dropdown-item form-select" aria-label="Default select example">
-                        <option value="artiste" selected>Artiste</option>
-                        <option value="album">Album</option>
-                        <option value="song">Morceau</option>
-                        <option value="playlist">Playlist</option>
-                        <option value="user">Utilisateur</option>
-                    </select>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Artiste</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Album</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Morceau</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Playlist</label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">Utilisateur</label>
                 </div>
             </div>
         </form>
@@ -391,19 +392,19 @@
                 <div class="container">
                     <img src="../Ressources/playlist.png">
                     <div class="info-sup">
-                        <b>Votre username</b>
+                        <b id="username">Votre username</b>
                         <br>
                         <br>
-                        <b>Votre prenom</b>
+                        <b id="surname">Votre prenom</b>
                         <br>
                         <br>
-                        <b>Votre nom</b>
+                        <b id="name">Votre nom</b>
                         <br>
                         <br>
-                        <b>Votre email</b>
+                        <b id="mail">Votre email</b>
                         <br>
                         <br>
-                        <b>Votre âge</b>
+                        <b id="birth">Votre date de naissance</b>
                     </div>
 
                 </div>

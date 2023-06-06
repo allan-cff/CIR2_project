@@ -11,14 +11,8 @@ function getUserId(callback){
 }
 
 function getUser(userId, callback){
-    callback({
-        image:"../Ressources/pat.png",
-        name:"Cueff",
-        surname:"Allan",
-        username: "allan_cff",
-        mail: "blabla"
-    })
-//    ajaxRequest('get', `/users/${userId}`, callback);
+    console.log("Getting user " + userId);
+    ajaxRequest('get', `/users/${userId}`, (body) => {callback(body)});
 }
 
 function modifyUser(userId, body, callback){
@@ -95,18 +89,18 @@ function getFavorites(userId, callback){
         "description": "Liste de vos titres likés",
         "duration": 1299,
         "tracks": [
-        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", image:"../Ressources/j.png", duration:146},
-        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png", image:"../Ressources/alpha.png", duration:146},
-        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png", image:"../Ressources/alpha.png", duration:146},
-        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png", image:"../Ressources/j.png", duration:146},
-        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png", image:"../Ressources/magic.png", duration:146},
-        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png", image:"../Ressources/magic.png", duration:146},
-        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png", image:"../Ressources/j.png", duration:146},
-        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png", image:"../Ressources/jos.png", duration:146},
-        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png", image:"../Ressources/jos.png", duration:146},
-        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png", image:"../Ressources/naps.png", duration:146}
+        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/j.png", duration:146},
+        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png", duration:146},
+        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png", duration:146},
+        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/j.png", duration:146},
+        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/magic.png", duration:146},
+        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/magic.png", duration:146},
+        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/j.png", duration:146},
+        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/jos.png", duration:146},
+        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/jos.png", duration:146},
+        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/naps.png", duration:146}
     ]})
-    //ajaxRequest('get', `users/${userId}/favorites`, callback);
+    ajaxRequest('get', `users/${userId}/favorites`, callback);
 }
 
 function addFavorite(userId, body, callback){
