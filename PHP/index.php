@@ -160,14 +160,14 @@
             </div>
             <div class="progress-container">
                 <span class="current-time"></span>
-                <input id="musicProgress" type="range" value="0" min="0" max="100" step="1">
+                <input id="musicProgress" type="range" value="0" min="0" max="100" step="1" style="width: 50%;">
                 <span class="total-time"></span>
             </div>
         </div>
         <div class="other-features">
             <div class="volume-bar">
                 <i class="fas fa-volume-down"></i>
-                <input id="musicVolume" type="range" min="0" max="1" step="0.01">
+                <input id="musicVolume" type="range" min="0" max="1" step="0.01" style="width: 80%;">
             </div>
         </div>
     </div>

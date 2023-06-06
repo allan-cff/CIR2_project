@@ -154,11 +154,6 @@ if (!isset($_SESSION['id'])) {
             <!-- <img src="..." alt="Profile Icon"> -->
                 <div class="edit-icon">&#9998;</div>
             </div>
-            <!-- Champ de modif pour le PSEUDO -->
-            <div class="username center">
-                <input type="text" placeholder="Username" name="username">
-                <div class="edit-icon_text">&#9998;</div>
-            </div>
             <div class="info">
                 <!-- Champ de modif pour le prenom -->
                 <div class="edit-input">
@@ -173,13 +168,13 @@ if (!isset($_SESSION['id'])) {
             </div>
             <!-- Champ de modif de l'âge -->
             <div class="center">
-                <input type="date" placeholder="Date de naissance" id="age" name="age">
+                <input type="date" placeholder="Date de naissance" name="age">
             </div>
             <!-- Champ de modif pour le mail -->
             <div class="info">
                 <div class="edit-input">
                     <div class="edit-icon-text">&#9998;</div>
-                        <input type="email" placeholder="Email" id="mail" name="mail">
+                        <input type="email" placeholder="Email" name="mail">
                     </div>
             <!-- Champ de modif pour le mot de passe -->
                 <div class="edit-input">

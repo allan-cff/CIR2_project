@@ -11,8 +11,8 @@ body {
 button {
     border-radius: 20px; /* Ajout : Bords arrondis */
     padding: 0.5em 4rem; /* Ajout : Espace interne du rectangle */
-    background-color: #D9D9D9;
-    color: black;
+    background-color: #253659;
+    color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 1em;
@@ -45,20 +45,26 @@ button {
 }
 
 .sidebar button {
-    width: 75%;
+    width: 60%;
     padding: 0.5em 0; /* Ajout : Espace interne du rectangle */
     text-align: center;
 }
 
+.sidebar button:hover {
+    background-color: #F27457;
+    color: white;
+}
+
 .sidebar ul {
     border-radius: 20px;
-    width: 75%;
+    width: 85%;
     border: none;
     overflow: scroll;
-    max-height: calc(2em + 1px + 5 * calc(2.5em + 1px));
+    height: 26%;
+    max-height: calc(2em + 1px + 5 * calc(2.5em + 1px)); /* Ajout : Hauteur maximale de la liste */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    border: solid 1px #D9D9D9;
+
 }
 
 .sidebar ul::-webkit-scrollbar {
@@ -68,7 +74,8 @@ button {
 .sidebar ul li {
     font-size: 1em;
     text-align: center;
-    border: solid 1px #D9D9D9;
+    border-bottom: solid 1px #fff;
+    border-left: solid 1px #fff;
     white-space: nowrap;
 }
 
@@ -90,8 +97,8 @@ button {
 .sidebar ul li:first-child {
     text-align: center;
     border-width: 1px;
-    background-color: #D9D9D9;
-    color: black;
+    background-color: #253659;
+    color: white;
     font-weight: bold;
     position: sticky;
     padding: 0.5em 0;
@@ -102,7 +109,7 @@ button {
 .sidebar ul li img {
     height: 2.5em;
     width: auto;
-    border-right: solid 1px #D9D9D9;
+    border-right: solid 1px #fff;
 }
 
 .sidebar ul li:not(:first-child) p {
@@ -116,7 +123,7 @@ button {
 
 .attente_info {
     font-size: 0.8em;
-    color: #a9afbc;
+    color: #fff;
     text-align: left;
 }
 
@@ -133,8 +140,11 @@ nav {
 
 .navbar-nav button {
     margin: 10px;
-    background-color: white;
+    background-color: #04BF9D;
+    margin-left: 50px;
+    margin-right: 50px;
 }
+
 
 .navbar-nav button:hover {
     background-color: #F27457;
@@ -148,11 +158,17 @@ nav {
 
 #search-button {
     border-radius: 0 20px 20px 0 !important;
+    background-color: #04BF9D;
+}
+
+#search-button:hover {
+    background-color: #F27457;
+    color: white;
 }
 
 .helper-btn {
-    border-color: #F27457;
-    color: #F27457;
+    /*border-color: #fff;*/
+    color: #fff;
     background-color: white;
 }
 
@@ -160,7 +176,7 @@ nav {
 .helper-btn:focus {
     background-color: #F27457;
     color: #fff;
-    border-color: #F27457;
+    /*border-color: #fff;*/
 }
 
 .input-group {
@@ -225,6 +241,8 @@ footer {
     justify-content: flex-start;
     gap: 1.5rem;
     width: 20%;
+    
+    
 }
 
 .music-player .song-infos {
@@ -236,6 +254,9 @@ footer {
 
 .music-player .like-button {
     color: crimson;
+    margin-left: 0;
+    /* on modifie la taille */
+    font-size: 1.5em;
 }
 
 .music-player .icons button{
@@ -263,12 +284,21 @@ footer {
 .music-player .title:hover,
 .music-layer .artist:hover {
     /* Votre style existant */
-    text-decoration: underline;
+    background-color: #F27457;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .music-player .artist {
     /* Votre style existant */
     color: var(--secondary-color);
+}
+
+.music-player .artist:hover {
+    /* Votre style existant */
+    background-color: #F27457;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .music-player .icons {
@@ -285,8 +315,10 @@ footer {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 1.5em;
+    gap: 0.4em;
     color: var(--secondary-color);
+    margin-bottom: 10px;
+    
 }
 
 .music-player .control-buttons {
@@ -311,17 +343,29 @@ footer {
 }
 
 .music-player .backward-button{
-    color: #a9afbc;
+    color: #fff;
 }
 
 .music-player .forward-button{
-    color: #a9afbc;
+    color: #fff;
 }
 
 .music-player .play-pause-button:hover {
     /* Votre style existant */
-    transform: scale(1.1);
-    color: var(--green-color);
+    transform: scale(1.2);
+    color: #F27457;
+}
+
+.music-player .forward-button:hover {
+    color: #fff;
+    transform: scale(1.2);
+    color: #F27457;
+}
+
+.music-player .backward-button:hover{
+    color: #fff;
+    transform: scale(1.2);
+    color: #F27457;
 }
 
 .music-player .progress-container {
@@ -380,6 +424,9 @@ footer {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    margin-right: 60px;
+    /* on modifie la taille */
+    font-size: 1.5em;
 }
 
 .music-player .volume-bar {
