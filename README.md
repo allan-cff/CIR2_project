@@ -30,16 +30,22 @@
 - Username user1
 - Password IsenCIR2
 
+## Générer les données SQL
+- Se rendre dans le dossier `CIR2_project/SQL/insert`
+- Installer python3 et pip3
+- Installer les dépendances `python3 -m pip install --force-reinstall https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
+pip install psycopg2`
+- Lancer le script (remplis la base de données dev_db avec l'utilisateur web_project)
+- Récupérer le script de backup `sudo pg_dump -U postgres dev_db > fill.sql`
+
 ## Créer la base de données
 - Se rendre dans le dossier `CIR2_project/SQL`
 - Démarrer postgreSQL `sudo service postgresql start`
 - Se connecter à PostgreSQL en compte super admin `sudo -u postgres psql`
-- Créer un role `create role web login password 'IsenCIR2';`
-- Créer une base de données `create database dev_db owner postgres;`
+- Créer un role `create role www login password 'IsenCIR2';`
+- Créer un role `create role admin login password 'IsenCIR2';`
+- Créer une base de données `create database rythmic owner admin;`
 - Sortir de l'invite de commande postgresql `\q`
-- Se connecter à la base de données nouvellement créée `psql dev_db postgres`
-- Créer les tables `\i model.sql`
-- Donner les droits d'accès à l'utilisateur web `grant insert, update, select, delete on all tables in schema public to web;`
-- Donner les droits usage de la sequence à l'utilisateur web `grant usage, select on all sequences in schema public to web;`
+- Lancer le script `psql -U admin rythmic < insert/fill.sql`
 
 ## Insérer des valeurs dans la base de données
