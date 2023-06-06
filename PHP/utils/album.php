@@ -86,7 +86,7 @@ function show_tracks_of_album($id) {
     }
 
     try {
-        $stmt = $conn->prepare('SELECT * FROM morceau WHERE id_album = :id');
+        $stmt = $conn->prepare('SELECT morceau.titre, morceau.duree, albm.image, a.nom FROM morceau JOIN album albm on albm.id = morceau.id_album JOIN cree_par cp on morceau.id = cp.id_morceau join artiste a on a.id = cp.id WHERE id_album = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
