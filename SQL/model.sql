@@ -62,7 +62,7 @@ CREATE TABLE public.Morceau(
 	ID         INT GENERATED ALWAYS AS IDENTITY ,
 	Titre      VARCHAR (200) NOT NULL ,
 	Duree      INT  NOT NULL ,
-	Data           VARCHAR (1000)   ,
+	Data           VARCHAR (1100)   ,
 	ID_Album   INT    ,
 	CONSTRAINT Morceau_PK PRIMARY KEY (ID)
 

@@ -114,63 +114,70 @@ song_id = 1
 
 for artist in artists_list:
 
-    artist_data, spotify_artist_id, genres = get_artist(last_fm_artist=artist)
+    try:
+        artist_data, spotify_artist_id, genres = get_artist(last_fm_artist=artist)
 
-    if not verify_artist_already_fetched(artist['name'], artists_insert_values):
-        artists_insert_values.append(artist_data)
-        print(artist_data[0])
+        if not verify_artist_already_fetched(artist['name'], artists_insert_values):
+            artists_insert_values.append(artist_data)
+            print(artist_data[0])
 
-    for genre in genres:
-        if not (genre,) in genres_insert_values:
-            genres_insert_values.append((genre,))
+        for genre in genres:
+            if not (genre,) in genres_insert_values:
+                genres_insert_values.append((genre,))
 
-    spotify_albums_response = requests.get("https://api.spotify.com/v1/artists/" + spotify_artist_id + "/albums?include_groups=album&limit=5", headers={"Authorization": "Bearer " + token})
-    artist_albums_list = spotify_albums_response.json()["items"]
+        spotify_albums_response = requests.get("https://api.spotify.com/v1/artists/" + spotify_artist_id + "/albums?include_groups=album&limit=5", headers={"Authorization": "Bearer " + token})
+        artist_albums_list = spotify_albums_response.json()["items"]
 
-    for album in artist_albums_list:
-        if not ("remix" in album["name"].lower() or "edition" in album["name"].lower() or "deluxe" in album["name"].lower() or "live" in album["name"].lower()):
-            print("     " + album["name"])
+        for album in artist_albums_list:
+            if not ("remix" in album["name"].lower() or "edition" in album["name"].lower() or "deluxe" in album["name"].lower() or "live" in album["name"].lower()):
+                print("     " + album["name"])
 
-            cover = album["images"][0]["url"]
+                cover = album["images"][0]["url"]
 
-            if album["release_date_precision"] == "year":
-                release_date = album["release_date"] + "-01-01"
-            elif album["release_date_precision"] == "month":
-                release_date = album["release_date"] + "-01"
-            else:
-                release_date = album["release_date"]
+                if album["release_date_precision"] == "year":
+                    release_date = album["release_date"] + "-01-01"
+                elif album["release_date_precision"] == "month":
+                    release_date = album["release_date"] + "-01"
+                else:
+                    release_date = album["release_date"]
 
-            albums_insert_values.append((album["name"], release_date, cover))
+                albums_insert_values.append((album["name"], release_date, cover))
 
-            for genre in genres:
-                album_genre_association_list.append((genre, album_id))
+                for genre in genres:
+                    album_genre_association_list.append((genre, album_id))
 
-            for composer in album["artists"]:
-                albums_composed_by.append((album_id, composer["name"]))
-                if not verify_artist_already_fetched(composer["name"], artists_insert_values):
-                    artist_data = get_artist(spotify_artist=composer)
-                    artists_insert_values.append(artist_data[0])
-                    print(artist_data[0][0])
-
-            spotify_songs_response = requests.get("https://api.spotify.com/v1/albums/" + album["id"] + "/tracks", headers={"Authorization": "Bearer " + token})
-            album_songs_list = spotify_songs_response.json()["items"]
-
-            for song in album_songs_list:
-                print("          " + song["name"])
-
-                (duration, url) = get_youtube_mp4(song["name"] + " " + artist["name"])
-
-                songs_insert_values.append((song["name"], duration, url, album_id))
-
-                for creator in song["artists"]:
-                    songs_created_by.append((song_id, creator["name"]))
-                    if not verify_artist_already_fetched(creator["name"], artists_insert_values):
-                        artist_data = get_artist(spotify_artist=creator)
+                for composer in album["artists"]:
+                    albums_composed_by.append((album_id, composer["name"]))
+                    if not verify_artist_already_fetched(composer["name"], artists_insert_values):
+                        artist_data = get_artist(spotify_artist=composer)
                         artists_insert_values.append(artist_data[0])
                         print(artist_data[0][0])
 
-                song_id = song_id + 1
-            album_id = album_id + 1
+                spotify_songs_response = requests.get("https://api.spotify.com/v1/albums/" + album["id"] + "/tracks", headers={"Authorization": "Bearer " + token})
+                album_songs_list = spotify_songs_response.json()["items"]
+
+                for song in album_songs_list:
+                    print("          " + song["name"])
+
+                    try:
+                        (duration, url) = get_youtube_mp4(song["name"] + " " + artist["name"])
+                    except:
+                        (duration, url) = (0, "undefined")
+
+
+                    songs_insert_values.append((song["name"], duration, url, album_id))
+
+                    for creator in song["artists"]:
+                        songs_created_by.append((song_id, creator["name"]))
+                        if not verify_artist_already_fetched(creator["name"], artists_insert_values):
+                            artist_data = get_artist(spotify_artist=creator)
+                            artists_insert_values.append(artist_data[0])
+                            print(artist_data[0][0])
+
+                    song_id = song_id + 1
+                album_id = album_id + 1
+    except:
+        pass            
 
 # Starting PostgreSQL connexion
 conn = psycopg2.connect("host='localhost' dbname='dev_db' user='web_project' password='IsenCIR2'")
