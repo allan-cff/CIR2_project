@@ -1,4 +1,5 @@
 function moveToIndex(callback){
+    console.log("Moving to index")
     let previousStyles = document.querySelectorAll('link.current-media-style')
     previousStyles.forEach(elem => {
         elem.remove();
@@ -13,13 +14,11 @@ function moveToIndex(callback){
     const template = document.querySelector('#affichage-index');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }
 
-function moveToAlbum(callback){
+function moveToAlbum(callback, albumId){
     let previousStyles = document.querySelectorAll('link.current-media-style')
     previousStyles.forEach(elem => {
         elem.remove();
@@ -34,10 +33,8 @@ function moveToAlbum(callback){
     const template = document.querySelector('#affichage-album');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback(albumId);
 }
 
 function moveToArtist(callback){
@@ -55,8 +52,6 @@ function moveToArtist(callback){
     const template = document.querySelector('#affichage-artiste');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }
@@ -76,8 +71,6 @@ function moveToProfile(callback){
     const template = document.querySelector('#affichage-profil');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }
@@ -97,8 +90,6 @@ function moveToSearch(callback){
     const template = document.querySelector('#affichage-recherche');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }
@@ -118,8 +109,6 @@ function moveToPlaylist(callback){
     const template = document.querySelector('#affichage-playlist');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }
@@ -139,8 +128,6 @@ function moveToPlaylistsList(callback){
     const template = document.querySelector('#affichage-liste-playlists');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }
@@ -160,8 +147,6 @@ function moveToSettings(callback){
     const template = document.querySelector('#affichage-reglages');
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
-    console.log(content)
-    console.log(clone.querySelector('#main-content'))
     content.replaceWith(clone.querySelector('#main-content'));
     callback;
 }

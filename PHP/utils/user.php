@@ -28,7 +28,7 @@ function verify_user($mail, $password) {
     // Si les informations de connexion sont correctes, on connecte l'utilisateur et on le redirige vers la page d'accueil
     if (!empty($result) && password_verify($password, $result['password'])) {
         $_SESSION['id'] = $result['id'];
-        header('Location: lindex.php'); // On redirige l'utilisateur vers la page d'accueil
+        header('Location: index.php'); // On redirige l'utilisateur vers la page d'accueil
         exit;
     } else {
         return true;

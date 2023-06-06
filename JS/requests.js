@@ -42,16 +42,16 @@ function getNextSong(userId, callback){
 
 function getRecentSongs(userId, callback){
     callback([
-        {author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
+        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"},
+        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png"},
+        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png"},
+        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png"},
+        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png"},
+        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png"},
+        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png"},
+        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png"},
+        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
+        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
     ])
     //ajaxRequest('get', `/users/${userId}/recents`, callback);
 }
@@ -66,16 +66,16 @@ function deleteRecentSong(userId, songId, callback){
 
 function getWaitList(userId, callback){
     callback([
-        {author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
-        {author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
+        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"},
+        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png"},
+        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png"},
+        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png"},
+        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png"},
+        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png"},
+        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png"},
+        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png"},
+        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
+        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
     ])
     //ajaxRequest('get', `/users/${userId}/waitlist`, callback);
 }
@@ -130,22 +130,40 @@ function listArtistAlbums(artistId, callback){
 
 function getRecentAlbums(callback){
     callback([
-        {title:"good album", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album1", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album2", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album3", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album4", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album5", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album6", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album7", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album8", author:"JackUzi", image:"../Ressources/j.png"},
-        {title:"good album9", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:1, title:"good album", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:2, title:"good album1", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:3, title:"good album2", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:4, title:"good album3", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:5, title:"good album4", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:6, title:"good album5", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:7, title:"good album6", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:8, title:"good album7", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:9, title:"good album8", author:"JackUzi", image:"../Ressources/j.png"},
+        {id:10, title:"good album9", author:"JackUzi", image:"../Ressources/j.png"},
     ])
     //ajaxRequest('get', `/albums/recents`, callback);
 }
 
 function getAlbum(albumId, callback){
-    ajaxRequest('get', `/albums/${albumId}`, callback);
+    callback({
+        cover: "../Ressources/alpha.png",
+        title: "Added by JS",
+        author: "Hey",
+        duration: 1268,
+        tracksList: [
+            {id:1, author:"Allan", title:"Bon son", duration:150},
+            {id:2, author:"Allan", title:"Bon son1", duration:150},
+            {id:3, author:"Allan", title:"Bon son2", duration:150},
+            {id:4, author:"Allan", title:"Bon son3", duration:150},
+            {id:5, author:"Allan", title:"Bon son4", duration:150},
+            {id:6, author:"Allan", title:"Bon son5", duration:150},
+            {id:7, author:"Allan", title:"Bon son6", duration:150},
+            {id:8, author:"Allan", title:"Bon son7", duration:150},
+            {id:9, author:"Allan", title:"Bon son8", duration:150},
+            {id:10, author:"Allan", title:"Bon son9", duration:150}
+        ]
+    })
+  //  ajaxRequest('get', `/albums/${albumId}`, callback);
 }
 
 function listMusics(callback){
@@ -153,5 +171,7 @@ function listMusics(callback){
 }
 
 function getMusic(trackId, callback){
-    ajaxRequest('get', `/musics/${trackId}`, callback);
+    console.log("Getting music ", trackId)
+    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
+//    ajaxRequest('get', `/musics/${trackId}`, callback);
 }

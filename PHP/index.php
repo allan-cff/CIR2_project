@@ -37,9 +37,7 @@
 
 <div class="sidebar">
     <div class="logo">
-        <a href="#">
-            <img src="../Ressources/Logo.png" alt="Logo" />
-        </a>
+        <img src="../Ressources/Logo.png" alt="Logo" />
     </div>
 
     <img src="../Ressources/user2.png" alt="user" />
@@ -168,7 +166,7 @@
         <div class="other-features">
             <div class="volume-bar">
                 <i class="fas fa-volume-down"></i>
-                <input id="musicVolume" type="range">
+                <input id="musicVolume" type="range" min="0" max="1" step="0.01">
             </div>
         </div>
     </div>
@@ -236,26 +234,26 @@
             <div class="placement">
                 <div class="placement">
                     <div class="container">
-                        <img src="../Ressources/playlist.png">
+                        <img id="album-cover" src="../Ressources/playlist.png">
                         <div class="info-sup">
-                            <b>nom de l'album</b>
+                            <b></b>
                         </div>
                         <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
                     <div class="container">
                         <div class="card">
                             <div class="card-content">
-                                <p>nom de l'artiste</p>
+                                <p id="album-artist-name"></p>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <p>durée totale</p>
+                                <p id="album-duration"></p>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <p>Nombre de titres</p>
+                                <p id="album-tracks-count"></p>
                             </div>
                         </div>
                 </div>
@@ -266,53 +264,34 @@
             <thead>
             <tr>
                 <th class="th4">#</th>
-                <th>Album</th>
                 <th>Titre</th>
-                <th class="th4">Artiste</th>
-                <th>Détail</th>
-                <th class="th4">Time</th>
+                <th class="th4">Artiste(s)</th>
+                <th>Détails</th>
+                <th class="th4">Durée</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1
-                    <button class="play-button"><i class="fa fa-play"></i></button>
-                </td>
-                <td><img src="../Ressources/album.png" alt="Album 1"></td>
-                <td>Titre 1</td>
-                <td><button>Artiste 1</button></td>
-                <td>
-                    <div class="dropdown">
-                        <span class="dropdown-toggle">&#9776;</span>
-                        <div class="dropdown-menu">
-                            <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
-                            <a href="#">Ajouter à une playlist</a>
-                            <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                            <a href="#">Ajouter à la file d'attente</a>
+            <template id="album-row-template">
+                <tr>
+                    <td>
+                        <button class="play-button"><i class="fa fa-play"></i></button>
+                    </td>
+                    <td>Titre 1</td>
+                    <td><button>Artiste 1</button></td>
+                    <td>
+                        <div class="dropdown">
+                            <span class="dropdown-toggle">&#9776;</span>
+                            <div class="dropdown-menu">
+                                <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
+                                <a href="#">Ajouter à une playlist</a>
+                                <a href="#"><i class="fa fa-heart"></i> J'aime</a>
+                                <a href="#">Ajouter à la file d'attente</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td>3:31</td>
-            </tr>
-            <tr>
-                <td>2
-                    <button class="play-button"><i class="fa fa-play"></i></button>
-                </td>
-                <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
-                <td>Titre 2</td>
-                <td class="bi-text-left"><button>Artiste 2</button></td>
-                <td>
-                    <div class="dropdown">
-                        <span class="dropdown-toggle">&#9776;</span>
-                        <div class="dropdown-menu">
-                            <a href="#">Ajouter à une playlist</a>
-                            <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                            <a href="#">Ajouter à la file d'attente</a>
-                        </div>
-                    </div>
-                </td>
-                <td>3:31</td>
-            </tr>
+                    </td>
+                    <td>3:31</td>
+                </tr>
+            </template>    
             <!-- Ajouter d'autres lignes de tableau ici -->
             </tbody>
         </table>
