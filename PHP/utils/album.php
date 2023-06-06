@@ -202,7 +202,7 @@ function show_newest_albums() {
         return false;
     }
     try {
-        $stmt = $conn->prepare("SELECT album.titre, album.image, album.date_parution, a.nom FROM album JOIN artiste a on album.image = a.image ORDER BY date_parution DESC LIMIT 10");
+        $stmt = $conn->prepare("SELECT album.titre, album.image, album.date_parution, ac.id_artiste, a.nom FROM album JOIN a_compose ac on album.id = ac.id JOIN artiste a on ac.id_artiste = a.id ORDER BY date_parution DESC LIMIT 10");
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $exception) {
