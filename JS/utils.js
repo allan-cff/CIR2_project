@@ -29,6 +29,15 @@ function secondsToHoursTimeString(seconds){
     return Math.floor(seconds/3600).toString(10) + 'h ' + Math.floor((seconds%3600)/60).toString(10) + 'min ' + (seconds%60).toFixed(0).toString(10).padStart(2, "0") + 's';
 }
 
+function playNow(songId){
+    userId = localStorage.getItem('userId');
+    setNowListening(userId, songId, () => {
+        getMusic(songId, (song) => {
+            setNowPlaying(song, true);
+        })
+    })
+}
+
 function setNowPlaying(song, forcePlay=false){
     document.querySelector(".music-player .image-container img").setAttribute("src", song.image)
     document.querySelector(".music-player .song-description .title").innerHTML = song.title;
@@ -49,6 +58,11 @@ function setNowPlaying(song, forcePlay=false){
         }
     });
     if(forcePlay){
+        if(!audioLector.paused){
+            let icon = document.querySelector('footer .music-player .progress-controller .control-buttons .play-pause-button i');
+            icon.classList.toggle("fa-play")
+            icon.classList.toggle("fa-pause")
+        }
         audioLector.play();
     }
 }
@@ -151,18 +165,12 @@ function showLastListened(userId){
         for(let song of firstPage){
             let p = document.createElement("p");
             p.textContent = song.author;
-            let i = document.createElement("i");
-            i.classList.add("fas", "fa-ellipsis-vertical");
-            p.insertAdjacentElement("beforeend", i);
-            wrappers[0].insertAdjacentElement("beforeend", createCardElement(song.image, song.title, song.id, p, (songId) => {getMusic(songId, (song) => {setNowPlaying(song, true)})}))
+            wrappers[0].insertAdjacentElement("beforeend", createCardElement(song.image, song.title, song.id, p, (songId) => {playNow(songId)}))
         }
         for(let song of secondPage){
             let p = document.createElement("p");
             p.textContent = song.author;
-            let i = document.createElement("i");
-            i.classList.add("fas", "fa-ellipsis-vertical");
-            p.insertAdjacentElement("beforeend", i);
-            wrappers[1].insertAdjacentElement("beforeend", createCardElement(song.image, song.title, song.id, p, (songId) => {getMusic(songId, (song) => {setNowPlaying(song, true)})}))
+            wrappers[1].insertAdjacentElement("beforeend", createCardElement(song.image, song.title, song.id, p, (songId) => {playNow(songId)}))
         }
     })
 }
@@ -175,17 +183,11 @@ function showLastAlbums(){
         for(let album of firstPage){
             let p = document.createElement("p");
             p.textContent = album.author;
-            let i = document.createElement("i");
-            i.classList.add("fas", "fa-ellipsis-vertical");
-            p.insertAdjacentElement("beforeend", i);
             wrappers[0].insertAdjacentElement("beforeend", createCardElement(album.image, album.title, album.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
         }
         for(let album of secondPage){
             let p = document.createElement("p");
             p.textContent = album.author;
-            let i = document.createElement("i");
-            i.classList.add("fas", "fa-ellipsis-vertical");
-            p.insertAdjacentElement("beforeend", i);
             wrappers[1].insertAdjacentElement("beforeend", createCardElement(album.image, album.title, album.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
         }
     })
@@ -213,8 +215,8 @@ function initAlbum(albumId){
         document.querySelector('#album-artist-name').innerHTML = album.author;
         document.querySelector('#album-duration').innerHTML = secondsToHoursTimeString(album.duration);
         document.querySelector('#album-tracks-count').innerHTML = album.tracksList.length;
-        for(let track of album.tracksList){
-            const template = document.querySelector('#album-row-template');
+        for(let track of album.tracks){
+            const template = document.querySelector('#playlist-row-template');
             const clone = template.content.cloneNode(true);
             clone.querySelector("td:nth-child(2)").innerHTML = track.title;
             clone.querySelector("td:nth-child(3)>button").innerHTML = track.author;
@@ -225,4 +227,56 @@ function initAlbum(albumId){
             document.querySelector('tbody').appendChild(clone);
         }
     })
+}
+
+function showPlaylist(playlist){
+    document.querySelector('#playlist-title').innerHTML = playlist.title
+    document.querySelector('.container img').setAttribute('src', playlist.image)
+    document.querySelector('#playlist-description').innerHTML = playlist.description
+    document.querySelector('.playlist-details .total-duration').innerHTML = 'Durée totale : ' + secondsToHoursTimeString(playlist.duration)
+    document.querySelector('.playlist-details .track-count').innerHTML = 'Nombre de titres : ' + playlist.tracks.length;
+    for(let track of playlist.tracks){
+        const template = document.querySelector('#playlist-row-template');
+        const clone = template.content.cloneNode(true);
+        clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
+        clone.querySelector("td:nth-child(3)").innerHTML = track.title;
+        clone.querySelector("td:nth-child(4)>button").innerHTML = track.author;
+        clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
+            elem.setAttribute("data-rythmicId", track.id);
+        })
+        clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duration);
+        document.querySelector('tbody').appendChild(clone);
+    }
+}
+
+function showPlaylistList(playlistList){
+    carousel = document.querySelector("#playlistsCarousel .carousel-inner")
+    pages = []
+    console.log(playlistList)
+    for(let i=5; i-5 < playlistList.length; i=i+5){
+        end = Math.min(i, playlistList.length)
+        pages.push(playlistList.slice(i-5, end))
+        console.log("Slicing " + (i-5).toString(10) + " - " + end)
+    }
+    for(page of pages){
+        item = document.createElement("div")
+        item.classList.add("carousel-item")
+        wrapper = document.createElement("div")
+        wrapper.classList.add("cards-wrapper")
+        item.appendChild(wrapper)
+        carousel.appendChild(item)
+        for(playlist of page){
+            let p = document.createElement("p");
+            p.textContent = secondsToHoursTimeString(playlist.duration) + " - " + playlist.tracksCount + " titres";
+            wrapper.appendChild(createCardElement(playlist.image, playlist.title, playlist.id, p, (playlistId) => {
+                moveToPlaylist(()=>{
+                    userId = localStorage.getItem('userId');
+                    getPlaylist(userId, playlistId, (playlist)=>{
+                        showPlaylist(playlist)
+                    })
+                }, playlistId);
+            }))
+        }
+    }
+    carousel.querySelector("#playlistsCarousel .carousel-inner .carousel-item").classList.add("active")
 }

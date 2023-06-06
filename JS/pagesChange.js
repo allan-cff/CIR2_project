@@ -1,5 +1,4 @@
 function moveToIndex(callback){
-    console.log("Moving to index")
     let previousStyles = document.querySelectorAll('link.current-media-style')
     previousStyles.forEach(elem => {
         elem.remove();
@@ -15,7 +14,7 @@ function moveToIndex(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback();
 }
 
 function moveToAlbum(callback, albumId){
@@ -37,7 +36,7 @@ function moveToAlbum(callback, albumId){
     callback(albumId);
 }
 
-function moveToArtist(callback){
+function moveToArtist(callback, artistId){
     let previousStyles = document.querySelectorAll('link.current-media-style')
     previousStyles.forEach(elem => {
         elem.remove();
@@ -53,7 +52,7 @@ function moveToArtist(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback(artistId);
 }
 
 function moveToProfile(callback){
@@ -91,10 +90,10 @@ function moveToSearch(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback();
 }
 
-function moveToPlaylist(callback){
+function moveToPlaylist(callback, playlistId){
     let previousStyles = document.querySelectorAll('link.current-media-style')
     previousStyles.forEach(elem => {
         elem.remove();
@@ -110,7 +109,7 @@ function moveToPlaylist(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback(playlistId);
 }
 
 function moveToPlaylistsList(callback){
@@ -129,7 +128,7 @@ function moveToPlaylistsList(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback();
 }
 
 function moveToSettings(callback){
@@ -148,5 +147,5 @@ function moveToSettings(callback){
     const clone = template.content.cloneNode(true);
     const content = document.querySelector('#main-content');
     content.replaceWith(clone.querySelector('#main-content'));
-    callback;
+    callback();
 }

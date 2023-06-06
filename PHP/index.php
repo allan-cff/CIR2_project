@@ -55,10 +55,10 @@
     <div class="container-fluid">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <button>Titres Likes</button>
+                <button id="liked-titles">Titres Likes</button>
             </li>
             <li class="nav-item">
-                <button>Vos Playlists</button>
+                <button id="playlist-list">Vos Playlists</button>
             </li>
         </ul>
         <form class="d-flex" role="search">
@@ -1202,55 +1202,23 @@
 <template id="affichage-playlist">
     <div id="main-content">
         <div class="main-container">
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <div class="dropdown-menu">
-                                <select class="dropdown-item form-select" aria-label="Default select example">
-                                    <option value="artiste" selected>Artiste</option>
-                                    <option value="album">Album</option>
-                                    <option value="song">Morceau</option>
-                                    <option value="playlist">Playlist</option>
-                                    <option value="user">Utilisateur</option>
-                                </select>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </div>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-            </nav>
-
             <div class="placement">
                 <div class="container">
                     <img src="../Ressources/playlist.png">
                     <div class="info-sup">
-                        <b>nom de votre playlist</b>
+                        <b id="playlist-title"></b>
                     </div>
                     <button class="play-pause-button"><i class="fas fa-play"></i></button>
                 </div>
                 <div class="container">
                     <div class="card">
                         <div class="card-content">
-                            <p>Description de la playlist</p>
+                            <p id="playlist-description"></p>
                         </div>
                     </div>
                     <div class="playlist-details">
-                        <span class="total-duration">Durée totale : 2h30m</span> <!-- la duré sera à modifié plus tard via du php -->
-                        <span class="track-count">Nombre de titres : 15</span>
+                        <span class="total-duration"></span> <!-- la duré sera à modifié plus tard via du php -->
+                        <span class="track-count"></span>
                     </div>
                 </div>
             </div>
@@ -1284,45 +1252,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1
-                        <button class="play-button"><i class="fa fa-play"></i></button>
-                    </td>
-                    <td><img src="../Ressources/album.png" alt="Album 1"></td>
-                    <td>Titre 1</td>
-                    <td><button>Artiste 1</button></td>
-                    <td>
-                        <div class="dropdown">
-                            <span class="dropdown-toggle">&#9776;</span>
-                            <div class="dropdown-menu">
-                                <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
-                                <a href="#">Ajouter à une playlist</a>
-                                <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                                <a href="#">Ajouter à la file d'attente</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td><button><i class="fa fa-trash"></i></button></td>
-                </tr>
-                <tr>
-                    <td>2
-                        <button class="play-button"><i class="fa fa-play"></i></button>
-                    </td>
-                    <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
-                    <td>Titre 2</td>
-                    <td class="bi-text-left"><button>Artiste 2</button></td>
-                    <td>
-                        <div class="dropdown">
-                            <span class="dropdown-toggle">&#9776;</span>
-                            <div class="dropdown-menu">
-                                <a href="#">Ajouter à une playlist</a>
-                                <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                                <a href="#">Ajouter à la file d'attente</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td><button><i class="fa fa-trash"></i></button></td>
-                </tr>
+                    <template id="playlist-row-template">
+                        <tr>
+                            <td>
+                                <button class="play-button"><i class="fa fa-play"></i></button>
+                            </td>
+                            <td><img src="../Ressources/album.png" alt="Album 1"></td>
+                            <td>Titre 1</td>
+                            <td><button>Artiste 1</button></td>
+                            <td>
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle">&#9776;</span>
+                                    <div class="dropdown-menu">
+                                        <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
+                                        <a href="#">Ajouter à une playlist</a>
+                                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
+                                        <a href="#">Ajouter à la file d'attente</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><button><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                    </template>
                 <!-- Ajouter d'autres lignes de tableau ici -->
                 </tbody>
             </table>
@@ -1333,46 +1284,11 @@
 <template id="affichage-liste-playlists">
     <div id="main-content">
         <div class="main-container">
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                                <select class="dropdown-item form-select" aria-label="Default select example">
-                                    <option value="artiste" selected>Artiste</option>
-                                    <option value="album">Album</option>
-                                    <option value="song">Morceau</option>
-                                    <option value="playlist">Playlist</option>
-                                    <option value="user">Utilisateur</option>
-                                </select>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </div>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-            </nav>
 
             <div class="devanture">
                 <div class="card">
                     <div class="card-body">
-                        <b>vos playlists</b>
+                        <b>Vos playlists</b>
                     </div>
                 </div>
             </div>
@@ -1419,182 +1335,14 @@
 
 
 
-        <div id="carouselExample" class="carousel carousel-white slide">
+        <div id="playlistsCarousel" class="carousel carousel-white slide">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="cards-wrapper">
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/alpha.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/j.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/jos.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/naps.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de dtail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/nek.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="cards-wrapper">
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/pat.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/spot.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/naps.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/jos.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/j.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="cards-wrapper">
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/nek.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button">plus de detail</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/cascade.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                                <button class="play-pause-button">...</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/album.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                                <button class="play-pause-button">...</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/album.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                                <button class="play-pause-button">...</button>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="image-wrapper">
-                                <img src="../Ressources/album.png" class="card-img-top" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Artiste</p>
-                                <button class="play-pause-button"><i class="fas fa-play"></i></button>
-                                <button class="play-pause-button">...</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#playlistsCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#playlistsCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>

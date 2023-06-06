@@ -20,6 +20,7 @@ playerTimeInterval = null;
 
 
 getUserId((userId) => {
+    localStorage.setItem('userId', userId);
     //show left bar infos
     showWaitingList(userId);
     showUser(userId);
@@ -36,10 +37,22 @@ getUserId((userId) => {
 
 document.querySelector('.logo img').addEventListener("click", (e)=>{
     moveToIndex(()=>{
-        console.log("index clicked")
-        getUserId((userId) => {
-            showLastListened(userId);
-            showLastAlbums();
-        })
+        userId = localStorage.getItem('userId');
+        showLastListened(userId);
+        showLastAlbums();
     });
-})
+});
+
+document.querySelector('nav button#liked-titles').addEventListener("click", (e)=>{
+    moveToPlaylist(()=>{
+        userId = localStorage.getItem('userId');
+        getFavorites(userId, (playlist)=>{showPlaylist(playlist)})
+    });
+});
+
+document.querySelector('nav button#playlist-list').addEventListener("click", (e)=>{
+    moveToPlaylistsList(()=>{
+        userId = localStorage.getItem('userId');
+        listPlaylists(userId, (playlistList)=>{showPlaylistList(playlistList)})
+    });
+});
