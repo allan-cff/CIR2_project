@@ -56,3 +56,11 @@ document.querySelector('nav button#playlist-list').addEventListener("click", (e)
         listPlaylists(userId, (playlistList)=>{showPlaylistList(playlistList)})
     });
 });
+
+document.querySelector('#go-to-profile').addEventListener("click", () => {
+    moveToProfile();
+});
+
+document.querySelector('#go-to-settings').addEventListener("click", () => {
+    moveToSettings();
+});

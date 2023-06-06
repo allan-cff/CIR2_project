@@ -71,16 +71,16 @@ function deleteRecentSong(userId, songId, callback){
 
 function getWaitList(userId, callback){
     callback([
-        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png"},
-        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png"},
-        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png"},
-        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png"},
-        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png"},
-        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png"},
-        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png"},
-        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png"},
-        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png"},
-        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png"}
+        {id:1, author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", duration: 110},
+        {id:2, author:"Allan", title:"Bon son1", image:"../Ressources/alpha.png", duration: 110},
+        {id:3, author:"Allan", title:"Bon son2", image:"../Ressources/alpha.png", duration: 110},
+        {id:4, author:"Allan", title:"Bon son3", image:"../Ressources/alpha.png", duration: 110},
+        {id:5, author:"Allan", title:"Bon son4", image:"../Ressources/alpha.png", duration: 110},
+        {id:6, author:"Allan", title:"Bon son5", image:"../Ressources/alpha.png", duration: 110},
+        {id:7, author:"Allan", title:"Bon son6", image:"../Ressources/alpha.png", duration: 110},
+        {id:8, author:"Allan", title:"Bon son7", image:"../Ressources/alpha.png", duration: 110},
+        {id:9, author:"Allan", title:"Bon son8", image:"../Ressources/alpha.png", duration: 110},
+        {id:10, author:"Allan", title:"Bon son9", image:"../Ressources/alpha.png", duration: 110}
     ])
     //ajaxRequest('get', `/users/${userId}/waitlist`, callback);
 }

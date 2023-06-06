@@ -254,6 +254,24 @@ function remove_a_track_from_playlist($id_playlist, $id_track) {
    
 }
 
+function show_infos_of_playlist($id) {
+    $conn = database::connexionBD();
+    if(!$conn) {
+        return false;
+    }
+    try {
+        $sql = $conn->prepare('SELECT * FROM playlist WHERE id = :id');
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $exception) {
+        error_log('Connection error: ' . $exception->getMessage());
+        return false;
+    }
+    return $result;
+
+}
+
 // Fonction qui supprime tout dans l'historique des derniers morceaux écoutés
 
 function clear_historique($id_user) {
@@ -286,6 +304,5 @@ function clear_historique($id_user) {
         return false;
     }
 }
-
 
 

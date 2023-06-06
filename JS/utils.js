@@ -201,7 +201,7 @@ function showWaitingList(userId){
             <li class="list-group-item">
                 <img src="${song.image}">
                 <p class="attente_title">${song.title}</p>
-                <p class="attente_info">${song.author}<br>${song.duration}</p>
+                <p class="attente_info">${song.author}<br>${secondsToMinutesTimeString(song.duration)}</p>
             </li>
             `);
         }
