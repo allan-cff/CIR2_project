@@ -227,6 +227,7 @@
             </button>
         </div>    
     </div>
+    
 </template>
 
 <template id="affichage-album">

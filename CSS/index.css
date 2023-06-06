@@ -1,7 +1,39 @@
 .carousel{
-    margin-left: 20%;
+    margin-left: 25%;
+    margin-right: 5%;
     margin-bottom: 3em;
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px; /* ajustez la largeur des flèches selon vos besoins */
+  height: 50px; /* ajustez la hauteur des flèches selon vos besoins */
+  z-index: -1;
+}
+
+.carousel-control-prev {
+  left: -50px; /* ajustez la distance de la flèche précédente par rapport au côté gauche */
+}
+
+.carousel-control-next {
+  right: -50px; /* ajustez la distance de la flèche suivante par rapport au côté droit */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.carousel-inner {
+  position: relative;
+}
+
 
 .cards-wrapper{
     display: flex;
@@ -11,23 +43,27 @@
     margin: 0 .5em;
     width: calc(100%/3);
     background-color: #D9D9D9;
+    border-radius: 10px;
 }
 
 .image-wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .image-wrapper img{
     max-width: 100%;
     max-height: 100%;
+    border-radius: 10px;
 }
 
 .card-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 h2 {
@@ -35,11 +71,22 @@ h2 {
     display: inline-block;
     margin-left: 23%;
     padding: 0.25em 1em;
-    border-radius: 3em;
-    background-color: #43AD74;
+    border-radius: 10px;
+    background-color: #F27457;
+    color:white;
     text-align: center;
 }
 
 #lastListenedTitle {
-    margin-top: 10%
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+#recentAlbums {
+    margin-top: 20px;
+    
+}
+
+#spacing{
+    margin-top: 200px;
 }
