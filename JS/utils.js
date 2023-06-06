@@ -54,7 +54,6 @@ function playPrevious(){
 function setNowPlaying(song, forcePlay=false){
     document.querySelector(".music-player .image-container img").setAttribute("src", song.image)
     document.querySelector(".music-player .song-description .title").innerHTML = song.titre;
-    document.querySelector(".music-player .song-description .artist").innerHTML = song.author;
     song.artistes.forEach((artist) => {
         let artistButton = document.createElement("button")
         artistButton.classList.add('artist')

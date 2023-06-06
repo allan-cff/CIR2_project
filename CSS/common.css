@@ -283,11 +283,16 @@ footer {
     width: 15em;
 }
 
+.music-player .artist {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0 0.5em;
+}
+
 .like-button{
     padding: 0;
 }
 
-.music-player .title:hover,
 .music-layer .artist:hover {
     background-color: #F27457;
     border-radius: 5px;
