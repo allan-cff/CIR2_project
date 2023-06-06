@@ -36,7 +36,7 @@
 
 
     if($path[1] === 'users'){
-// ID DE UTILISATEUR CONNECTE
+// ID DE UTILISATEUR CONNECTE ==> OK
         if(count($path) === 3 && $path[2] === 'loggedId' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             if (isset($_SESSION['id'])) {
                 $res = array("id" => $_SESSION['id']);
@@ -46,10 +46,10 @@
             }
         }
 
-// TITRE ACTUELLEMENT JOUE
+// TITRE ACTUELLEMENT JOUE ==> OK
         if(count($path) === 4 && $path[3] === 'nowlistening' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-           $res = music_playing($id);
+            $res = music_playing($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -57,17 +57,28 @@
             }
         }
 
-// PROCHAIN TITRE A JOUER
+// PROCHAIN TITRE A JOUER ==> OK
         if(count($path) === 4 && $path[3] === 'nextsong' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = next_track($id);
+            next_track($id);
+            $res = music_playing($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
+        }
 
-
+// PRECEDENT TITRE A JOUER
+        if(count($path) === 4 && $path[3] === 'prevsong' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            $id = $path[2];
+            previous_track($id);
+            $res = music_playing($id);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
         }
 
 
@@ -149,7 +160,7 @@
             $id = $path[2];
             $favorite_id = get_favorite_id($id)['id_playlist'];
             $res = show_infos_of_playlist($favorite_id);
-            $res["tracks"] = show_tracks_of_playlist($id);
+            $res["tracks"] = show_tracks_of_playlist($favorite_id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);

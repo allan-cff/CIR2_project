@@ -61,23 +61,32 @@
                 <button id="playlist-list">Vos Playlists</button>
             </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" id="main-search">
             <div class="input-group dropdown">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
                 <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                <div class="dropdown-menu">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Artiste</label>
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Album</label>
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Morceau</label>
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Playlist</label>
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Utilisateur</label>
-                </div>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-iteml"></li>
+                        <input id="search-artist" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <label class="form-check-label" for="flexCheckDefault">Artiste</label>
+                    <li class="dropdown-iteml">
+                        <input id="search-album" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <label class="form-check-label" for="flexCheckDefault">Album</label>
+                    </li>
+                    <li class="dropdown-iteml">
+                        <input id="search-song" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <label class="form-check-label" for="flexCheckDefault">Morceau</label>
+                    </li>
+                    <li class="dropdown-iteml">
+                        <input id="search-playlist" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <label class="form-check-label" for="flexCheckDefault">Playlist</label>
+                    </li>
+                    <li class="dropdown-iteml">
+                        <input id="search-user" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <label class="form-check-label" for="flexCheckDefault">Utilisateur</label>
+                    </li>
+                </ul>
             </div>
         </form>
         <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
@@ -141,10 +150,8 @@
                     <img src="../Ressources/cascade.png" alt="" />
                 </div>
                 <div class="song-description">
-                    <p class="title">
-                        CASCADE
-                    </p>
-                    <p class="artist">Alpha Wann</p>
+                    <p class="title"></p>
+                    <div class="artists-list"></div>
                 </div>
             </div>
             <div class="icons">

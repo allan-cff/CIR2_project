@@ -25,6 +25,7 @@ getUserId((userId) => {
     showWaitingList(userId);
     showUser(userId);
     //show footer info
+    initPreviousNextButtons();
     initPlayPauseButton();
     initLikeButton();
     initMusicProgress();
@@ -74,3 +75,11 @@ document.querySelector('#go-to-settings').addEventListener("click", () => {
         }
     );
 });
+
+document.querySelector('#main-search').addEventListener("submit", (e) => {
+    e.preventDefault();
+    moveToSearch(() => {
+
+    });
+    console.log(e)
+})
