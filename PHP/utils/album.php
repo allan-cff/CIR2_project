@@ -148,6 +148,9 @@ function show_tracks_of_album_default_order($id) {
     
 }
 
+
+
+
 // Fonction qui montre les artistes présents dans un album
 
 function show_authors_of_album($id) {

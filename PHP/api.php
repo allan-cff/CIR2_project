@@ -12,6 +12,7 @@
     session_start();
 
     # POST /users
+    # GET /users/loggedId
     # GET /users/:id
     # PUT /users/:id
     # DELETE /users/:id 
@@ -94,12 +95,12 @@
             }
         }
 
-//  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE
+//  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE // faire peut être demain
 
         if(count($path) === 5 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
             $id_morceau = $path[4];
-            //$res = ($id, $id_morceau); //METTRE LA FONCTION QUI PERMET DE SUPP UN DES 10 DERNIER MORCEAUX ECOUTER
+            $res = remove_track_from_historical($id, $id_morceau);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -142,10 +143,12 @@
             }
         }
 
-// MONTRE LES TITRE FAVORIE DE LUTILISATEUR
+// MONTRE LES TITRES FAVORIS DE LUTILISATEUR
         if(count($path) === 4 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-            $res = show_tracks_of_favorite($id);
+            $favorite_id = get_favorite_id($id)['id_playlist'];
+            $res = show_infos_of_playlist($favorite_id)[0];
+            $res["tracks"] = show_tracks_of_playlist($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -222,7 +225,7 @@
         }
 
 
-        # POST /users/:id/playlists/:id/tracks/
+// AJOUTE DES MUSIQUE A UNE PLAYLIST
 
         if(count($path) === 6 && $path[3] === 'playlists' && $path[5] === 'tracks' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
@@ -236,7 +239,7 @@
             }
         }
 
-        # DELETE /users/:id/playlists/:id/tracks/:id    // TODO (suppression d'une musique d'une playlist)
+//DELETE TITRE DANS LA PLAYLIST
 
         if(count($path) === 7 && $path[3] === 'playlists' && $path[5] === 'tracks' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
@@ -279,25 +282,19 @@
             $id = $path[2];
             $res = show_user_per_id($id);
             if($res){
-                echo json_encode($res);
+                echo json_encode(array(
+                    "name" => $res["nom"],
+                    "surname" => $res["prenom"],
+                    "mail" => $res["mail"],
+                    "image" => $res["image"],
+                    "birth" => $res["age"],
+                    "username" => strtolower($res["prenom"]).'.'.strtolower($res["nom"]),
+                ));
                 http_response_code(200);
                 exit;
             }
         }
 
-
-
-
-
-
-        /*if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'POST'){
-            $res = add_new_user($_POST['nom'], $_POST['nom'], $_POST['date_naissance'], $_POST['mail'], $_POST['password']);
-            if($res){
-                echo json_encode($res);
-                http_response_code(200);
-                exit;
-            }
-        }*/
     }
 
 
@@ -306,7 +303,7 @@
     # GET /artists
     # GET /artists/:id              // TODO : artist info
     # GET /artists/:id/albums
-    # nombre d'auditeur GET /artist/:id/auditor
+    # GET /artist/:id/best
 
     if($path[1] === 'artists'){
         if(count($path) === 4 && $path[3] === 'albums' && $_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -327,8 +324,9 @@
                 exit;
             }
         }
-        if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-            $res = show_artists();
+        if(count($path) === 4 && $path[3] === 'best' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            $id = $path[2];
+            $res = show_musics_of_artist($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -340,13 +338,14 @@
 
     require_once 'utils/album.php';
 
-    # GET /albums/recents           // TODO
-    # GET /albums/:id       // TODO
+    # GET /albums/recents
+    # GET /albums/:id
+    # GET /album/:id/titre
 
     if($path[1] === 'albums'){
         if(count($path) === 3 && $path[2] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-          // TODO  $res = ;            // TODO : derniers albums sortis par date sans la liste des sons
+            $res = show_newest_albums();
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -355,32 +354,16 @@
         }
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-        // TODO    $res = ;            // TODO : album avecv la liste des sons
+            $res = show_album_per_id($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
                 exit;
             }
         }
-    }
-
-    require_once 'utils/morceau.php';
-
-    # GET /musics           // TODO  renvoie 10 musiques au hasard (top de la semaine)
-    # GET /musics/:id       // TODO 
-
-    if($path[1] === 'musics'){
-        if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        if(count($path) === 4 && $path[3] === 'titre' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
-         // TODO   $res = ;            
-            if($res){
-                echo json_encode($res);
-                http_response_code(200);
-                exit;
-            }
-        }
-        if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-          // TODO  $res = ;            
+            $res = show_tracks_of_album($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
@@ -388,6 +371,9 @@
             }
         }
     }
+
+    require_once 'utils/fonctions_recherche.php';
+
 
     # GET /search PARAMS :
     #                       artist=string
