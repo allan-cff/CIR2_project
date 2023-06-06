@@ -59,6 +59,14 @@ function setNowPlaying(song, forcePlay=false){
         artistButton.classList.add('artist')
         artistButton.setAttribute('data-rythmicid', artist.id)
         artistButton.innerHTML = artist.nom
+        artistButton.addEventListener("click", (e) => {
+            id = e.target.getAttribute('data-rythmicId');
+            moveToArtist((id)=>{
+                getArtist(id, (artist) => {
+                    showArtist(artist)
+                })
+            }, id)
+        })
         document.querySelector(".music-player .song-description .artists-list").appendChild(artistButton)
     })
     userId = localStorage.getItem('userId');
@@ -321,5 +329,13 @@ function showSettings(profile){
     document.querySelector('#surname').innerHTML = profile.surname;
     document.querySelector('#mail').innerHTML = profile.mail;
     document.querySelector('#birth').innerHTML = profile.birth;
+
+}
+
+function showArtist(artist){
+    document.querySelector('#nom-artiste').innerHTML = artist.nom
+    document.querySelector('#image-artiste').setAttribute('src', artist.image)
+    document.querySelector('#description-artiste').innerHTML = "Description : "
+    document.querySelector('#nb-listeners-artiste').innerHTML = "Nombre d'auditeur par mois : " + artist.nb_auditeurs;
 
 }

@@ -312,19 +312,19 @@
         <div class="main-container">
             <div class="placement">
                 <div class="container">
-                    <img src="../Ressources/alpha.png">
+                    <img id="image-artiste">
                     <div class="info-sup">
-                        <b>nom de l'artiste</b>
+                        <b id="nom-artiste"></b>
                     </div>
                 </div>
                 <div class="container">
                     <div class="card">
                         <div class="card-content">
-                            <p>Description :</p>
+                            <p id="description-artiste">Description :</p>
                         </div>
                     </div>
                     <div class="playlist-details">
-                        <span class="total-duration">Nombre d'auditeur par mois :</span> <!-- la duré sera à modifié plus tard via du php -->
+                        <span class="total-duration" id="nb-listeners-artiste"></span> <!-- la duré sera à modifié plus tard via du php -->
                     </div>
                 </div>
             </div>
