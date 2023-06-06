@@ -94,7 +94,7 @@
             }
         }
 
-//  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE
+//  SUPRIMME UN TITRE DE L HISTORIQUE DES ECOUTE // faire peut être demain
 
         if(count($path) === 5 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
@@ -236,7 +236,7 @@
             }
         }
 
-        # DELETE /users/:id/playlists/:id/tracks/:id    // TODO (suppression d'une musique d'une playlist)
+//DELETE TITRE DANS LA PLAYLIST
 
         if(count($path) === 7 && $path[3] === 'playlists' && $path[5] === 'tracks' && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             $id = $path[2];
