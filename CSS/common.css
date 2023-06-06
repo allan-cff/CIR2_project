@@ -305,6 +305,14 @@ footer {
     border-radius: 50%;
 }
 
+.music-player .backward-button{
+    color: #a9afbc;
+}
+
+.music-player .forward-button{
+    color: #a9afbc;
+}
+
 .music-player .play-pause-button:hover {
     /* Votre style existant */
     transform: scale(1.1);
@@ -319,6 +327,7 @@ footer {
     justify-content: center;
     gap: 1em;
 }
+
 
 .music-player .progress-bar {
     /* Votre style existant */
