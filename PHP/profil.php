@@ -156,7 +156,7 @@ if (!isset($_SESSION['id'])) {
             </div>
             <!-- Champ de modif pour le PSEUDO -->
             <div class="username center">
-                <input type="text" placeholder="username" name="username">
+                <input type="text" placeholder="Username" name="username">
                 <div class="edit-icon_text">&#9998;</div>
             </div>
             <div class="info">
