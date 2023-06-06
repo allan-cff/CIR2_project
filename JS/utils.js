@@ -289,3 +289,12 @@ function showProfile(profile){
     document.querySelector('#birth').innerHTML = profile.birth;
 
 }
+
+function showSettings(profile){
+    document.getElementById('username').value = profile.username;
+    document.getElementById('name').value = profile.name;
+    document.getElementById('surname').value = profile.surname;
+    document.getElementById('mail').value = profile.mail;
+    document.getElementById('birth').value = profile.birth;
+
+}

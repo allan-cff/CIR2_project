@@ -66,5 +66,11 @@ document.querySelector('#go-to-profile').addEventListener("click", () => {
 });
 
 document.querySelector('#go-to-settings').addEventListener("click", () => {
-    moveToSettings();
+    moveToSettings(
+        ()=>{
+            userId = localStorage.getItem('userId');
+            console.log("Showing " + userId)
+            getUser(userId, (user)=>{showSettings(user)})
+        }
+    );
 });
