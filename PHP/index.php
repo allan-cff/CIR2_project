@@ -51,7 +51,7 @@
     </ul>
 </div>
 
-<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+<nav class="navbar navbar-expand-lg fixed-top "> <!--bg-body-tertiary-->
     <div class="container-fluid">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
