@@ -42,9 +42,9 @@
 
     <img src="../Ressources/user2.png" alt="user" />
 
-    <button type="button">Username</button>
+    <button id="go-to-profile" type="button">Username</button>
 
-    <button type="button">Réglages</button>
+    <button id="go-to-settings" type="button">Réglages</button>
 
     <ul class="list-group" id="waitingList">
         <li class="list-group-item">File d'attente</li>
@@ -301,38 +301,6 @@
 <template id="affichage-artiste">
     <div id="main-content">
         <div class="main-container">
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <div class="dropdown-menu">
-                                <select class="dropdown-item form-select" aria-label="Default select example">
-                                    <option value="artiste" selected>Artiste</option>
-                                    <option value="album">Album</option>
-                                    <option value="song">Morceau</option>
-                                    <option value="playlist">Playlist</option>
-                                    <option value="user">Utilisateur</option>
-                                </select>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </div>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-            </nav>
-
             <div class="placement">
                 <div class="container">
                     <img src="../Ressources/alpha.png">
@@ -419,38 +387,6 @@
 <template id="affichage-profil">
     <div id="main-content">
         <div class="main-container">
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <div class="dropdown-menu">
-                                <select class="dropdown-item form-select" aria-label="Default select example">
-                                    <option value="artiste" selected>Artiste</option>
-                                    <option value="album">Album</option>
-                                    <option value="song">Morceau</option>
-                                    <option value="playlist">Playlist</option>
-                                    <option value="user">Utilisateur</option>
-                                </select>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </div>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-            </nav>
-
             <div class="placement">
                 <div class="container">
                     <img src="../Ressources/playlist.png">
@@ -558,39 +494,6 @@
 <template id="affichage-recherche">
     <div id="main-content">
         <div id="main-container">
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <div class="dropdown-menu">
-                                <select class="dropdown-item form-select" aria-label="Default select example">
-                                    <option value="artiste" selected>Artiste</option>
-                                    <option value="album">Album</option>
-                                    <option value="song">Morceau</option>
-                                    <option value="playlist">Playlist</option>
-                                    <option value="user">Utilisateur</option>
-                                </select>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </div>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-            </nav>
-
-
             <div class="devanture">
                 <div class="card">
                     <div class="card-body">
@@ -1546,37 +1449,6 @@
 <template id="affichage-reglages">
     <div id="main-content">
         <div class="main-container">
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-fluid">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <button>Titres Likes</button>
-                        </li>
-                        <li class="nav-item">
-                            <button>Vos Playlists</button>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <div class="input-group dropdown">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
-                            <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
-                            <div class="dropdown-menu">
-                                <select class="dropdown-item form-select" aria-label="Default select example">
-                                    <option value="artiste" selected>Artiste</option>
-                                    <option value="album">Album</option>
-                                    <option value="song">Morceau</option>
-                                    <option value="playlist">Playlist</option>
-                                    <option value="user">Utilisateur</option>
-                                </select>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </div>
-                        </div>
-                    </form>
-                    <a id="disconnect" href="disconnect.php"><i class="fas fa-sign-out-alt"></i></a>
-                </div>
-            </nav>
             <form action="profil.php" method="POST">
                 <div class="container">
                     <div class="profile-icon">
