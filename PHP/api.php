@@ -306,7 +306,7 @@
     # GET /artists
     # GET /artists/:id              // TODO : artist info
     # GET /artists/:id/albums
-    # nombre d'auditeur GET /artist/:id/auditor
+    # GET /artist/:id/best
 
     if($path[1] === 'artists'){
         if(count($path) === 4 && $path[3] === 'albums' && $_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -327,8 +327,9 @@
                 exit;
             }
         }
-        if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'GET'){
-            $res = show_artists();
+        if(count($path) === 4 && $path[3] === 'best' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            $id = $path[2];
+            $res = show_musics_of_artist($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);
