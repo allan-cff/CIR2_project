@@ -27,6 +27,15 @@ function music_playing($id_user) {
         $stmt->bindParam(':id', $id_track);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // ON RECUPERE LE NOM DES ARTISTES DU MORCEAU
+        $stmt = $conn->prepare("SELECT artiste.nom FROM morceau JOIN cree_par ON morceau.id = cree_par.id_morceau JOIN artiste ON artiste.id = cree_par.id WHERE morceau.id = :id");
+        $stmt->bindParam(':id', $id_track);
+        $stmt->execute();
+        // ON ASSOCIE LE NOM DES ARTISTES A LA VARIABLE $ARTISTES
+        $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // ON AJOUTE LA VARIABLE ARTISTES A LA VARIABLE RESULT
+        $result['artistes'] = $artistes;
+
 
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
