@@ -202,9 +202,17 @@ function show_newest_albums() {
         return false;
     }
     try {
-        $stmt = $conn->prepare("SELECT album.titre, album.image, album.date_parution, ac.id_artiste, a.nom FROM album JOIN a_compose ac on album.id = ac.id JOIN artiste a on ac.id_artiste = a.id ORDER BY date_parution DESC LIMIT 10");
+        $stmt = $conn->prepare("SELECT album,id, album.titre, album.image, album.date_parution FROM album JOIN a_compose ac on album.id = ac.id JOIN artiste a on ac.id_artiste = a.id ORDER BY date_parution DESC LIMIT 10");
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $albums = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // ON RECUPERE LES ARTISTES POUR CHAQUE ALBUM
+        foreach($albums as $album) {
+            $stmt = $conn->prepare("SELECT artiste.nom FROM a_compose JOIN album using (id) JOIN artiste ON artiste.id = a_compose.id_artiste WHERE album.id = :id");
+            $stmt->bindParam(':id', $album['id']);
+            $stmt->execute();
+            $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $album['artistes'] = $artistes;
+        }
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
