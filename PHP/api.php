@@ -384,7 +384,14 @@
     #                       user=string
     #                       type=artist,album,music,user
 
-    if($path[1] === 'search')
+    if(count($path) === 2 && $path[1] === 'search' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        $query = $_GET["query"];
+        $include = $_GET["include"];
+        $res = array();
+        if (in_array("album", $include)){
+
+        }
+    }
 
     
 ?>

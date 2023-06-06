@@ -1244,7 +1244,7 @@
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#playlistsCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#playlistsCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -1455,6 +1455,10 @@
                     <div class="profile-icon">
                     <!-- <img src="..." alt="Profile Icon"> -->
                         <div class="edit-icon">&#9998;</div>
+                    </div>
+                    <!-- Champ de modif pour le PSEUDO -->
+                    <div class="username center">
+                        <input type="text" id="username" placeholder="username" name="username">
                     </div>
                     <div class="info">
                         <!-- Champ de modif pour le prenom -->

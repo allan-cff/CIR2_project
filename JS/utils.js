@@ -282,7 +282,7 @@ function showPlaylistList(playlistList){
 
 function showProfile(profile){
     console.log(profile)
-    document.querySelector('#username').innerHTML = profile.username;
+    document.getElementById('username').innerHTML = profile.username;
     document.querySelector('#name').innerHTML = profile.name;
     document.querySelector('#surname').innerHTML = profile.surname;
     document.querySelector('#mail').innerHTML = profile.mail;
@@ -291,10 +291,10 @@ function showProfile(profile){
 }
 
 function showSettings(profile){
-    document.getElementById('username').value = profile.username;
-    document.getElementById('name').value = profile.name;
-    document.getElementById('surname').value = profile.surname;
-    document.getElementById('mail').value = profile.mail;
-    document.getElementById('birth').value = profile.birth;
+    document.getElementById('username').innerHTML = profile.username;
+    document.querySelector('#name').innerHTML = profile.name;
+    document.querySelector('#surname').innerHTML = profile.surname;
+    document.querySelector('#mail').innerHTML = profile.mail;
+    document.querySelector('#birth').innerHTML = profile.birth;
 
 }
