@@ -1158,9 +1158,9 @@
                     <th class="th4">#</th>
                     <th>Album</th>
                     <th>Titre</th>
-                    <th class="th4">Artiste</th>
-                    <th>Détail</th>
-                    <th class="th4">Delete</th>
+                    <th class="th4">Artiste(s)</th>
+                    <th>Détails</th>
+                    <th class="th4">Supprimer</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -1171,7 +1171,7 @@
                             </td>
                             <td><img src="../Ressources/album.png" alt="Album 1"></td>
                             <td>Titre 1</td>
-                            <td><button>Artiste 1</button></td>
+                            <td></td>
                             <td>
                                 <div class="dropdown">
                                     <span class="dropdown-toggle">&#9776;</span>
@@ -1458,10 +1458,10 @@
 <template id="affichage-reglages">
     <div id="main-content">
         <div class="main-container">
-            <form action="profil.php" method="POST">
+            <form id="set-profile" action="#" method="POST">
                 <div class="container">
                     <div class="profile-icon">
-                    <!-- <img src="..." alt="Profile Icon"> -->
+                        <img id="profile-image" src="" alt="Profile Icon">
                         <div class="edit-icon">&#9998;</div>
                     </div>
                     <!-- Champ de modif pour le PSEUDO -->
@@ -1471,28 +1471,36 @@
                     <div class="info">
                         <!-- Champ de modif pour le prenom -->
                         <div class="edit-input">
-                            <input type="text" placeholder="Prénom" name="prenom">
+                            <input id="surname" type="text" placeholder="Prénom" name="prenom">
                             <div class="edit-icon-text">&#9998;</div>
                         </div>
                         <!-- Champ de modif pour le nom -->
                         <div class="edit-input">
-                            <input type="text" placeholder="Nom" name="nom">
+                            <input id="name" type="text" placeholder="Nom" name="nom">
                             <div class="edit-icon-text">&#9998;</div>
                         </div>
                     </div>
+                    <div class="info">
                     <!-- Champ de modif de l'âge -->
-                    <div class="center">
-                        <input type="date" placeholder="Date de naissance" name="age">
+                        <div class="edit-input">
+                            <div class="edit-icon-text">&#9998;</div>
+                                <input id="birth" type="date" placeholder="Naissance" name="age">
+                            </div>
+                    <!-- Champ d'affichage pour l'âge -->
+                        <div class="edit-input">
+                            <input type="text" placeholder="Age" id="age" disabled>
+                        </div>
                     </div>
                     <!-- Champ de modif pour le mail -->
                     <div class="info">
                         <div class="edit-input">
                             <div class="edit-icon-text">&#9998;</div>
-                                <input type="email" placeholder="Email" name="mail">
+                                <input id="mail" type="email" placeholder="Email" name="mail">
                             </div>
                     <!-- Champ de modif pour le mot de passe -->
                         <div class="edit-input">
-                            <input type="password" placeholder="Mot de passe" id="password" name="password">
+                            <div class="edit-icon-text">&#9998;</div>
+                            <input id="password" type="password" placeholder="Mot de passe" id="password" name="password">
                         </div>
                     </div>
                     <!-- Bouton de confirmation -->

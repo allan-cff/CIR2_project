@@ -38,7 +38,7 @@ function verify_user($mail, $password) {
 
 // FONCTION D'INSCRIPTION D'UN UTILISATEUR APRES VERIFICATION DES INFORMATIONS
 
-function add_new_user($prenom, $nom, $age, $mail, $password) {
+function add_new_user($prenom, $nom, $username, $age, $mail, $password) {
 
     $conn = Database::connexionBD();
             if (!$conn) {
@@ -70,7 +70,7 @@ function add_new_user($prenom, $nom, $age, $mail, $password) {
                     $stmt->bindParam(':mail', $mail);
                     $stmt->bindParam(':password', $pwd);
                     $stmt->bindParam(':age', $age);
-                    $stmt->bindParam(':username', $mail);
+                    $stmt->bindParam(':username', $username);
                 
                     $valid = $stmt->execute();
                     $id_user_created = $stmt->fetch(PDO::FETCH_ASSOC)['id'];

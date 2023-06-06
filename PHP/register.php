@@ -74,10 +74,11 @@
         if(!empty($_POST)) { // Si le formulaire est soumis et que les champs sont remplis
             $nom = $_POST['lastname'];
             $prenom = $_POST['firstname'];
+            $username = $_POST['username'];
             $age = $_POST['birthdate'];
             $mail = $_POST['new_email'];
             $password = $_POST['new_mdp'];
-            add_new_user($prenom, $nom, $age, $mail, $password);
+            add_new_user($prenom, $nom, $username, $age, $mail, $password);
         }
 
 

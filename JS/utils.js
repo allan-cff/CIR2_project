@@ -28,10 +28,9 @@ function secondsToHoursTimeString(seconds){
 
 function playNow(songId){
     userId = localStorage.getItem('userId');
-    setNowListening(userId, songId, () => {
-        getMusic(songId, (song) => {
-            setNowPlaying(song, true);
-        })
+    listen(userId, songId, (song) => {
+        console.log(song)
+        setNowPlaying(song, true);
     })
 }
 
@@ -54,6 +53,7 @@ function playPrevious(){
 function setNowPlaying(song, forcePlay=false){
     document.querySelector(".music-player .image-container img").setAttribute("src", song.image)
     document.querySelector(".music-player .song-description .title").innerHTML = song.titre;
+    document.querySelector(".music-player .song-description .artists-list").innerHTML = "";
     song.artistes.forEach((artist) => {
         let artistButton = document.createElement("button")
         artistButton.classList.add('artist')
@@ -244,6 +244,7 @@ function showWaitingList(userId){
 
 function initAlbum(albumId){
     getAlbum(albumId, (album) => {
+        console.log(album)
         document.querySelector('#album-cover').setAttribute("src", album.cover);
         document.querySelector('.info-sup b').innerHTML = album.title;
         document.querySelector('#album-artist-name').innerHTML = album.author;
@@ -272,9 +273,32 @@ function showPlaylist(playlist){
     for(let track of playlist.tracks){
         const template = document.querySelector('#playlist-row-template');
         const clone = template.content.cloneNode(true);
+        clone.querySelector('.play-button').setAttribute('data-rythmicId', track.id)
+        clone.querySelector('.play-button').addEventListener("click", (e) => {
+            id = e.target.getAttribute('data-rythmicId');
+            playNow(id)
+        })
         clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
+        clone.querySelector('td:nth-child(2) img').setAttribute('data-rythmicId', track.id_album)
+        clone.querySelector('td:nth-child(2) img').addEventListener("click", (e) => {
+            id = e.target.getAttribute('data-rythmicId');
+            moveToAlbum((id)=>{initAlbum(id)}, id)
+        })
         clone.querySelector("td:nth-child(3)").innerHTML = track.titre;
-        clone.querySelector("td:nth-child(4)>button").innerHTML = track.artistes;
+        for(let artist of track.artistes){
+            let bouton = document.createElement("button")
+            bouton.innerHTML = artist.nom;
+            bouton.setAttribute('data-rythmicId', artist.id)
+            clone.querySelector("td:nth-child(4)").appendChild(bouton)
+            bouton.addEventListener("click", (e) => {
+                id = e.target.getAttribute('data-rythmicId');
+                moveToArtist((id)=>{
+                    getArtist(id, (artist) => {
+                        showArtist(artist)
+                    })
+                }, id)
+            })
+        }
         clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
             elem.setAttribute("data-rythmicId", track.id);
         })
@@ -315,21 +339,51 @@ function showPlaylistList(playlistList){
 
 function showProfile(profile){
     console.log(profile)
-    document.getElementById('username').innerHTML = profile.username;
+    document.querySelector('#username').innerHTML = profile.username;
     document.querySelector('#name').innerHTML = profile.name;
     document.querySelector('#surname').innerHTML = profile.surname;
     document.querySelector('#mail').innerHTML = profile.mail;
     document.querySelector('#birth').innerHTML = profile.birth;
-
 }
 
 function showSettings(profile){
-    document.getElementById('username').innerHTML = profile.username;
-    document.querySelector('#name').innerHTML = profile.name;
-    document.querySelector('#surname').innerHTML = profile.surname;
-    document.querySelector('#mail').innerHTML = profile.mail;
-    document.querySelector('#birth').innerHTML = profile.birth;
-
+    let now = new Date()
+    let birth = new Date(profile.birth)
+    let age = now.getFullYear() - birth.getFullYear()
+    if((now.getMonth() < birth.getMonth()) || (now.getMonth() === birth.getMonth()) && (now.getDate() < birth.getDate())){
+        age = age - 1;
+    }
+    document.querySelector('#age').value = age.toString(10) + " ans";
+    document.querySelector('#profile-image').setAttribute('src', profile.image)
+    document.querySelector('#username').value = profile.username;
+    document.querySelector('#name').value = profile.name;
+    document.querySelector('#surname').value = profile.surname;
+    document.querySelector('#mail').value = profile.mail;
+    document.querySelector('#birth').value = profile.birth;
+    document.querySelector('#birth').addEventListener('change', (e) => {
+        let now = new Date()
+        let birth = new Date(e.target.value)
+        let age = now.getFullYear() - birth.getFullYear()
+        if((now.getMonth() < birth.getMonth()) || (now.getMonth() === birth.getMonth()) && (now.getDate() < birth.getDate())){
+            age = age - 1;
+        }
+        document.querySelector('#age').value = age.toString(10) + " ans";
+    })
+    document.querySelector('#set-profile').addEventListener("submit", (e) => {
+        e.preventDefault();
+        let body = new FormData()
+        body.append("nom", document.querySelector('#name').value);
+        body.append("username", document.querySelector('#username').value)
+        body.append("prenom", document.querySelector('#surname').value)
+        body.append("mail", document.querySelector('#mail').value)
+        body.append("password", document.querySelector('#password').value)
+        body.append("age", document.querySelector('#birth').value)
+        modifyUser(profile.id, body, () => {
+            getUser(userId, (user) => {
+                showSettings(user)
+            })
+        })
+    })
 }
 
 function showArtist(artist){
@@ -337,5 +391,4 @@ function showArtist(artist){
     document.querySelector('#image-artiste').setAttribute('src', artist.image)
     document.querySelector('#description-artiste').innerHTML = "Description : "
     document.querySelector('#nb-listeners-artiste').innerHTML = "Nombre d'auditeur par mois : " + artist.nb_auditeurs;
-
 }

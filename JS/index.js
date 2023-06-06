@@ -61,25 +61,25 @@ document.querySelector('nav button#playlist-list').addEventListener("click", (e)
 document.querySelector('#go-to-profile').addEventListener("click", () => {
     moveToProfile(()=>{
         userId = localStorage.getItem('userId');
-        console.log("Showing " + userId)
-        getUser(userId, (user)=>{showProfile(user)})
+        getUser(userId, (user)=>{
+            showProfile(user)
+        })
     });
 });
 
 document.querySelector('#go-to-settings').addEventListener("click", () => {
-    moveToSettings(
-        ()=>{
-            userId = localStorage.getItem('userId');
-            console.log("Showing " + userId)
-            getUser(userId, (user)=>{showSettings(user)})
-        }
-    );
+    moveToSettings(()=>{
+        userId = localStorage.getItem('userId');
+        getUser(userId, (user)=>{
+            showSettings(user)
+        })
+    });
 });
 
 document.querySelector('#main-search').addEventListener("submit", (e) => {
     e.preventDefault();
     moveToSearch(() => {
-
+        
     });
     console.log(e)
 })

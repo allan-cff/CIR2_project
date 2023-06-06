@@ -18,6 +18,7 @@
     # PUT /users/:id
     # DELETE /users/:id 
     # GET /users/:id/nowlistening
+    # POST /users/:id/nowlistening
     # GET /users/:id/nextsong
     # GET /users/:id/recents
     # POST /users/:id/recents
@@ -57,6 +58,19 @@
             }
         }
 
+// JOUER UN TITRE IMMEDIATEMENT ==> OK
+        if(count($path) === 5 && $path[3] === 'listen' && $_SERVER['REQUEST_METHOD'] === 'GET'){
+            $id = $path[2];
+            $id_morceau = $path[4];
+            change_music_playing($id, $id_morceau);
+            $res = music_playing($id);
+            if($res){
+                echo json_encode($res);
+                http_response_code(200);
+                exit;
+            }
+        }
+
 // PROCHAIN TITRE A JOUER ==> OK
         if(count($path) === 4 && $path[3] === 'nextsong' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
@@ -82,7 +96,7 @@
         }
 
 
-// MONTRE LES DERNIER TITRE ECOUTE PAR L USER (HISTORIQUE)
+// MONTRE LES DERNIER TITRE ECOUTE PAR L USER (HISTORIQUE) => OK
 
         if(count($path) === 4 && $path[3] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
@@ -282,12 +296,10 @@
 // MODIFIE LES INFO DE L UTILISATEUR
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'PUT'){
             $id = $path[2];
-            $res = modify_infos_user($id, $_POST);
-            if($res){
-                echo json_encode($res);
-                http_response_code(200);
-                exit;
-            }
+            modify_infos_user($id, $_POST);
+            echo json_encode($_POST);
+            http_response_code(200);
+            exit;
         }
 
 //DONNE LES INFO DE L UTILISATEUR
@@ -301,7 +313,7 @@
                     "mail" => $res["mail"],
                     "image" => $res["image"],
                     "birth" => $res["age"],
-                    "username" => strtolower($res["prenom"]).'.'.strtolower($res["nom"]),
+                    "username" => $res["username"],
                 ));
                 http_response_code(200);
                 exit;
@@ -353,7 +365,6 @@
 
     # GET /albums/recents
     # GET /albums/:id
-    # GET /album/:id/titre
 
     if($path[1] === 'albums'){
         if(count($path) === 3 && $path[2] === 'recents' && $_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -368,15 +379,7 @@
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_album_per_id($id);
-            if($res){
-                echo json_encode($res);
-                http_response_code(200);
-                exit;
-            }
-        }
-        if(count($path) === 4 && $path[3] === 'titre' && $_SERVER['REQUEST_METHOD'] === 'GET'){
-            $id = $path[2];
-            $res = show_tracks_of_album($id);
+            $res["tracks"] = show_tracks_of_album($id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);

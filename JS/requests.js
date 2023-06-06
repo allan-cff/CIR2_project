@@ -1,6 +1,7 @@
 function jsonToFormdata(data){
     let form_data = new FormData();
     for (let key in data) {
+        console.log(key)
         form_data.append(key, data[key]);
     }
     return form_data
@@ -16,7 +17,7 @@ function getUser(userId, callback){
 }
 
 function modifyUser(userId, body, callback){
-    ajaxRequest('put', `users/${userId}`, callback, jsonToFormdata(body));
+    ajaxRequest('put', `users/${userId}`, callback, body);
 }
 
 function deleteUser(userId, callback){
@@ -25,6 +26,10 @@ function deleteUser(userId, callback){
 
 function getNowListening(userId, callback){
     ajaxRequest('get', `users/${userId}/nowlistening`, (body) => {callback(body)});
+}
+
+function listen(userId, songId, callback){
+    ajaxRequest('get', `users/${userId}/listen/${songId}`, (body) => {callback(body)});
 }
 
 function getNextSong(userId, callback){
@@ -135,10 +140,4 @@ function getAlbum(albumId, callback){
 
 function listMusics(callback){
     ajaxRequest('get', `/musics`, callback);
-}
-
-function getMusic(trackId, callback){
-    console.log("Getting music ", trackId)
-    callback({author:"Allan", title:"Bon son", image:"../Ressources/alpha.png", data:"../Ressources/song.mp3"})
-//    ajaxRequest('get', `musics/${trackId}`, callback);
 }
