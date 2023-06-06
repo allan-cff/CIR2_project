@@ -142,7 +142,7 @@
             }
         }
 
-// MONTRE LES TITRE FAVORIE DE LUTILISATEUR
+// MONTRE LES TITRES FAVORIS DE LUTILISATEUR
         if(count($path) === 4 && $path[3] === 'favorites' && $_SERVER['REQUEST_METHOD'] === 'GET'){
             $id = $path[2];
             $res = show_tracks_of_favorite($id);
@@ -222,7 +222,7 @@
         }
 
 
-        # POST /users/:id/playlists/:id/tracks/
+// AJOUTE DES MUSIQUE A UNE PLAYLIST
 
         if(count($path) === 6 && $path[3] === 'playlists' && $path[5] === 'tracks' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
@@ -285,19 +285,6 @@
             }
         }
 
-
-
-
-
-
-        /*if(count($path) === 2 && $_SERVER['REQUEST_METHOD'] === 'POST'){
-            $res = add_new_user($_POST['nom'], $_POST['nom'], $_POST['date_naissance'], $_POST['mail'], $_POST['password']);
-            if($res){
-                echo json_encode($res);
-                http_response_code(200);
-                exit;
-            }
-        }*/
     }
 
 
