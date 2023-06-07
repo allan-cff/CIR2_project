@@ -469,6 +469,29 @@ function showProfile(profile){
     document.querySelector('#surname').innerHTML = profile.surname;
     document.querySelector('#mail').innerHTML = profile.mail;
     document.querySelector('#birth').innerHTML = profile.birth;
+    userId = localStorage.getItem('userId');
+    getFavorites(userId, (playlist)=>{
+        console.log(playlist)
+        for(let track of playlist.tracks){
+            console.log(track);
+            const template = document.querySelector('#favorites-row-template');
+            const clone = template.content.cloneNode(true);
+            clone.querySelector('#play-favorite').setAttribute('data-rythmicId', track.id)
+            clone.querySelector('#play-favorite').addEventListener("click", (e) => {
+                id = e.target.getAttribute('data-rythmicId');
+                playNow(id)
+            })
+            clone.querySelector("#image").setAttribute('src', track.image)
+            clone.querySelector('#titre').innerHTML = track.titre
+            clone.querySelector('#artiste').innerHTML = track.artistes[0].nom
+            clone.querySelector('#delete').addEventListener("click", (e) => {
+                id = e.target.getAttribute('data-rythmicId');
+                userId = localStorage.getItem('userId');
+                deleteFavorite(userId, elem.getAttribute('data-rythmic'))
+            })
+            document.querySelector('tbody').appendChild(clone);
+        }
+    })    
 }
 
 function showSettings(profile){
