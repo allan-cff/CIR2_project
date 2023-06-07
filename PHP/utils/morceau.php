@@ -424,7 +424,7 @@ function add_track_to_historical($id_user, $id_track) {
         $stmt->bindParam(':id', $id_user);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $id_playlist = $result['id'];
+        $id_playlist = $result;
 
         // On ajoute le morceau à la playlist historique de l'utilisateur
         $stmt = $conn->prepare('INSERT INTO contenu_dans (id, id_playlist, date_ajout) VALUES (:id_track, :id_playlist, current_timestamp)');
