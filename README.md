@@ -47,5 +47,6 @@ pip install psycopg2`
 - Créer une base de données `create database rythmic owner admin;`
 - Sortir de l'invite de commande postgresql `\q`
 - Lancer le script `psql -U admin rythmic < insert/fill.sql`
+- (POUR TESTS UNIQUEMENT) Executer `psql dev_db postgres` `\i SQL/data.sql`
 
 ## Insérer des valeurs dans la base de données
