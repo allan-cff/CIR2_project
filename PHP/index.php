@@ -393,25 +393,25 @@
                 <div class="container">
                     <img src="../Ressources/playlist.png">
                     <div class="info-sup">
-                        <b id="username">Votre username</b>
+                        <b id="username" style="color:#fff; background-color: #F27457; border-radius:10px; padding:2%">Votre username</b>
                         <br>
                         <br>
-                        <b id="surname">Votre prenom</b>
+                        <b id="surname" style="color:#fff; background-color: #F27457; border-radius:10px; padding:2%">Votre prenom</b>
                         <br>
                         <br>
-                        <b id="name">Votre nom</b>
+                        <b id="name" style="color:#fff; background-color: #F27457; border-radius:10px; padding:2%">Votre nom</b>
                         <br>
                         <br>
-                        <b id="mail">Votre email</b>
+                        <b id="mail" style="color:#fff; background-color: #F27457; border-radius:10px; padding:2%">Votre email</b>
                         <br>
                         <br>
-                        <b id="birth">Votre date de naissance</b>
+                        <b id="birth" style="color:#fff; background-color: #F27457; border-radius:10px; padding:2%">Date de naissance</b>
                     </div>
 
                 </div>
                 <div class="container">
-                    <b><span style="text-decoration: underline">Titres likés :</span></b>
-                    <p>nombre de titre likés :</p>
+                    <b><span style="color:#fff; background-color: #F27457; border-radius:10px; padding:1%">Titres likés :</span></b>
+                    <p style="color:#fff; background-color: #F27457; border-radius:10px; padding:0.5%; margin-left:270px; margin-right:270px; margin-top:20px;">nombre de titre likés :</p>
 
                     <table>
                         <thead>
