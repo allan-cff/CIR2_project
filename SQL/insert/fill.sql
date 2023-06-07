@@ -267,6 +267,7 @@ CREATE TABLE public.utilisateur (
     prenom character varying(70) NOT NULL,
     nom character varying(50) NOT NULL,
     age date NOT NULL,
+    image character varying(100) NOT NULL ,
     mail character varying(100) NOT NULL,
     username character varying(100) NOT NULL,
     password character varying(100) NOT NULL,
