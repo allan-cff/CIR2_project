@@ -11,6 +11,16 @@
     padding: 1em;
 }
 
+#resultAlbums {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .placement .container:first-child {
     flex: 1;
 }

@@ -503,18 +503,12 @@
 <template id="affichage-recherche">
     <div id="main-content">
         <div id="main-container">
-            <div class="devanture">
-                <div class="card">
-                    <div class="card-body">
-                        <b>votre recherche :</b>
-                    </div>
-                </div>
-            </div>
+            <br><br><br><br>
 
         </div>
 
         <div class="artist">
-            <div class="card">
+            <div class="card" id ="resultAlbums">
                 <b>album :</b>
             </div>
         </div>
