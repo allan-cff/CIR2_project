@@ -17,6 +17,7 @@ button {
     font-weight: bold;
     font-size: 1em;
     border: none;
+    
 }
 
 .sidebar {
@@ -265,6 +266,12 @@ footer {
 
 .music-player .image-container {
     flex-shrink: 0;
+}
+
+.card-body button {
+    margin-bottom: 3px;
+    background-color: #b7b4b4;
+    margin-left: 15px;
 }
 
 .music-player .image-container img {
