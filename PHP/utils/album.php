@@ -212,7 +212,7 @@ function show_newest_albums() {
         return false;
     }
     try {
-        $stmt = $conn->prepare("SELECT album.id, album.titre, album.date_parution, album.image FROM album ORDER BY album.date_parution DESC LIMIT 10");
+        $stmt = $conn->prepare("SELECT album.id, album.titre, album.date_parution, album.image, style_musique.type_musique FROM album JOIN appartient_a ON appartient_a.id_album = album.id JOIN style_musique ON appartient_a.id = style_musique.id ORDER BY album.date_parution DESC LIMIT 10");
         $stmt->execute();
         $albums = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // ON RECUPERE LES ARTISTES POUR CHAQUE ALBUM
