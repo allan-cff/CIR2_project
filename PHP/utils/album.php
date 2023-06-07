@@ -202,17 +202,19 @@ function show_newest_albums() {
         return false;
     }
     try {
-        $stmt = $conn->prepare("SELECT album,id, album.titre, album.image, album.date_parution FROM album JOIN a_compose ac on album.id = ac.id JOIN artiste a on ac.id_artiste = a.id ORDER BY date_parution DESC LIMIT 10");
+        $stmt = $conn->prepare("SELECT album.id, album.titre, album.date_parution, album.image FROM album ORDER BY album.date_parution DESC LIMIT 10");
         $stmt->execute();
         $albums = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // ON RECUPERE LES ARTISTES POUR CHAQUE ALBUM
-        foreach($albums as $album) {
-            $stmt = $conn->prepare("SELECT artiste.nom FROM a_compose JOIN album using (id) JOIN artiste ON artiste.id = a_compose.id_artiste WHERE album.id = :id");
-            $stmt->bindParam(':id', $album['id']);
+        for($i=0; $i<count($albums); $i++){
+            $sql = 'SELECT artiste.nom FROM a_compose JOIN album using (id) JOIN artiste ON artiste.id = a_compose.id_artiste WHERE album.id = :id';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $albums[$i]['id']);
             $stmt->execute();
             $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $album['artistes'] = $artistes;
+            $albums[$i]['artistes'] = $artistes;
         }
+
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
