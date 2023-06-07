@@ -419,50 +419,21 @@
                             <th>Album</th>
                             <th>Titre</th>
                             <th class="th4">Artiste</th>
-                            <th>Détail</th>
                             <th class="th4">Delete</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <template id="favorites-row-template">
                         <tr>
-                            <td>1
-                                <button class="play-button"><i class="fa fa-play"></i></button>
-                            </td>
-                            <td><img src="../Ressources/album.png" alt="Album 1"></td>
-                            <td>Titre 1</td>
-                            <td><button>Artiste 1</button></td>
                             <td>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle">&#9776;</span>
-                                    <div class="dropdown-menu">
-                                        <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
-                                        <a href="#">Ajouter à une playlist</a>
-                                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                                        <a href="#">Ajouter à la file d'attente</a>
-                                    </div>
-                                </div>
+                                <button class="play-button" id="play-favorite"><i class="fa fa-play"></i></button>
                             </td>
-                            <td><button><i class="fa fa-trash"></i></button></td>
+                            <td><img id="image" src="../Ressources/album.png" alt="Album 1"></td>
+                            <td id="titre">Titre </td>
+                            <td><button id="artiste">Artiste </button></td>
+                            <td><button id="delete"><i class="fa fa-trash"></i></button></td>
                         </tr>
-                        <tr>
-                            <td>2
-                                <button class="play-button"><i class="fa fa-play"></i></button>
-                            </td>
-                            <td><img src="../Ressources/cascade.png" alt="Album 2"></td>
-                            <td>Titre 2</td>
-                            <td class="bi-text-left"><button>Artiste 2</button></td>
-                            <td>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle">&#9776;</span>
-                                    <div class="dropdown-menu">
-                                        <a href="#">Ajouter à une playlist</a>
-                                        <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                                        <a href="#">Ajouter à la file d'attente</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><button><i class="fa fa-trash"></i></button></td>
-                        </tr>
+                        </template>
                         <!-- Ajouter d'autres lignes de tableau ici -->
                         </tbody>
                     </table>
