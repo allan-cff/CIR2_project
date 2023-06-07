@@ -71,7 +71,7 @@ function add_new_user($prenom, $nom, $username, $age, $mail, $password) {
                     $stmt->bindParam(':password', $pwd);
                     $stmt->bindParam(':age', $age);
                     $stmt->bindParam(':username', $username);
-                    $stmt->bindParam(':image', '../Ressources/profiles/default.png');
+                    $stmt->bindValue(':image', '../Ressources/profiles/default.png');
                 
                     $valid = $stmt->execute();
                     $id_user_created = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
