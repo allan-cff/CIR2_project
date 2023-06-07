@@ -54,7 +54,7 @@ function show_albums_by_research($string) {
     }
     try {
         $string = '%'.$string.'%';
-        $sql = "SELECT * FROM album WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
+        $sql = "SELECT album.id, album.titre, album.date_parution, album.image, style_musique.type_musique FROM album ON album.id = appartient_a.id_album JOIN style_musique ON style_musique.id = appartient_a.id WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':string', $string, PDO::PARAM_STR);
         $stmt->execute();
