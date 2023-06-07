@@ -63,7 +63,7 @@
         </ul>
         <form class="d-flex" role="search" id="main-search">
             <div class="input-group dropdown">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <input id="main-search-input" class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn dropdown-toggle helper-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-filter"></i></button>
                 <button id="search-button" class="btn helper-btn" type="submit"><i class="fas fa-search"></i></button>
                 <ul class="dropdown-menu">
@@ -77,14 +77,6 @@
                     <li class="dropdown-iteml">
                         <input id="search-song" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
                         <label class="form-check-label" for="flexCheckDefault">Morceau</label>
-                    </li>
-                    <li class="dropdown-iteml">
-                        <input id="search-playlist" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
-                        <label class="form-check-label" for="flexCheckDefault">Playlist</label>
-                    </li>
-                    <li class="dropdown-iteml">
-                        <input id="search-user" class="form-check-input pl-2" type="checkbox" value="" id="flexCheckDefault" checked>
-                        <label class="form-check-label" for="flexCheckDefault">Utilisateur</label>
                     </li>
                 </ul>
             </div>
@@ -257,12 +249,12 @@
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <p id="album-duration"></p>
+                                <p id="album-parution"></p>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content">
-                                <p id="album-tracks-count"></p>
+                                <p id="album-style"></p>
                             </div>
                         </div>
                 </div>
