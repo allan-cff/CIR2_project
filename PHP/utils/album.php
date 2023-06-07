@@ -41,11 +41,11 @@ function show_album_per_id($id) {
         $stmt = $conn->prepare('SELECT album.id, album.titre, album.date_parution, album.image, style_musique.type_musique FROM album JOIN appartient_a ON appartient_a.id_album = album.id JOIN style_musique ON style_musique.id = appartient_a.id WHERE album.id = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $album = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $album = $stmt->fetch(PDO::FETCH_ASSOC);
 
         
         $sql = 'SELECT artiste.id, artiste.nom FROM a_compose JOIN album USING (id) JOIN artiste ON artiste.id = a_compose.id_artiste WHERE album.id = :id_album';
-        $stmt = $database->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id_album', $album['id']);
         $stmt->execute();
         $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ function show_album_per_id($id) {
         return false;
     }
 
-    return $result;
+    return $album;
 
 }
 
@@ -95,7 +95,7 @@ function show_tracks_of_album($id) {
     }
 
     try {
-        $stmt = $conn->prepare('SELECT morceau.titre, morceau.duree FROM morceau JOIN album albm on albm.id = morceau.id_album JOIN cree_par cp on morceau.id = cp.id_morceau WHERE id_album = :id');
+        $stmt = $conn->prepare('SELECT morceau.titre, morceau.duree, morceau.id FROM morceau JOIN album albm on albm.id = morceau.id_album JOIN cree_par cp on morceau.id = cp.id_morceau WHERE id_album = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);

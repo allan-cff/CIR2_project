@@ -238,7 +238,7 @@
                     <div class="container">
                         <img id="album-cover" src="../Ressources/playlist.png">
                         <div class="info-sup">
-                            <b></b>
+                            <b id="album-name"></b>
                         </div>
                         <button class="play-pause-button"><i class="fas fa-play"></i></button>
                     </div>
@@ -263,40 +263,59 @@
         </div>
 
         <table>
-            <thead>
-            <tr>
-                <th class="th4">#</th>
-                <th>Titre</th>
-                <th class="th4">Artiste(s)</th>
-                <th>Détails</th>
-                <th class="th4">Durée</th>
-            </tr>
-            </thead>
-            <tbody>
-            <template id="album-row-template">
+                <thead>
                 <tr>
-                    <td>
-                        <button class="play-button"><i class="fa fa-play"></i></button>
-                    </td>
-                    <td>Titre 1</td>
-                    <td><button>Artiste 1</button></td>
-                    <td>
-                        <div class="dropdown">
-                            <span class="dropdown-toggle">&#9776;</span>
-                            <div class="dropdown-menu">
-                                <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
-                                <a href="#">Ajouter à une playlist</a>
-                                <a href="#"><i class="fa fa-heart"></i> J'aime</a>
-                                <a href="#">Ajouter à la file d'attente</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td>3:31</td>
+                    <th class="th4">#</th>
+                    <th>Titre</th>
+                    <th class="th4">Artiste(s)</th>
+                    <th>Détails</th>
+                    <th class="th4">Supprimer</th>
                 </tr>
-            </template>    
-            <!-- Ajouter d'autres lignes de tableau ici -->
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <template id="playlist-row-template">
+                        <tr>
+                            <td>
+                                <button class="play-button"><i class="fa fa-play"></i></button>
+                            </td>
+                            <td>Titre 1</td>
+                            <td></td>
+                            <td>
+                                <div class="dropdown">
+                                    <span class="dropdown-toggle">&#9776;</span>
+                                    <div class="dropdown-menu">
+                                        <!-- possibilité de mettre un select mais dans le cas présent pas forcément utile -->
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#add-to-playlist">Ajouter à une playlist</a>
+                                        <a id="toggle-like" href="#"><i class="far fa-heart"></i> J'aime</a>
+                                        <a id="add-to-waitlist" href="#">Ajouter à la file d'attente</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><button><i class="fa fa-trash"></i></button></td>
+                            <!-- Modal -->
+                            <div class="modal fade" id="add-to-playlist" tabindex="-1" aria-labelledby="addToPlaylist" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter le titre à une playlist</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <select id="playlist-select" class="form-select" aria-label="Default select example">
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="button" class="btn btn-primary" id="add-to-playlist">Ajouter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </template>
+                <!-- Ajouter d'autres lignes de tableau ici -->
+                </tbody>
+            </table>
     </div>
 </template>
 

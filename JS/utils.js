@@ -264,85 +264,84 @@ function showWaitingList(userId){
 
 function initAlbum(albumId){
     getAlbum(albumId, (album) => {
-        document.querySelector('#album-cover').setAttribute("src", album.image);
-        document.querySelector('.info-sup b').innerHTML = album.titre;
-        /*for(let artist of album.authors){
-            document.querySelector('#album-artist-name').innerHTML += artist + '<br>';
-        }*/
-        document.querySelector('#album-parution').innerHTML = 'Parution : ' + album.date_parution;
-        document.querySelector('#album-style').innerHTML += album.type_musique;
-        for(let track of album.tracks){
-            const template = document.querySelector('#album-row-template');
-            const clone = template.content.cloneNode(true);
-            clone.querySelector('.play-button').setAttribute('data-rythmicId', track.id)
-            clone.querySelector('.play-button').addEventListener("click", (e) => {
-                id = e.target.getAttribute('data-rythmicId');
-                playNow(id)
-            })
-            clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
-            clone.querySelector('td:nth-child(2) img').setAttribute('data-rythmicId', track.id_album)
-            clone.querySelector('td:nth-child(2) img').addEventListener("click", (e) => {
-                id = e.target.getAttribute('data-rythmicId');
-                moveToAlbum((id)=>{initAlbum(id)}, id)
-            })
-            clone.querySelector("td:nth-child(3)").innerHTML = track.titre;
-            for(let artist of track.artistes){
-                let bouton = document.createElement("button")
-                bouton.innerHTML = artist.nom;
-                bouton.setAttribute('data-rythmicId', artist.id)
-                clone.querySelector("td:nth-child(4)").appendChild(bouton)
-                bouton.addEventListener("click", (e) => {
+        listPlaylists(userId, (playlistList) => {
+            document.querySelector('#album-name').innerHTML = album.titre
+            document.querySelector('#album-artist-name').innerHTML = album.artistes[0].nom
+            document.querySelector('.container img').setAttribute('src', album.image)
+            document.querySelector('#album-parution').innerHTML = album.date_parution
+            document.querySelector('#album-style').innerHTML = 'Style : ' + album.type_musique
+            for(let track of album.tracks){
+                const template = document.querySelector('#playlist-row-template');
+                const clone = template.content.cloneNode(true);
+                clone.querySelector('.play-button').setAttribute('data-rythmicId', track.id)
+                clone.querySelector('.play-button').addEventListener("click", (e) => {
                     id = e.target.getAttribute('data-rythmicId');
-                    moveToArtist((id)=>{
-                        getArtist(id, (artist) => {
-                            showArtist(artist)
-                        })
-                    }, id)
+                    playNow(id)
                 })
-            }
-            clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
-                elem.setAttribute("data-rythmicId", track.id);
-            })
-            userId = localStorage.getItem('userId');
-            playlistSelect = clone.querySelector("#playlist-select");
-            for(let playlist of playlistList){
-                let option = document.createElement("option");
-                option.setAttribute('value', playlist.id);
-                option.innerHTML = playlist.nom;
-                playlistSelect.appendChild(option);
-            }
-            clone.querySelector('.modal-content').setAttribute('data-rythmicId', track.id);
-            clone.querySelector("#add-to-playlist").addEventListener("click", (e) => {
-                let playlistToAddId = e.target.parentElement.parentElement.querySelector('#playlist-select').value;
-                console.log(e)
-                console.log(e.target)
-                console.log(e.target.parentElement)
-                console.log(e.target.parentElement.parentElement)
-                console.log(e.target.parentElement.parentElement)
-                let songId = e.target.parentElement.parentElement.getAttribute('data-rythmicId')
-                console.log(playlistToAddId, songId);
-                addToPlaylist(userId, playlistToAddId, songId)
-            })
-            showFavoriteDropdownItem(userId, track.id, clone.querySelector('#toggle-like'))
-            clone.querySelector('#toggle-like').setAttribute('data-rythmic', track.id)
-            clone.querySelector('#toggle-like').addEventListener("click", (e) => {
-                let elem;
-                if(e.target.tagName === "A"){
-                    elem = e.target
-                } else {
-                    elem = e.target.parentElement
+                clone.querySelector("td:nth-child(2)").innerHTML = track.titre;
+                for(let artist of track.artistes){
+                    let bouton = document.createElement("button")
+                    bouton.innerHTML = artist.nom;
+                    bouton.setAttribute('data-rythmicId', artist.id)
+                    clone.querySelector("td:nth-child(3)").appendChild(bouton)
+                    bouton.addEventListener("click", (e) => {
+                        id = e.target.getAttribute('data-rythmicId');
+                        moveToArtist((id)=>{
+                            getArtist(id, (artist) => {
+                                showArtist(artist)
+                            })
+                        }, id)
+                    })
                 }
-                if(elem.firstElementChild.classList.contains("far")){
-                    addToFavorite(userId, elem.getAttribute('data-rythmic'))
-                    elem.innerHTML = '<i class="fas fa-heart"></i>Retirer des favoris';
-                } else {
-                    deleteFavorite(userId, elem.getAttribute('data-rythmic'))
-                    elem.innerHTML = '<i class="far fa-heart"></i>Ajouter aux favoris';
+                clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
+                    elem.setAttribute("data-rythmicId", track.id);
+                })
+                userId = localStorage.getItem('userId');
+                playlistSelect = clone.querySelector("#playlist-select");
+                for(let playlist of playlistList){
+                    let option = document.createElement("option");
+                    option.setAttribute('value', playlist.id);
+                    option.innerHTML = playlist.nom;
+                    playlistSelect.appendChild(option);
                 }
-            })
-            clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duree);
-            document.querySelector('tbody').appendChild(clone);
-        }
+                clone.querySelector('.modal-content').setAttribute('data-rythmicId', track.id);
+                clone.querySelector("#add-to-playlist").addEventListener("click", (e) => {
+                    let playlistToAddId = e.target.parentElement.parentElement.querySelector('#playlist-select').value;
+                    console.log(e)
+                    console.log(e.target)
+                    console.log(e.target.parentElement)
+                    console.log(e.target.parentElement.parentElement)
+                    console.log(e.target.parentElement.parentElement)
+                    let songId = e.target.parentElement.parentElement.getAttribute('data-rythmicId')
+                    console.log(playlistToAddId, songId);
+                    addToPlaylist(userId, playlistToAddId, songId)
+                })
+                showFavoriteDropdownItem(userId, track.id, clone.querySelector('#toggle-like'))
+                clone.querySelector('#toggle-like').setAttribute('data-rythmic', track.id)
+                clone.querySelector('#toggle-like').addEventListener("click", (e) => {
+                    let elem;
+                    if(e.target.tagName === "A"){
+                        elem = e.target
+                    } else {
+                        elem = e.target.parentElement
+                    }
+                    if(elem.firstElementChild.classList.contains("far")){
+                        addToFavorite(userId, elem.getAttribute('data-rythmic'))
+                        elem.innerHTML = '<i class="fas fa-heart"></i>Retirer des favoris';
+                    } else {
+                        deleteFavorite(userId, elem.getAttribute('data-rythmic'))
+                        elem.innerHTML = '<i class="far fa-heart"></i>Ajouter aux favoris';
+                    }
+                })
+                clone.querySelector('#add-to-waitlist').addEventListener("click", (e) => {
+                    songId = e.target.getAttribute('data-rythmicid');
+                    userId = localStorage.getItem('userId');
+                    addToWaitlist(userId, songId, () => {showWaitingList(userId)})
+                })
+                clone.querySelector("td:nth-child(5)").innerHTML = secondsToMinutesTimeString(track.duree);
+                document.querySelector('tbody').appendChild(clone);
+            }
+        })
     })
 }
 
@@ -562,7 +561,7 @@ function showRecherche(){
         artists = result.artists
         albums = result.albums
         musics = result.musics
-        if(searchAlbum){
+        if(searchAlbum && albums.length > 0){
             carousel = document.querySelector("#albumsResult .carousel-inner")
             pages = []
             for(let i=5; i-5 < albums.length; i=i+5){
@@ -584,9 +583,9 @@ function showRecherche(){
                     }))
                 }
             }
+            carousel.querySelector("#albumsResult .carousel-inner .carousel-item").classList.add("active")
         }
-        carousel.querySelector("#albumsResult .carousel-inner .carousel-item").classList.add("active")
-        if(searchArtist){
+        if(searchArtist && artists.length > 0){
             carousel = document.querySelector("#artistsResult .carousel-inner")
             pages = []
             for(let i=5; i-5 < artists.length; i=i+5){
@@ -603,18 +602,12 @@ function showRecherche(){
                 for(artist of page){
                     let p = document.createElement("p");
                     p.textContent = artist.nb_auditeurs + ' auditeurs';
-                    wrapper.appendChild(createCardElement(artist.image, artist.nom, artist.id, p, (artistId) => {
-                            moveToArtist((id)=>{
-                                getArtist(id, (artist) => {
-                                    showArtist(artist)
-                                })
-                            }, artistId)
-                        }))
+                    wrapper.appendChild(createCardElement(artist.image, artist.nom, artist.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
                 }
             }
+            carousel.querySelector("#artistsResult .carousel-inner .carousel-item").classList.add("active")
         }
-        carousel.querySelector("#artistsResult .carousel-inner .carousel-item").classList.add("active")
-        if(searchMusic){
+        if(searchMusic && musics.length > 0){
             carousel = document.querySelector("#musicsResult .carousel-inner")
             pages = []
             for(let i=5; i-5 < musics.length; i=i+5){
@@ -634,12 +627,10 @@ function showRecherche(){
                     /*for(let artist of music.artistes){
                         p.textContent = p.textContent + "  " + artist.nom
                     }*/
-                    wrapper.appendChild(createCardElement(music.image, music.titre, music.id, p, (musicId) => {
-                        playNow(songId);
-                    }))
+                    wrapper.appendChild(createCardElement(music.image, music.titre, music.id, p, (songId) => {playNow(songId)}))
                 }
             }
+            carousel.querySelector("#musicsResult .carousel-inner .carousel-item").classList.add("active")
         }
-        carousel.querySelector("#musicsResult .carousel-inner .carousel-item").classList.add("active")
     })
 }
