@@ -38,10 +38,19 @@ function show_album_per_id($id) {
     }
 
     try {
-        $stmt = $conn->prepare('SELECT album.titre, album.date_parution, album.image, style_musique.type_musique FROM album JOIN appartient_a ON appartient_a.id_album = album.id JOIN style_musique ON style_musique.id = appartient_a.id WHERE album.id = :id');
+        $stmt = $conn->prepare('SELECT album.id, album.titre, album.date_parution, album.image, style_musique.type_musique FROM album JOIN appartient_a ON appartient_a.id_album = album.id JOIN style_musique ON style_musique.id = appartient_a.id WHERE album.id = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $album = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        
+        $sql = 'SELECT artiste.id, artiste.nom FROM a_compose JOIN album USING (id) JOIN artiste ON artiste.id = a_compose.id_artiste WHERE album.id = :id_album';
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(':id_album', $album['id']);
+        $stmt->execute();
+        $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $album['artistes'] = $artistes;
+        
 
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
