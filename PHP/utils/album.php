@@ -217,7 +217,7 @@ function show_newest_albums() {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
-    return $result;
+    return $albums;
 }
 
 function show_type_of_album($id) {

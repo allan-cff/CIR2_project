@@ -29,7 +29,6 @@ function secondsToHoursTimeString(seconds){
 function playNow(songId){
     userId = localStorage.getItem('userId');
     listen(userId, songId, (song) => {
-        console.log(song)
         setNowPlaying(song, true);
     })
 }
@@ -70,6 +69,7 @@ function setNowPlaying(song, forcePlay=false){
         document.querySelector(".music-player .song-description .artists-list").appendChild(artistButton)
     })
     userId = localStorage.getItem('userId');
+    showFavorite(userId, song.id)
     audioLector.setAttribute("src", song.data)
     audioLector.load()
     document.querySelector(".progress-controller .current-time").innerHTML = "0:00";
@@ -110,6 +110,37 @@ function initPlayPauseButton(){
     })
 }
 
+function showFavorite(userId, songId){
+    getFavorites(userId, (favorite) => {
+        icon = document.querySelector('footer .music-player .song-bar .icons button i')
+        for(let song of favorite.tracks){
+            if(song.id == songId){
+                if(icon.classList.contains('far')){
+                    icon.classList.toggle("far")
+                    icon.classList.toggle("fas")
+                }
+                return;
+            }
+        }
+        if(icon.classList.contains('fas')){
+            icon.classList.toggle("far")
+            icon.classList.toggle("fas")
+        }
+    })
+}
+
+function showFavoriteDropdownItem(userId, songId, linkElem){
+    getFavorites(userId, (favorite) => {
+        for(let song of favorite.tracks){
+            if(song.id == songId){
+                linkElem.innerHTML = '<i class="fas fa-heart"></i>Retirer des favoris';
+                return;
+            }
+        }
+        linkElem.innerHTML = '<i class="fa fa-heart"></i>Ajouter aux favoris';
+    })
+}
+
 function initLikeButton(){
     likeButton = document.querySelector('footer .music-player .song-bar .icons button');
     likeButton.addEventListener('click', (e) => {
@@ -124,7 +155,7 @@ function initLikeButton(){
         userId = localStorage.getItem('userId');
         if(icon.classList.contains("fas")){
             getNowListening(userId, song => {
-                addFavorite(userId, {"id": song.id})
+                addToFavorite(userId, song.id)
             })
         } else {
             getNowListening(userId, song => {
@@ -204,7 +235,7 @@ function showLastListened(userId){
         for(let song of secondPage){
             let p = document.createElement("p");
             p.textContent = song.author;
-            wrappers[1].appendChild(createCardElement(song.image, song.title, song.id, p, (songId) => {playNow(songId)}))
+            wrappers[1].appendChild(createCardElement(song.image, song.titre, song.id, p, (songId) => {playNow(songId)}))
         }
     })
 }
@@ -244,7 +275,6 @@ function showWaitingList(userId){
 
 function initAlbum(albumId){
     getAlbum(albumId, (album) => {
-        console.log(album)
         document.querySelector('#album-cover').setAttribute("src", album.cover);
         document.querySelector('.info-sup b').innerHTML = album.title;
         document.querySelector('#album-artist-name').innerHTML = album.author;
@@ -265,46 +295,85 @@ function initAlbum(albumId){
 }
 
 function showPlaylist(playlist){
-    document.querySelector('#playlist-title').innerHTML = playlist.nom
-    document.querySelector('.container img').setAttribute('src', playlist.image)
-    document.querySelector('#playlist-description').innerHTML = playlist.description
-    document.querySelector('.playlist-details .total-duration').innerHTML = 'Durée totale : ' + secondsToHoursTimeString(playlist.duree_totale)
-    document.querySelector('.playlist-details .track-count').innerHTML = 'Nombre de titres : ' + playlist.tracks.length;
-    for(let track of playlist.tracks){
-        const template = document.querySelector('#playlist-row-template');
-        const clone = template.content.cloneNode(true);
-        clone.querySelector('.play-button').setAttribute('data-rythmicId', track.id)
-        clone.querySelector('.play-button').addEventListener("click", (e) => {
-            id = e.target.getAttribute('data-rythmicId');
-            playNow(id)
-        })
-        clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
-        clone.querySelector('td:nth-child(2) img').setAttribute('data-rythmicId', track.id_album)
-        clone.querySelector('td:nth-child(2) img').addEventListener("click", (e) => {
-            id = e.target.getAttribute('data-rythmicId');
-            moveToAlbum((id)=>{initAlbum(id)}, id)
-        })
-        clone.querySelector("td:nth-child(3)").innerHTML = track.titre;
-        for(let artist of track.artistes){
-            let bouton = document.createElement("button")
-            bouton.innerHTML = artist.nom;
-            bouton.setAttribute('data-rythmicId', artist.id)
-            clone.querySelector("td:nth-child(4)").appendChild(bouton)
-            bouton.addEventListener("click", (e) => {
+    listPlaylists(userId, (playlistList) => {
+        document.querySelector('#playlist-title').innerHTML = playlist.nom
+        document.querySelector('.container img').setAttribute('src', playlist.image)
+        document.querySelector('#playlist-description').innerHTML = playlist.description
+        document.querySelector('.playlist-details .total-duration').innerHTML = 'Durée totale : ' + secondsToHoursTimeString(playlist.duree_totale)
+        document.querySelector('.playlist-details .track-count').innerHTML = 'Nombre de titres : ' + playlist.tracks.length;
+        for(let track of playlist.tracks){
+            const template = document.querySelector('#playlist-row-template');
+            const clone = template.content.cloneNode(true);
+            clone.querySelector('.play-button').setAttribute('data-rythmicId', track.id)
+            clone.querySelector('.play-button').addEventListener("click", (e) => {
                 id = e.target.getAttribute('data-rythmicId');
-                moveToArtist((id)=>{
-                    getArtist(id, (artist) => {
-                        showArtist(artist)
-                    })
-                }, id)
+                playNow(id)
             })
+            clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
+            clone.querySelector('td:nth-child(2) img').setAttribute('data-rythmicId', track.id_album)
+            clone.querySelector('td:nth-child(2) img').addEventListener("click", (e) => {
+                id = e.target.getAttribute('data-rythmicId');
+                moveToAlbum((id)=>{initAlbum(id)}, id)
+            })
+            clone.querySelector("td:nth-child(3)").innerHTML = track.titre;
+            for(let artist of track.artistes){
+                let bouton = document.createElement("button")
+                bouton.innerHTML = artist.nom;
+                bouton.setAttribute('data-rythmicId', artist.id)
+                clone.querySelector("td:nth-child(4)").appendChild(bouton)
+                bouton.addEventListener("click", (e) => {
+                    id = e.target.getAttribute('data-rythmicId');
+                    moveToArtist((id)=>{
+                        getArtist(id, (artist) => {
+                            showArtist(artist)
+                        })
+                    }, id)
+                })
+            }
+            clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
+                elem.setAttribute("data-rythmicId", track.id);
+            })
+            userId = localStorage.getItem('userId');
+            playlistSelect = clone.querySelector("#playlist-select");
+            for(let playlist of playlistList){
+                let option = document.createElement("option");
+                option.setAttribute('value', playlist.id);
+                option.innerHTML = playlist.nom;
+                playlistSelect.appendChild(option);
+            }
+            clone.querySelector('.modal-content').setAttribute('data-rythmicId', track.id);
+            clone.querySelector("#add-to-playlist").addEventListener("click", (e) => {
+                let playlistToAddId = e.target.parentElement.parentElement.querySelector('#playlist-select').value;
+                console.log(e)
+                console.log(e.target)
+                console.log(e.target.parentElement)
+                console.log(e.target.parentElement.parentElement)
+                console.log(e.target.parentElement.parentElement)
+                let songId = e.target.parentElement.parentElement.getAttribute('data-rythmicId')
+                console.log(playlistToAddId, songId);
+                addToPlaylist(userId, playlistToAddId, songId)
+            })
+            showFavoriteDropdownItem(userId, track.id, clone.querySelector('#toggle-like'))
+            clone.querySelector('#toggle-like').setAttribute('data-rythmic', track.id)
+            clone.querySelector('#toggle-like').addEventListener("click", (e) => {
+                let elem;
+                if(e.target.tagName === "A"){
+                    elem = e.target
+                } else {
+                    elem = e.target.parentElement
+                }
+                if(elem.firstElementChild.classList.contains("far")){
+                    addToFavorite(userId, elem.getAttribute('data-rythmic'))
+                    elem.innerHTML = '<i class="fas fa-heart"></i>Retirer des favoris';
+                } else {
+                    deleteFavorite(userId, elem.getAttribute('data-rythmic'))
+                    elem.innerHTML = '<i class="far fa-heart"></i>Ajouter aux favoris';
+                }
+            })
+            clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duree);
+            document.querySelector('tbody').appendChild(clone);
         }
-        clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
-            elem.setAttribute("data-rythmicId", track.id);
-        })
-        clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duree);
-        document.querySelector('tbody').appendChild(clone);
-    }
+    })
 }
 
 function showPlaylistList(playlistList){
@@ -338,7 +407,6 @@ function showPlaylistList(playlistList){
 }
 
 function showProfile(profile){
-    console.log(profile)
     document.querySelector('#username').innerHTML = profile.username;
     document.querySelector('#name').innerHTML = profile.name;
     document.querySelector('#surname').innerHTML = profile.surname;

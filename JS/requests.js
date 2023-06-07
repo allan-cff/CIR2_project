@@ -64,16 +64,16 @@ function getWaitList(userId, callback){
     //ajaxRequest('get', `users/${userId}/waitlist`, callback);
 }
 
-function addToWaitlist(userId, body, callback){
-    ajaxRequest('put', `users/${userId}/waitlist`, callback, jsonToFormdata(body));
+function addToWaitlist(userId, songId, callback){
+    ajaxRequest('post', `users/${userId}/waitlist`, callback, `id=${songId}`);
 }
 
 function getFavorites(userId, callback){
     ajaxRequest('get', `users/${userId}/favorites`, (body) => {callback(body)});
 }
 
-function addFavorite(userId, body, callback){
-    ajaxRequest('put', `users/${userId}/favorites`, callback, jsonToFormdata(body));
+function addToFavorite(userId, songId, callback){
+    ajaxRequest('post', `users/${userId}/favorites`, callback, `id=${songId}`);
 }
 
 function deleteFavorite(userId, songId, callback){
@@ -92,8 +92,8 @@ function getPlaylist(userId, playlistId, callback){
     ajaxRequest('delete', `users/${userId}/playlists/${playlistId}`, (body) => {callback(body)});
 }
 
-function addToPlaylist(userId, playlistId, body, callback){
-    ajaxRequest('post', `users/${userId}/playlists/${playlistId}/tracks`, callback, jsonToFormdata(body));
+function addToPlaylist(userId, playlistId, songId, callback){
+    ajaxRequest('post', `users/${userId}/playlists/${playlistId}/tracks`, callback, `id=${songId}`);
 }
 
 function deleteFromPlaylist(userId, playlistId, songId, callback){
