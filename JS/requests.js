@@ -123,5 +123,6 @@ function search(query, isAdmin, isAlbum, isMusic, callback){
     if(isMusic){
         include+='music'
     }
+    console.log(`/search?include=${include}&query=${encodeURI(query)}`)
     ajaxRequest('get', `/search?include=${include}&query=${encodeURI(query)}`, (body)=>{callback(body)});
 }

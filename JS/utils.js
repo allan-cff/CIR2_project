@@ -544,9 +544,9 @@ function showArtist(artist){
 }
 
 function showRecherche(){
-    let searchArtist = document.querySelector('#main-search #search-artist').checked;
-    let searchAlbum = document.querySelector('#main-search #search-album').checked;
-    let searchMusic = document.querySelector('#main-search #search-music').checked;
+    let searchArtist = document.querySelector('#search-artist').checked;
+    let searchAlbum = document.querySelector('#search-album').checked;
+    let searchMusic = document.querySelector('#search-song').checked;
     let query = document.querySelector('#main-search-input').value;
     search(query, searchArtist, searchAlbum, searchMusic, (result) => {
         artists = result.artists

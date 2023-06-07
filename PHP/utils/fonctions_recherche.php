@@ -13,7 +13,8 @@ function show_morceaux_by_research($string) {
         return false;
     }
     try {
-        $sql = "SELECT * FROM morceau WHERE titre ILIKE '%' || :string || '%' ORDER BY titre";
+        $string = '%'.substr($string, 1, strlen($string)-2).'%';
+        $sql = "SELECT * FROM morceau WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':string', $string);
         $stmt->execute();
@@ -32,7 +33,8 @@ function show_artists_by_research($string) {
         return false;
     }
     try {
-        $sql = "SELECT * FROM artiste WHERE nom ILIKE '%' || :string || '%' ORDER BY nom";
+        $string = '%'.substr($string, 1, strlen($string)-2).'%';
+        $sql = "SELECT * FROM artiste WHERE LOWER(nom) LIKE LOWER(:string) ORDER BY nom";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':string', $string);
         $stmt->execute();
@@ -51,9 +53,10 @@ function show_albums_by_research($string) {
         return false;
     }
     try {
-        $sql = "SELECT * FROM album WHERE titre ILIKE '%' || :string || '%' ORDER BY titre";
+        $string = '%'.substr($string, 1, strlen($string)-2).'%';
+        $sql = "SELECT * FROM album WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':string', $string);
+        $stmt->bindParam(':searchQuery', $searchQuery, PDO::PARAM_STR);
         $stmt->execute();
         $albums = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
