@@ -94,7 +94,7 @@ function show_tracks_of_liste_attente($id) {
         return false;
     }
     try {
-        $sql = 'SELECT morceau.titre, contenu_dans.id, album.image as image_album, album.id as album_id from contenu_dans JOIN morceau using (id) JOIN album ON album.id = morceau.id_album where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_liste_attente)';
+        $sql = 'SELECT morceau.titre, morceau.duree, contenu_dans.id, album.image as image_album, album.id as album_id from contenu_dans JOIN morceau using (id) JOIN album ON album.id = morceau.id_album where id_playlist = (SELECT id_playlist FROM a_creer WHERE id = :id AND is_liste_attente)';
         $stmt = $database->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

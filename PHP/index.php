@@ -509,7 +509,7 @@
 
         <div class="artist">
             <div class="card" id ="resultAlbums">
-                <b>album :</b>
+                <b>Album :</b>
             </div>
         </div>
         <br>
@@ -707,7 +707,7 @@
 
         <div class="artist">
             <div class="card">
-                <b>morceaux :</b>
+                <b>Morceaux :</b>
             </div>
         </div>
         <br>
@@ -907,7 +907,7 @@
 
         <div class="artist">
             <div class="card">
-                <b>artistes :</b>
+                <b>Artistes :</b>
             </div>
         </div>
         <br>
