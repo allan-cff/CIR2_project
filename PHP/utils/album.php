@@ -38,7 +38,7 @@ function show_album_per_id($id) {
     }
 
     try {
-        $stmt = $conn->prepare('SELECT * FROM album WHERE id = :id');
+        $stmt = $conn->prepare('SELECT album.titre, album.date_parution, album.image, style_musique.type_musique FROM album JOIN appartient_a ON appartient_a.id_album = album.id JOIN style_musique ON style_musique.id = appartient_a.id WHERE album.id = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
