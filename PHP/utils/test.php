@@ -245,9 +245,14 @@
         echo json_encode($tracks);
     }*/
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+    /*if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $albums = show_newest_albums();
         echo json_encode($albums);
+    }*/
+
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $tracks = show_tracks_of_album(1);
+        echo json_encode($tracks);
     }
     
 

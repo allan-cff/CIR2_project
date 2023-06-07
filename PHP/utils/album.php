@@ -89,14 +89,24 @@ function show_tracks_of_album($id) {
         $stmt = $conn->prepare('SELECT morceau.titre, morceau.duree FROM morceau JOIN album albm on albm.id = morceau.id_album JOIN cree_par cp on morceau.id = cp.id_morceau WHERE id_album = :id');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // On choppe les artistes de chaque morceau
+        for($i=0; $i<count($tracks); $i++){
+            $sql = 'SELECT artiste.id, artiste.nom FROM cree_par JOIN artiste USING (id) JOIN morceau ON morceau.id = cree_par.id_morceau WHERE morceau.id = :id_morceau';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_morceau', $tracks[$i]['id']);
+            $stmt->execute();
+            $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tracks[$i]['artistes'] = $artistes;
+        }
 
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
     }
 
-    return $result;
+    return $tracks;
 
 }
 
