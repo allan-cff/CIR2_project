@@ -512,7 +512,7 @@
                 <div class="carousel-item active">
                     <div class="cards-wrapper">
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/alpha.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -523,7 +523,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/j.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -534,7 +534,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/jos.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -545,7 +545,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/naps.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -556,7 +556,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/nek.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -571,7 +571,7 @@
                 <div class="carousel-item">
                     <div class="cards-wrapper">
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/pat.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -582,7 +582,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/spot.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -593,7 +593,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper"style="width: 100%; height: 100%;">
                                 <img src="../Ressources/naps.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -604,7 +604,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/jos.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -615,7 +615,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="image-wrapper">
+                            <div class="image-wrapper" style="width: 100%; height: 100%;">
                                 <img src="../Ressources/j.png" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
@@ -628,7 +628,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="cards-wrapper">
+                    <div class="cards-wrapper" >
                         <div class="card">
                             <div class="image-wrapper">
                                 <img src="../Ressources/nek.png" class="card-img-top" alt="...">
