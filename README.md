@@ -1,4 +1,6 @@
 # CIR2_project
+
+[DOCUMENTATION API](https://www.postman.com/allanff/workspace/projet-cir2/api/7798c83f-7923-4d6e-88a4-d0a4d19598fe/definition/188517ec-2a7c-4a42-b41e-d47fbeab8b2d)
 ## Installation du projet en local (WSL Debian)
 - Accéder à la page d'accueil de VSCode (si un dossier est ouvert : Fichier -> Fermer le dossier)
 - Lancer VSCode dans la WSL (coin inférieur gauche)
