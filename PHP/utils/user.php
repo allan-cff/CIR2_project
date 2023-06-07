@@ -97,8 +97,9 @@ function create_playlists($id_user_created) {
     $conn = Database::connexionBD();
 
     // CREATION PLAYLIST FAVORIS
-    $sql = 'INSERT INTO playlist (nom, date_creation, description) VALUES (:nom, current_timestamp, :description) RETURNING id';
+    $sql = 'INSERT INTO playlist (nom, date_creation, description, image) VALUES (:nom, current_timestamp, :description, :image) RETURNING id';
     $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':image', "../Ressources/logo_favoris.jpg");
     $stmt->bindValue(':nom', "FAVORIS");
     $stmt->bindValue(':description', "Vos titres favoris");
     $stmt->execute();
@@ -157,6 +158,17 @@ function show_user_per_id($id) {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // On récupère le nombre de musiques dans la playlist favorite de l'utilisateur
+
+        $sql = 'SELECT count(morceau.titre) from morceau JOIN contenu_dans using (id) JOIN playlist ON contenu_dans.id_playlist = playlist.id JOIN a_creer ON a_creer.id_playlist = playlist.id WHERE a_creer.id = :id AND is_favorite';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $nb_musiques_favoris = $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+
+        // On associe le nombre de musiques au resultat qu'on return
+        $result['nb_musiques_favoris'] = $nb_musiques_favoris;
+        
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
         return false;
