@@ -188,7 +188,12 @@ function create_playlist($options, $id_user) {
     }
     try {
         $nom = $options['nom'];
-        $image = $options['image'];
+        if($options['image'] == NULL) {
+            $image = "../Ressources/playlist.png";
+        }
+        else {
+            $image = $options['image'];
+        }
         $description = $options['description'];
 
         $sql = 'INSERT INTO playlist (nom, date_creation, image, description) VALUES (:nom, current_timestamp, :image, :description) RETURNING id';
