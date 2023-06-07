@@ -434,6 +434,16 @@ function showPlaylist(playlist){
 }
 
 function showPlaylistList(playlistList){
+    document.querySelector('#newPlaylistForm').addEventListener("submit", (e) => {
+        e.preventDefault();
+        userId = localStorage.getItem('userId');
+        let titre = document.querySelector('#nomplaylist').value
+        let description = document.querySelector('#description_playlist').value
+        addPlaylist(userId, titre, description, () => {
+            userId = localStorage.getItem('userId');
+            listPlaylists(userId, (playlistList)=>{showPlaylistList(playlistList)})
+        })
+    })
     carousel = document.querySelector("#playlistsCarousel .carousel-inner")
     pages = []
     for(let i=5; i-5 < playlistList.length; i=i+5){
@@ -552,5 +562,84 @@ function showRecherche(){
         artists = result.artists
         albums = result.albums
         musics = result.musics
+        if(searchAlbum){
+            carousel = document.querySelector("#albumsResult .carousel-inner")
+            pages = []
+            for(let i=5; i-5 < albums.length; i=i+5){
+                end = Math.min(i, albums.length)
+                pages.push(albums.slice(i-5, end))
+            }
+            for(page of pages){
+                item = document.createElement("div")
+                item.classList.add("carousel-item")
+                wrapper = document.createElement("div")
+                wrapper.classList.add("cards-wrapper")
+                item.appendChild(wrapper)
+                carousel.appendChild(item)
+                for(album of page){
+                    let p = document.createElement("p");
+                    p.textContent = album.type_musique + " - " + album.date_parution;
+                    wrapper.appendChild(createCardElement(album.image, album.titre, album.id, p, (albumId) => {
+                        moveToAlbum((id)=>{initAlbum(id)}, albumId);
+                    }))
+                }
+            }
+        }
+        carousel.querySelector("#albumsResult .carousel-inner .carousel-item").classList.add("active")
+        if(searchArtist){
+            carousel = document.querySelector("#artistsResult .carousel-inner")
+            pages = []
+            for(let i=5; i-5 < artists.length; i=i+5){
+                end = Math.min(i, artists.length)
+                pages.push(artists.slice(i-5, end))
+            }
+            for(page of pages){
+                item = document.createElement("div")
+                item.classList.add("carousel-item")
+                wrapper = document.createElement("div")
+                wrapper.classList.add("cards-wrapper")
+                item.appendChild(wrapper)
+                carousel.appendChild(item)
+                for(artist of page){
+                    let p = document.createElement("p");
+                    p.textContent = artist.nb_auditeurs + ' auditeurs';
+                    wrapper.appendChild(createCardElement(artist.image, artist.nom, artist.id, p, (artistId) => {
+                            moveToArtist((id)=>{
+                                getArtist(id, (artist) => {
+                                    showArtist(artist)
+                                })
+                            }, artistId)
+                        }))
+                }
+            }
+        }
+        carousel.querySelector("#artistsResult .carousel-inner .carousel-item").classList.add("active")
+        if(searchMusic){
+            carousel = document.querySelector("#musicsResult .carousel-inner")
+            pages = []
+            for(let i=5; i-5 < musics.length; i=i+5){
+                end = Math.min(i, musics.length)
+                pages.push(musics.slice(i-5, end))
+            }
+            for(page of pages){
+                item = document.createElement("div")
+                item.classList.add("carousel-item")
+                wrapper = document.createElement("div")
+                wrapper.classList.add("cards-wrapper")
+                item.appendChild(wrapper)
+                carousel.appendChild(item)
+                for(music of page){
+                    let p = document.createElement("p");
+                    p.textContent = '';
+                    /*for(let artist of music.artistes){
+                        p.textContent = p.textContent + "  " + artist.nom
+                    }*/
+                    wrapper.appendChild(createCardElement(music.image, music.titre, music.id, p, (musicId) => {
+                        playNow(songId);
+                    }))
+                }
+            }
+        }
+        carousel.querySelector("#musicsResult .carousel-inner .carousel-item").classList.add("active")
     })
 }

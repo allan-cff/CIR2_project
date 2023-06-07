@@ -13,8 +13,8 @@ function show_morceaux_by_research($string) {
         return false;
     }
     try {
-        $string = '%'.substr($string, 1, strlen($string)-2).'%';
-        $sql = "SELECT morceau.id, morceau.titre, morceau.duree, album.image FROM morceau JOIN album ON morceau.id_album = album.id WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
+        $string = '%'.$string.'%';
+        $sql = "SELECT * FROM morceau WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':string', $string);
         $stmt->execute();
@@ -33,8 +33,7 @@ function show_artists_by_research($string) {
         return false;
     }
     try {
-        $string = '%'.substr($string, 1, strlen($string)-2).'%';
-        $sql = "SELECT * FROM artiste WHERE LOWER(nom) LIKE LOWER(:string) ORDER BY nom";
+        $string = '%'.$string.'%';
         $sql = "SELECT * FROM artiste WHERE LOWER(nom) LIKE LOWER(:string) ORDER BY nom";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':string', $string);
@@ -54,7 +53,7 @@ function show_albums_by_research($string) {
         return false;
     }
     try {
-        $string = '%'.substr($string, 1, strlen($string)-2).'%';
+        $string = '%'.$string.'%';
         $sql = "SELECT album.id, album.titre, album.date_parution, album.image, style_musique.type_musique FROM album ON album.id = appartient_a.id_album JOIN style_musique ON style_musique.id = appartient_a.id WHERE LOWER(titre) LIKE LOWER(:string) ORDER BY titre";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':string', $string, PDO::PARAM_STR);

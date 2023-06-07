@@ -187,8 +187,8 @@ function create_playlist($options, $id_user) {
         return false;
     }
     try {
-        $nom = $options['nom'];
-        if($options['image'] == NULL) {
+        $nom = $options['titre'];
+        if(!isset($options['image'])) {
             $image = "../Ressources/playlist.png";
         }
         else {

@@ -500,73 +500,49 @@
 
         </div>
 
-        <h2 id="lastListenedTitle" style="margin-left:10em; margin-bottom:2.5em; background-color: #fff; margin-right: 23em; text-align:center; border-radius:10px; background-color: #F27457; color: white; margin-bottom:100px;">Albums</h2>
+        <h2 style="margin-left:10em; margin-bottom:2.5em; background-color: #fff; margin-right: 23em; text-align:center; border-radius:10px; background-color: #F27457; color: white; margin-bottom:100px;">Albums</h2>
 
 
-    <div id="lastListened" class="carousel carousel-white slide">
+    <div id="albumsResult" class="carousel carousel-white slide">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="cards-wrapper">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                </div>
-            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#lastListened" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#albumsResult" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#lastListened" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#albumsResult" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
-    <h2 id="lastListenedTitle" style="margin-left:10em; margin-bottom:2.5em; background-color: #fff; margin-right: 23em; text-align:center; border-radius:10px; background-color: #F27457; color: white; margin-bottom:100px;">Artistes</h2>
+    <h2 style="margin-left:10em; margin-bottom:2.5em; background-color: #fff; margin-right: 23em; text-align:center; border-radius:10px; background-color: #F27457; color: white; margin-bottom:100px;">Artistes</h2>
 
 
-    <div id="lastListened" class="carousel carousel-white slide">
+    <div id="artistsResult" class="carousel carousel-white slide">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="cards-wrapper">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                </div>
-            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#lastListened" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#artistsResult" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#lastListened" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#artistsResult" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
-    <h2 id="lastListenedTitle" style="margin-left:10em; margin-bottom:2.5em; background-color: #fff; margin-right: 23em; text-align:center; border-radius:10px; background-color: #F27457; color: white; margin-bottom:100px;">Morceaux</h2>
+    <h2 style="margin-left:10em; margin-bottom:2.5em; background-color: #fff; margin-right: 23em; text-align:center; border-radius:10px; background-color: #F27457; color: white; margin-bottom:100px;">Morceaux</h2>
 
 
-    <div id="lastListened" class="carousel carousel-white slide">
+    <div id="musicsResult" class="carousel carousel-white slide">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="cards-wrapper">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                </div>
-            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#lastListened" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#musicsResult" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#lastListened" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#musicsResult" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -692,21 +668,21 @@
 
         <!-- Button trigger modal -->
             <div class="plae">
-            <button type="button" class="btn btn-primary mo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary mo" data-bs-toggle="modal" data-bs-target="#newPlaylistModal">
             ajouter une playlist
             </button>
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="newPlaylistModal" tabindex="-1" aria-labelledby="nouvellePlaylist" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">ajouter playlist</h1>
+                    <h1 class="modal-title fs-5" id="nouvellePlaylist">ajouter playlist</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <form>
+                <form id="newPlaylistForm">
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input type="file" class="form-control" id="image" accept="image/*">
@@ -719,7 +695,7 @@
                                     <label for="description_playlist" class="form-label">Description playlist</label>
                                     <input type="text" class="form-control" id="description_playlist" placeholder="Description playlist">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Valider</button>
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Valider</button>
                             </form>
                 </div>
                 <div class="modal-footer">
