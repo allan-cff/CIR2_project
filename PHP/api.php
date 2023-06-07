@@ -158,12 +158,12 @@
         }
 
 //  AJOUT D UN TITRE DANS LA LISTE D ATTENTE
-        if(count($path) === 5 && $path[3] === 'waitlist' && $_SERVER['REQUEST_METHOD'] === 'POST'){
+        if(count($path) === 4 && $path[3] === 'waitlist' && $_SERVER['REQUEST_METHOD'] === 'POST'){
             $id = $path[2];
-            $id_morceau = $path[4];
+            $id_morceau = $_POST['id'];
             $res = add_track_to_liste_attente($id, $id_morceau); //AJOUT D UN SON A LA LISTE D ATTENTE
             if($res){
-                echo json_encode($res);
+                echo '{}';
                 http_response_code(200);
                 exit;
             }
@@ -296,8 +296,9 @@
 // MODIFIE LES INFO DE L UTILISATEUR
         if(count($path) === 3 && $_SERVER['REQUEST_METHOD'] === 'PUT'){
             $id = $path[2];
-            modify_infos_user($id, $_POST);
-            echo json_encode($_POST);
+            parse_str(file_get_contents("php://input"),$input_var);
+            modify_infos_user($id, $input_var);
+            echo json_encode($input_var);
             http_response_code(200);
             exit;
         }
@@ -391,20 +392,24 @@
     require_once 'utils/fonctions_recherche.php';
 
 
-    # GET /search PARAMS :
-    #                       artist=string
-    #                       album=string
-    #                       music=string
-    #                       user=string
-    #                       type=artist,album,music,user
+    # GET /search
 
     if(count($path) === 2 && $path[1] === 'search' && $_SERVER['REQUEST_METHOD'] === 'GET'){
         $query = $_GET["query"];
         $include = $_GET["include"];
         $res = array();
-        if (in_array("album", $include)){
-
+        if (strpos($include, "artist") !== false) {
+            $res["artists"] = show_artists_by_research($query);
         }
+        if (strpos($include, "album") !== false) {
+            $res["albums"] = show_albums_by_research($query);
+        }
+        if (strpos($include, "music") !== false) {
+            $res["musics"] = show_morceaux_by_research($query);
+        }
+        echo json_encode($res);
+        http_response_code(200);
+        exit;
     }
 
     

@@ -22,7 +22,6 @@ playerTimeInterval = null;
 getUserId((userId) => {
     localStorage.setItem('userId', userId);
     //show left bar infos
-    showWaitingList(userId);
     showUser(userId);
     //show footer info
     initPreviousNextButtons();
@@ -79,7 +78,7 @@ document.querySelector('#go-to-settings').addEventListener("click", () => {
 document.querySelector('#main-search').addEventListener("submit", (e) => {
     e.preventDefault();
     moveToSearch(() => {
-        
+        showRecherche();
     });
     console.log(e)
 })

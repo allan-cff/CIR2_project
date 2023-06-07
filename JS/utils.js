@@ -69,6 +69,7 @@ function setNowPlaying(song, forcePlay=false){
         document.querySelector(".music-player .song-description .artists-list").appendChild(artistButton)
     })
     userId = localStorage.getItem('userId');
+    showWaitingList(userId)
     showFavorite(userId, song.id)
     audioLector.setAttribute("src", song.data)
     audioLector.load()
@@ -260,13 +261,14 @@ function showLastAlbums(){
 
 function showWaitingList(userId){
     waitingList = document.querySelector("#waitingList");
+    waitingList.innerHTML = `<li class="list-group-item">File d'attente</li>`;
     getWaitList(userId, (songsList) => {
         for(let song of songsList){
             waitingList.insertAdjacentHTML("beforeend", `
             <li class="list-group-item">
-                <img src="${song.image}">
+                <img src="${song.image_album}">
                 <p class="attente_title">${song.titre}</p>
-                <p class="attente_info">${'coucou'}<br>${secondsToMinutesTimeString(song.duree)}</p>
+                <p class="attente_info">${song.artistes[0].nom}<br>${secondsToMinutesTimeString(song.duree)}</p>
             </li>
             `);
         }
@@ -275,20 +277,83 @@ function showWaitingList(userId){
 
 function initAlbum(albumId){
     getAlbum(albumId, (album) => {
-        document.querySelector('#album-cover').setAttribute("src", album.cover);
-        document.querySelector('.info-sup b').innerHTML = album.title;
-        document.querySelector('#album-artist-name').innerHTML = album.author;
-        document.querySelector('#album-duration').innerHTML = secondsToHoursTimeString(album.duration);
-        document.querySelector('#album-tracks-count').innerHTML = album.tracksList.length;
+        document.querySelector('#album-cover').setAttribute("src", album.image);
+        document.querySelector('.info-sup b').innerHTML = album.titre;
+        /*for(let artist of album.authors){
+            document.querySelector('#album-artist-name').innerHTML += artist + '<br>';
+        }*/
+        document.querySelector('#album-parution').innerHTML = 'Parution : ' + album.date_parution;
+        document.querySelector('#album-style').innerHTML += album.type_musique;
         for(let track of album.tracks){
-            const template = document.querySelector('#playlist-row-template');
+            const template = document.querySelector('#album-row-template');
             const clone = template.content.cloneNode(true);
-            clone.querySelector("td:nth-child(2)").innerHTML = track.title;
-            clone.querySelector("td:nth-child(3)>button").innerHTML = track.author;
+            clone.querySelector('.play-button').setAttribute('data-rythmicId', track.id)
+            clone.querySelector('.play-button').addEventListener("click", (e) => {
+                id = e.target.getAttribute('data-rythmicId');
+                playNow(id)
+            })
+            clone.querySelector("td:nth-child(2) img").setAttribute('src', track.image)
+            clone.querySelector('td:nth-child(2) img').setAttribute('data-rythmicId', track.id_album)
+            clone.querySelector('td:nth-child(2) img').addEventListener("click", (e) => {
+                id = e.target.getAttribute('data-rythmicId');
+                moveToAlbum((id)=>{initAlbum(id)}, id)
+            })
+            clone.querySelector("td:nth-child(3)").innerHTML = track.titre;
+            for(let artist of track.artistes){
+                let bouton = document.createElement("button")
+                bouton.innerHTML = artist.nom;
+                bouton.setAttribute('data-rythmicId', artist.id)
+                clone.querySelector("td:nth-child(4)").appendChild(bouton)
+                bouton.addEventListener("click", (e) => {
+                    id = e.target.getAttribute('data-rythmicId');
+                    moveToArtist((id)=>{
+                        getArtist(id, (artist) => {
+                            showArtist(artist)
+                        })
+                    }, id)
+                })
+            }
             clone.querySelectorAll(".dropdown-menu a").forEach(elem => {
                 elem.setAttribute("data-rythmicId", track.id);
             })
-            clone.querySelector("td:nth-child(5)").innerHTML = secondsToMinutesTimeString(track.duration);
+            userId = localStorage.getItem('userId');
+            playlistSelect = clone.querySelector("#playlist-select");
+            for(let playlist of playlistList){
+                let option = document.createElement("option");
+                option.setAttribute('value', playlist.id);
+                option.innerHTML = playlist.nom;
+                playlistSelect.appendChild(option);
+            }
+            clone.querySelector('.modal-content').setAttribute('data-rythmicId', track.id);
+            clone.querySelector("#add-to-playlist").addEventListener("click", (e) => {
+                let playlistToAddId = e.target.parentElement.parentElement.querySelector('#playlist-select').value;
+                console.log(e)
+                console.log(e.target)
+                console.log(e.target.parentElement)
+                console.log(e.target.parentElement.parentElement)
+                console.log(e.target.parentElement.parentElement)
+                let songId = e.target.parentElement.parentElement.getAttribute('data-rythmicId')
+                console.log(playlistToAddId, songId);
+                addToPlaylist(userId, playlistToAddId, songId)
+            })
+            showFavoriteDropdownItem(userId, track.id, clone.querySelector('#toggle-like'))
+            clone.querySelector('#toggle-like').setAttribute('data-rythmic', track.id)
+            clone.querySelector('#toggle-like').addEventListener("click", (e) => {
+                let elem;
+                if(e.target.tagName === "A"){
+                    elem = e.target
+                } else {
+                    elem = e.target.parentElement
+                }
+                if(elem.firstElementChild.classList.contains("far")){
+                    addToFavorite(userId, elem.getAttribute('data-rythmic'))
+                    elem.innerHTML = '<i class="fas fa-heart"></i>Retirer des favoris';
+                } else {
+                    deleteFavorite(userId, elem.getAttribute('data-rythmic'))
+                    elem.innerHTML = '<i class="far fa-heart"></i>Ajouter aux favoris';
+                }
+            })
+            clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duree);
             document.querySelector('tbody').appendChild(clone);
         }
     })
@@ -370,6 +435,11 @@ function showPlaylist(playlist){
                     elem.innerHTML = '<i class="far fa-heart"></i>Ajouter aux favoris';
                 }
             })
+            clone.querySelector('#add-to-waitlist').addEventListener("click", (e) => {
+                songId = e.target.getAttribute('data-rythmicid');
+                userId = localStorage.getItem('userId');
+                addToWaitlist(userId, songId, () => {showWaitingList(userId)})
+            })
             clone.querySelector("td:nth-child(6)").innerHTML = secondsToMinutesTimeString(track.duree);
             document.querySelector('tbody').appendChild(clone);
         }
@@ -439,14 +509,16 @@ function showSettings(profile){
     })
     document.querySelector('#set-profile').addEventListener("submit", (e) => {
         e.preventDefault();
-        let body = new FormData()
-        body.append("nom", document.querySelector('#name').value);
-        body.append("username", document.querySelector('#username').value)
-        body.append("prenom", document.querySelector('#surname').value)
-        body.append("mail", document.querySelector('#mail').value)
-        body.append("password", document.querySelector('#password').value)
-        body.append("age", document.querySelector('#birth').value)
-        modifyUser(profile.id, body, () => {
+        let body = '';
+        body = body + "nom=" + document.querySelector('#name').value + "&"
+        body = body + "username=" + document.querySelector('#username').value + "&"
+        body = body + "prenom=" + document.querySelector('#surname').value + "&"
+        body = body + "mail=" + document.querySelector('#mail').value + "&"
+        body = body + "password=" + document.querySelector('#password').value + "&"
+        body = body + "age=" + document.querySelector('#birth').value
+        console.log(body)
+        modifyUser(profile.id, body, (result) => {
+            console.log(result)
             getUser(userId, (user) => {
                 showSettings(user)
             })
@@ -459,4 +531,16 @@ function showArtist(artist){
     document.querySelector('#image-artiste').setAttribute('src', artist.image)
     document.querySelector('#description-artiste').innerHTML = "Description : "
     document.querySelector('#nb-listeners-artiste').innerHTML = "Nombre d'auditeur par mois : " + artist.nb_auditeurs;
+}
+
+function showRecherche(){
+    let searchArtist = document.querySelector('#main-search #search-artist').checked;
+    let searchAlbum = document.querySelector('#main-search #search-album').checked;
+    let searchMusic = document.querySelector('#main-search #search-music').checked;
+    let query = document.querySelector('#main-search-input').value;
+    search(query, searchArtist, searchAlbum, searchMusic, (result) => {
+        artists = result.artists
+        albums = result.albums
+        musics = result.musics
+    })
 }
