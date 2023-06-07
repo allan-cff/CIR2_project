@@ -602,7 +602,11 @@ function showRecherche(){
                 for(artist of page){
                     let p = document.createElement("p");
                     p.textContent = artist.nb_auditeurs + ' auditeurs';
-                    wrapper.appendChild(createCardElement(artist.image, artist.nom, artist.id, p, (albumId)=>{moveToAlbum((id)=>{initAlbum(id)}, albumId)}))
+                    wrapper.appendChild(createCardElement(artist.image, artist.nom, artist.id, p, (id)=>{moveToArtist((id)=>{
+                        getArtist(id, (artist) => {
+                            showArtist(artist)
+                        })
+                    }, id)}))
                 }
             }
             carousel.querySelector("#artistsResult .carousel-inner .carousel-item").classList.add("active")
