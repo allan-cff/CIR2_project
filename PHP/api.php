@@ -210,16 +210,8 @@
 
 //AJOUT D UNE NOUVELLE PLAYLIST
         if(count($path) === 4 && $path[3] === 'playlists' && $_SERVER['REQUEST_METHOD'] === 'POST'){
-            $titre = NULL;
-            $description = NULL;
-            $image = NULL;
-            $option = array(
-                $titre => $_POST["titre"],
-                $description => $_POST["description"],
-                $image => $_POST["image"],
-            );
             $id = $path[2];
-            $res = create_playlist($id, $option);
+            $res = create_playlist($_POST, $id);
             if($res){
                 echo json_encode($res);
                 http_response_code(200);

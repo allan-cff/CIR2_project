@@ -1,12 +1,3 @@
-function jsonToFormdata(data){
-    let form_data = new FormData();
-    for (let key in data) {
-        console.log(key)
-        form_data.append(key, data[key]);
-    }
-    return form_data
-}
-
 function getUserId(callback){
     ajaxRequest('get', `users/loggedId`, (body) => {callback(body.id)});
 }
@@ -72,8 +63,8 @@ function listPlaylists(userId, callback){
     ajaxRequest('get', `users/${userId}/playlists`, (body) => {callback(body)});
 }
 
-function addPlaylist(userId, body, callback){
-    ajaxRequest('post', `users/${userId}/playlists`, callback, jsonToFormdata(body));
+function addPlaylist(userId, name, description, callback){
+    ajaxRequest('post', `users/${userId}/playlists`, callback, `titre=${name}&description=${description}`);
 }
 
 function getPlaylist(userId, playlistId, callback){
@@ -115,7 +106,7 @@ function listMusics(callback){
 function search(query, isAdmin, isAlbum, isMusic, callback){
     let include = ''
     if(isAdmin){
-        include+='admin'
+        include+='artist'
     }
     if(isAlbum){
         include+='album'
