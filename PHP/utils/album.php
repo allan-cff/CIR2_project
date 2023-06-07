@@ -224,15 +224,7 @@ function show_newest_albums() {
         $stmt = $conn->prepare("SELECT album.id, album.titre, album.date_parution, album.image, style_musique.type_musique FROM album JOIN appartient_a ON appartient_a.id_album = album.id JOIN style_musique ON appartient_a.id = style_musique.id ORDER BY album.date_parution DESC LIMIT 10");
         $stmt->execute();
         $albums = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // ON RECUPERE LES ARTISTES POUR CHAQUE ALBUM
-        for($i=0; $i<count($albums); $i++){
-            $sql = 'SELECT artiste.nom FROM a_compose JOIN album using (id) JOIN artiste ON artiste.id = a_compose.id_artiste WHERE album.id = :id';
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $albums[$i]['id']);
-            $stmt->execute();
-            $artistes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $albums[$i]['artistes'] = $artistes;
-        }
+    
 
     } catch (PDOException $exception) {
         error_log('Connection error: ' . $exception->getMessage());
