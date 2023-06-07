@@ -87,11 +87,6 @@ function setNowPlaying(song, forcePlay=false){
         }
     });
     if(forcePlay){
-        if(audioLector.paused){
-            let icon = document.querySelector('footer .music-player .progress-controller .control-buttons .play-pause-button i');
-            icon.classList.toggle("fa-play")
-            icon.classList.toggle("fa-pause")
-        }
         audioLector.play();
     }
 }
@@ -99,14 +94,6 @@ function setNowPlaying(song, forcePlay=false){
 function initPlayPauseButton(){
     pauseButton = document.querySelector('footer .music-player .progress-controller .control-buttons .play-pause-button');
     pauseButton.addEventListener('click', (e) => {
-        let icon;
-        if(e.target.tagName === "BUTTON"){
-            icon = e.target.firstElementChild
-        } else {
-            icon = e.target
-        }
-        icon.classList.toggle("fa-play")
-        icon.classList.toggle("fa-pause")
         toggleMusic();
     })
 }

@@ -60,8 +60,8 @@ function add_new_user($prenom, $nom, $username, $age, $mail, $password) {
             if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 
                 try {
-                    $sql = 'INSERT INTO utilisateur (prenom, nom, age, mail, password, username) 
-                            VALUES ( :prenom, :nom, :age, :mail, :password, :username) RETURNING id';
+                    $sql = 'INSERT INTO utilisateur (prenom, nom, age, mail, password, username, image) 
+                            VALUES ( :prenom, :nom, :age, :mail, :password, :username, :image) RETURNING id';
                     $stmt = $conn->prepare($sql);
     
                     $pwd = password_hash($password, PASSWORD_BCRYPT);
@@ -71,6 +71,7 @@ function add_new_user($prenom, $nom, $username, $age, $mail, $password) {
                     $stmt->bindParam(':password', $pwd);
                     $stmt->bindParam(':age', $age);
                     $stmt->bindParam(':username', $username);
+                    $stmt->bindValue(':image', '../Ressources/profiles/default.png');
                 
                     $valid = $stmt->execute();
                     $id_user_created = $stmt->fetch(PDO::FETCH_ASSOC)['id'];

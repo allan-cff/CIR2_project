@@ -1265,7 +1265,7 @@
             </button>
         </div>
 
-
+<!--
         <div class="artist">
             <div class="card">
         <b>Les playlistes de la semaine</b>
@@ -1455,7 +1455,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
+-->
 
     </div>
 </template>

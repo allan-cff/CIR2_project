@@ -15,6 +15,16 @@ $('.carousel-control-next').on('click', function (){
 //init global variables
 audioLector = new Audio();
 audioLector.addEventListener("ended", playNext);
+audioLector.addEventListener("pause", () => {
+    let icon = document.querySelector('.play-pause-button i')
+    icon.classList.add("fa-play")
+    icon.classList.remove("fa-pause")
+});
+audioLector.addEventListener("play", () => {
+    let icon = document.querySelector('.play-pause-button i')
+    icon.classList.remove("fa-play")
+    icon.classList.add("fa-pause")
+});
 
 playerTimeInterval = null;
 
