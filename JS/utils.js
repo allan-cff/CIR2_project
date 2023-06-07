@@ -266,7 +266,7 @@ function initAlbum(albumId){
     getAlbum(albumId, (album) => {
         listPlaylists(userId, (playlistList) => {
             document.querySelector('#album-name').innerHTML = album.titre
-            document.querySelector('#album-artist-name').innerHTML = album.artistes[0].nom
+            document.querySelector('#album-artist-name').innerHTML = album.artistes[0].nom || " "
             document.querySelector('.container img').setAttribute('src', album.image)
             document.querySelector('#album-parution').innerHTML = album.date_parution
             document.querySelector('#album-style').innerHTML = 'Style : ' + album.type_musique
